@@ -155,6 +155,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react组件之间传值的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/30/react组件之间传值的几种方式/">react组件之间传值的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/30/react组件之间传值的几种方式/" class="archive-article-date">
+  	<time datetime="2017-08-30T08:31:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017年08月30日</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##react组件传值，大概有下面几种方法：</p>
+<ul>
+<li>props</li>
+<li>context</li>
+<li>redux</li>
+<li>react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。</li>
+</ul>
+<p>##今天记录一下通过redux来传值的实现。<br>我们先写一个createAction的函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export function setAnalysisParams(params) &#123;</div><div class="line">  return &#123;</div><div class="line">    type: SET_ANALYSIS_PARAMS,</div><div class="line">    result: params</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在reducer里面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">export default function reducer(state = initialState, action = &#123;&#125;) &#123;</div><div class="line">  switch (action.type) &#123;</div><div class="line">    case SET_ANALYSIS_PARAMS:</div><div class="line">      return &#123;</div><div class="line">        ...state,</div><div class="line">        params: action.result</div><div class="line">      &#125;;</div><div class="line">    default:</div><div class="line">      return state;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>当action触发reducer时，会把action的result传给reducer的params。写好这里，我们就可以在组件中传给adction params了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@connect(</div><div class="line">  () =&gt; (&#123;</div><div class="line">  &#125;),</div><div class="line">  &#123;</div><div class="line">    setAnalysisParams</div><div class="line">  &#125;)</div></pre></td></tr></table></figure></p>
+<p>先把actionCreator拿出来。<br>在组件的某个需要的地方，可以直接向它传我们要放进redux里的数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">this.props.setAnalysisParams(&#123;</div><div class="line">        someModels</div><div class="line">      &#125;);</div></pre></td></tr></table></figure></p>
+<p>这时，我们就可以在另外一个组件中取到刚刚放进去的数据。<br>另外一个组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@connect(</div><div class="line">  state =&gt; (&#123;</div><div class="line">    example: state.clinic.params</div><div class="line">  &#125;),</div><div class="line">  &#123;&#125;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>把redux中的params数据映射到example上。<br>下面，就可以用了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const &#123;someNames, ...&#125; = this.props.example; //取出数据名</div></pre></td></tr></table></figure></p>
+<p>以上，就实现了redux来传值的方法。适合非父子组件且嵌套关系复杂的组件之间数据的传递。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/30/react组件之间传值的几种方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="a-post" class="article article-type-a  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
