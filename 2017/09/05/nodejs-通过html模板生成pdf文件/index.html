@@ -338,7 +338,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-设计函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.设计函数</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.需求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-设计函数"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.设计函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-调用"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.调用</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -500,11 +500,11 @@
 <li>传入的html模板</li>
 <li>生成pdf文件的一些配置</li>
 <li>正则替换html模板中的某些字符串（姓名，日期等）的替换规则</li>
-<li>输出pdf文件路径及文件名<br>核心功能就是调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 3.调用</div></pre></td></tr></table></figure></li>
+<li>输出pdf文件路径及文件名<br>核心功能就是调用 </li>
 </ul>
-<p>var fs = require(‘fs’);<br>var moment = require(‘moment’); // moment.js<br>var html = fs.readFileSync(‘./test.html’, ‘utf8’); // 引入html模板</p>
-<p>var create = require(‘./create.js’); // 引入写好的函数<br>var options = {<br>    “format”: ‘A4’,<br>    “header”: {<br>    “height”: “10mm”,<br>    “contents”: ‘’<br>}}; // 一些配置<br>var name = ‘张三’;<br>// 匹配规则<br>var reg = [<br>  {<br>    relus: /<strong>name</strong>/g,<br>    match: name<br>  },<br>  {<br>    relus: /<strong>date</strong>/g,<br>    match: moment().format(‘YYYY年MM月DD日’)<br>  }<br>];<br>create.createPDFProtocolFile(html, options, reg, ‘./test.pdf’); // 传入参数 生成pdf</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pdf.create</div></pre></td></tr></table></figure>
+<p> 来实现。</p>
+<h2 id="3-调用"><a href="#3-调用" class="headerlink" title="3.调用"></a>3.调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var moment = require(&apos;moment&apos;); // moment.js</div><div class="line">var html = fs.readFileSync(&apos;./test.html&apos;, &apos;utf8&apos;); // 引入html模板</div><div class="line"></div><div class="line"></div><div class="line">var create = require(&apos;./create.js&apos;); // 引入写好的函数</div><div class="line">var options = &#123;</div><div class="line">    &quot;format&quot;: &apos;A4&apos;,</div><div class="line">    &quot;header&quot;: &#123;</div><div class="line">    &quot;height&quot;: &quot;10mm&quot;,</div><div class="line">    &quot;contents&quot;: &apos;&apos;</div><div class="line">&#125;&#125;; // 一些配置</div><div class="line">var name = &apos;张三&apos;;</div><div class="line">// 匹配规则</div><div class="line">var reg = [</div><div class="line">  &#123;</div><div class="line">    relus: /__name__/g,</div><div class="line">    match: name</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    relus: /__date__/g,</div><div class="line">    match: moment().format(&apos;YYYY年MM月DD日&apos;)</div><div class="line">  &#125;</div><div class="line">];</div><div class="line">create.createPDFProtocolFile(html, options, reg, &apos;./test.pdf&apos;); // 传入参数 生成pdf</div></pre></td></tr></table></figure>
 <p>我们的简易的html模板如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-d07dac615beca0c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="模板"><br>执行文件试一试：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-f731ce9c94d6eafa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
