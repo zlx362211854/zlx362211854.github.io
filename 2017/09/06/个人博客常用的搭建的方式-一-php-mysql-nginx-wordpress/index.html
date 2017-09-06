@@ -290,7 +290,7 @@
 
     <!-- Custom Head -->
     
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+</head>
 
 
     
@@ -514,83 +514,18 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-84ddf014ed5f73de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>下载下来就是一个zip文件</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-090d3fae27405a27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>接下来就把文件上传到云服务器上去：</p>
-<pre><code>saidedePro-2:~ saidesun$ scp wordpress-4.7.3-zh_CN.zip root@119.23.206.96:/data
-root@119.23.206.96&#39;s password:
-</code></pre><p>输入密码，上传成功。</p>
-<pre><code>wordpress-4.7.3-zh_CN.zip  100% 8995KB   1.1MB/s   00:08                                                                                                                                                                      
-saidedePro-2:~ saidesun$
-</code></pre><p>登录看一看：</p>
-<pre><code>Last login: Wed Sep  6 10:42:22 2017 from 101.204.28.156
-
-Welcome to Aliyun Elastic Compute Service
-
-2 packages available for updating. Please run &#39;yum update -y&#39; to update. 
-[root@iZwz9dy4kwhgg3p6ltvd21Z ~]# cd /data
-[root@iZwz9dy4kwhgg3p6ltvd21Z data]# ls
-db  mongodb_data  mongodb_log  wordpress-4.7.3-zh_CN.zip
-[root@iZwz9dy4kwhgg3p6ltvd21Z data]#
-</code></pre><p>文件上传成功了。<br>下面用unzip解压：</p>
-<pre><code>unzip wordpress-4.7.3-zh_CN.zip
-</code></pre><pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z data]# ls
-db  mongodb_data  mongodb_log  wordpress  wordpress-4.7.3-zh_CN.zip
-</code></pre><p>解压好了。<br>打开wordpress目录看看</p>
-<pre><code>cd wordpress
-[root@iZwz9dy4kwhgg3p6ltvd21Z wordpress]# ls
-index.php    readme.html      wp-admin            wp-comments-post.php  wp-content   wp-includes        wp-load.php   wp-mail.php      wp-signup.php     xmlrpc.php
-license.txt  wp-activate.php  wp-blog-header.php  wp-config-sample.php  wp-cron.php  wp-links-opml.php  wp-login.php  wp-settings.php  wp-trackback.php
-</code></pre><p>主要包含了这些文件，index.php是入口文件，wp－content是存放一些插件，主题的地方。<br>现在我们去写nginx配置</p>
-<pre><code> cd /etc/nginx/
-[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# ls
-conf.d     fastcgi.conf          fastcgi_params          koi-utf  mime.types          nginx.conf   nginx.conf.default  scgi_params.default  uwsgi_params.default
-default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.default  nginx.conf~  scgi_params         uwsgi_params         win-utf
-[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]#
-</code></pre><p>进入conf.d文件夹，新建一个配置文件</p>
-<pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# cd conf.d/
-[root@iZwz9dy4kwhgg3p6ltvd21Z conf.d]# vim cms.conf
-</code></pre><p>名字随便取。<br>cms.conf中配置如下：</p>
-<pre><code>server {
-        ## Your website name goes here.
-        listen       8888;
-        #listen       [::]:80 default_server;
-        server_name 119.23.206.96;
-        ## Your only path reference.
-        root /data/wordpress;
-        ## This should be in your http block and if it is, it&#39;s not needed here.
-        index index.html index.htm index.php;
-
-        include conf.d/drop;
-
-        location / {
-                # This is cool because no php is touched for static content
-                try_files $uri $uri/ /index.php?q=$uri&amp;$args;
-        }
-
-        location ~ \.php$ {
-                fastcgi_buffers 8 256k;
-                fastcgi_buffer_size 128k;
-                fastcgi_intercept_errors on;
-                include fastcgi_params;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                fastcgi_pass 127.0.0.1:9000;
-                fastcgi_read_timeout 300;
-
-                proxy_connect_timeout       600;
-                proxy_send_timeout          600;
-                proxy_read_timeout          600;
-                send_timeout                600;
-
-        }
-
-        location ~* \.(css|js|png|jpg|jpeg|gif|ico)$ {
-                expires 1d;
-        }
-}
-</code></pre><p>我们配置为监听8888端口，root路径设置为刚刚wordpress的安装路径/data/wordpress，index中要写上index.php，因为wordpress入口是index.php</p>
-<pre><code>:wq保存退出
-</code></pre><p>重启nginx</p>
-<pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z conf.d]# service nginx restart
-</code></pre><p>重启完毕后，浏览器访问ip地址加端口<br><a href="119.23.206.96:8888" target="_blank" rel="external">119.23.206.96:8888</a><br>就会出现如下的页面</p>
+<p>接下来就把文件上传到云服务器上去：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">saidedePro-2:~ saidesun$ scp wordpress-4.7.3-zh_CN.zip root@119.23.206.96:/data</div><div class="line">root@119.23.206.96&apos;s password:</div></pre></td></tr></table></figure></p>
+<p>输入密码，上传成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wordpress-4.7.3-zh_CN.zip  100% 8995KB   1.1MB/s   00:08                                                                                                                                                                      </div><div class="line">saidedePro-2:~ saidesun$</div></pre></td></tr></table></figure></p>
+<p>登录看一看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Last login: Wed Sep  6 10:42:22 2017 from 101.204.28.156</div><div class="line"></div><div class="line">Welcome to Aliyun Elastic Compute Service</div><div class="line"></div><div class="line">2 packages available for updating. Please run &apos;yum update -y&apos; to update. </div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z ~]# cd /data</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z data]# ls</div><div class="line">db  mongodb_data  mongodb_log  wordpress-4.7.3-zh_CN.zip</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z data]#</div></pre></td></tr></table></figure></p>
+<p>文件上传成功了。<br>下面用unzip解压：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip wordpress-4.7.3-zh_CN.zip</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z data]# ls</div><div class="line">db  mongodb_data  mongodb_log  wordpress  wordpress-4.7.3-zh_CN.zip</div></pre></td></tr></table></figure>
+<p>解压好了。<br>打开wordpress目录看看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd wordpress</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z wordpress]# ls</div><div class="line">index.php    readme.html      wp-admin            wp-comments-post.php  wp-content   wp-includes        wp-load.php   wp-mail.php      wp-signup.php     xmlrpc.php</div><div class="line">license.txt  wp-activate.php  wp-blog-header.php  wp-config-sample.php  wp-cron.php  wp-links-opml.php  wp-login.php  wp-settings.php  wp-trackback.php</div></pre></td></tr></table></figure></p>
+<p>主要包含了这些文件，index.php是入口文件，wp－content是存放一些插件，主题的地方。<br>现在我们去写nginx配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> cd /etc/nginx/</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# ls</div><div class="line">conf.d     fastcgi.conf          fastcgi_params          koi-utf  mime.types          nginx.conf   nginx.conf.default  scgi_params.default  uwsgi_params.default</div><div class="line">default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.default  nginx.conf~  scgi_params         uwsgi_params         win-utf</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]#</div></pre></td></tr></table></figure></p>
+<p>进入conf.d文件夹，新建一个配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# cd conf.d/</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z conf.d]# vim cms.conf</div></pre></td></tr></table></figure></p>
+<p>名字随便取。<br>cms.conf中配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        ## Your website name goes here.</div><div class="line">        listen       8888;</div><div class="line">        #listen       [::]:80 default_server;</div><div class="line">        server_name 119.23.206.96;</div><div class="line">        ## Your only path reference.</div><div class="line">        root /data/wordpress;</div><div class="line">        ## This should be in your http block and if it is, it&apos;s not needed here.</div><div class="line">        index index.html index.htm index.php;</div><div class="line"></div><div class="line">        include conf.d/drop;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">                # This is cool because no php is touched for static content</div><div class="line">                try_files $uri $uri/ /index.php?q=$uri&amp;$args;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        location ~ \.php$ &#123;</div><div class="line">                fastcgi_buffers 8 256k;</div><div class="line">                fastcgi_buffer_size 128k;</div><div class="line">                fastcgi_intercept_errors on;</div><div class="line">                include fastcgi_params;</div><div class="line">                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line">                fastcgi_pass 127.0.0.1:9000;</div><div class="line">                fastcgi_read_timeout 300;</div><div class="line"></div><div class="line">                proxy_connect_timeout       600;</div><div class="line">                proxy_send_timeout          600;</div><div class="line">                proxy_read_timeout          600;</div><div class="line">                send_timeout                600;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        location ~* \.(css|js|png|jpg|jpeg|gif|ico)$ &#123;</div><div class="line">                expires 1d;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们配置为监听8888端口，root路径设置为刚刚wordpress的安装路径/data/wordpress，index中要写上index.php，因为wordpress入口是index.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:wq保存退出</div></pre></td></tr></table></figure></p>
+<p>重启nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z conf.d]# service nginx restart</div></pre></td></tr></table></figure></p>
+<p>重启完毕后，浏览器访问ip地址加端口<br><a href="119.23.206.96:8888" target="_blank" rel="external">119.23.206.96:8888</a><br>就会出现如下的页面</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-7f36c646e38732b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="成功"><br>到这里nginx的配置就成功了。</p>
 <h4 id="2-配置数据库"><a href="#2-配置数据库" class="headerlink" title="2.配置数据库"></a>2.配置数据库</h4><p>点击［现在就开始］</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-ba8046d504564cb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置数据库"></p>
@@ -598,10 +533,8 @@ default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.def
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-cb4e82d2e6d2b465.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>这是因为你还没有名叫wordpress的数据库<br>我们去新建一个：<br>我这里用的是sequel Pro远程连接数据库</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-4913a3f1b79096dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>新建了一个叫wordpress_test的数据库</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-afa164b6c2669b50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>再填一遍<br>出现如下界面</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-32935bd023c5d93c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>它说不能帮我们自动生成，要我们手动生成。那我们就手动吧。<br>进入云服务器，部署wordpres的目录,创建一个叫wp-config.php的配置文件</p>
-<pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z /]# cd /data/wordpress
-[root@iZwz9dy4kwhgg3p6ltvd21Z wordpress]# vim wp-config.php
-</code></pre><p>将之前的内容复制进去，保存<br>点安装<br>进入该页面：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/5420078-32935bd023c5d93c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>它说不能帮我们自动生成，要我们手动生成。那我们就手动吧。<br>进入云服务器，部署wordpres的目录,创建一个叫wp-config.php的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z /]# cd /data/wordpress</div><div class="line">[root@iZwz9dy4kwhgg3p6ltvd21Z wordpress]# vim wp-config.php</div></pre></td></tr></table></figure></p>
+<p>将之前的内容复制进去，保存<br>点安装<br>进入该页面：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-1e1bb507ff54c092.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>填写相应信息，点安装<br>进入网站后台，说明安装成功！</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5420078-5fdae3a1af5e141f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>现在我们打开网站主页看一眼</p>
