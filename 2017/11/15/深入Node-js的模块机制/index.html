@@ -12,6 +12,8 @@
     
     <title>
         
+            深入Node.js的模块机制 | 
+        
         Hurry
     </title>
 
@@ -65,18 +67,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://cmszlx.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hurry">
+    <meta property="og:title" content="深入Node.js的模块机制 | Hurry">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
     
 
     
         <meta property="article:published_time" content="11月 15, 2017" />
-        <meta property="article:modified_time" content="11月 15, 2017" />
+        <meta property="article:modified_time" content="11月 16, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Hurry">
+    <meta name="twitter:title" content="深入Node.js的模块机制 | Hurry">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -110,10 +112,10 @@
         },
         "description": "Hello World!"
     },
-    "headline": "",
+    "headline": "深入Node.js的模块机制",
     "url": "http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html",
     "datePublished": "11月 15, 2017",
-    "dateModified": "11月 15, 2017",
+    "dateModified": "11月 16, 2017",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -374,7 +376,7 @@
         
     
             <p class="article-headline-p">
-                
+                深入Node.js的模块机制
             </p>
         </div>
 
@@ -446,7 +448,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=深入Node.js的模块机制&url=http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -455,7 +457,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&url=http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html&via=linXiao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=深入Node.js的模块机制&url=http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html&via=linXiao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -485,7 +487,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=深入Node.js的模块机制&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -503,9 +505,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <hr>
-<p>title: 深入Node.js的模块机制<br>date: 2017-11-15 22:13:52<br>tags:转载<br>—i</p>
-<h1 id="1-Node-js模块的实现"><a href="#1-Node-js模块的实现" class="headerlink" title="1 Node.js模块的实现"></a>1 Node.js模块的实现</h1><p>之前在网上查阅了许多介绍Node.js的文章,可惜对于Node.js的模块机制大都着墨不多。在后续介绍模块的使用之前,我认为有必要深入一下Node.js的模块机制。</p>
+        <h1 id="1-Node-js模块的实现"><a href="#1-Node-js模块的实现" class="headerlink" title="1 Node.js模块的实现"></a>1 Node.js模块的实现</h1><p>之前在网上查阅了许多介绍Node.js的文章,可惜对于Node.js的模块机制大都着墨不多。在后续介绍模块的使用之前,我认为有必要深入一下Node.js的模块机制。</p>
 <h2 id="1-1-CommonJS规范"><a href="#1-1-CommonJS规范" class="headerlink" title="1.1 CommonJS规范"></a>1.1 CommonJS规范</h2><p>早在Netscape诞生不久后,JavaScript就一直在探索本地编程的路,Rhino是其代表产物。无奈那时服务端JavaScript走的路均是参考众多服务器端语言来实现的,在这样的背景之下,一没有特色,二没有实用价值。但是随着JavaScript在前端的应用越来越广泛,以及服务端JavaScript的推动,JavaScript现有的规范十分薄弱,不利于JavaScript大规模的应用。那些以JavaScript为宿主语言的环境中,只有本身的基础原生对象和类型,更多的对象和API都取决于宿主的提供,所以,我们可以看到JavaScript缺少这些功能:</p>
 <ul>
 <li><p><strong>JavaScript没有模块系统。</strong>没有原生的支持密闭作用域或依赖管理。</p>
@@ -1062,6 +1062,14 @@ Module.runMain = function () {
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2017/11/16/test/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
@@ -1160,7 +1168,7 @@ Module.runMain = function () {
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">3</span></a>
             </ul>
         </li>
         
