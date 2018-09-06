@@ -12,8 +12,6 @@
     
     <title>
         
-            分类: 原创 | 
-        
         Hurry
     </title>
 
@@ -67,15 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://cmszlx.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 原创 | Hurry">
+    <meta property="og:title" content="Hurry">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="">
     
 
     
+        <meta property="article:published_time" content="9月 06, 2018" />
+        <meta property="article:modified_time" content="9月 06, 2018" />
+    
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="分类: 原创 | Hurry">
+    <meta name="twitter:title" content="Hurry">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -83,13 +84,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://cmszlx.win/categories/原创/index.html" />
+        <link rel="canonical" href="http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Hurry",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "linXiao",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hello World!"
+    },
+    "headline": "",
+    "url": "http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html",
+    "datePublished": "9月 06, 2018",
+    "dateModified": "9月 06, 2018",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://cmszlx.win"
+    }
+}
+</script>
 
 
     
@@ -278,158 +309,380 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#react-表单-双向绑定的实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">react 表单  双向绑定的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改表单的值，只需如下操作："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改表单的值，只需如下操作：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#而且不用关心表单-onchange-的事件逻辑，表单-onchange-时会自动更新-state-中的值。"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">而且不用关心表单 onchange 的事件逻辑，表单 onchange 时会自动更新 state 中的值。</span></a></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/06/个人博客常用的搭建的方式-一-php-mysql-nginx-wordpress/">个人博客常用的搭建的方式(一) php+mysql+nginx+wordpress</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            1.简介
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/06/个人博客常用的搭建的方式-一-php-mysql-nginx-wordpress/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/logo.jpg" width="44px" height="44px" alt="linXiao's avatar">
-            </div>
-            <div>
-                <strong>linXiao</strong>
-                <span>9月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/原创/">原创</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/05/nodejs-通过html模板生成pdf文件/">nodejs 通过html模板生成pdf文件</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
- 最近写了一个小功能模块，将html文件转化为pdf文件。
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/05/nodejs-通过html模板生成pdf文件/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/logo.jpg" width="44px" height="44px" alt="linXiao's avatar">
-            </div>
-            <div>
-                <strong>linXiao</strong>
-                <span>9月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/原创/">原创</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/logo.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>linXiao</strong>
+        <span>9月 06, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3ElEQVR42u3aOZbjMAwFQN3/0tPpJJY+AL5umSxGfl5EFhMYy/XvyHVhY2NjY2NjY2Njv5J9xau5Wfzb+x3/f6d3ZmxsbOy92ZOjf/o0+dU9b3KV2NjY2GeyPwWAT6+Td5KwlOx1//r+OdjY2NjYCbsa5PLLun8aNjY2NnaPnRwrKQPl1/eKAIaNjY39enYSfvKjV8v9+RP+oJaGjY2N/Xp23jR9z+tf7W9jY2Njv5g9H8FJikGFhGEQtB5Ojo2Njb0pu5oG/P4ITl6iengONjY29qbs/BBJM+A+/OSjP0kSkj8ZGxsbe292PkyTb5/j8x0nZ8PGxsbem50Hj2r6US3o56lOrxmMjY2NfQ47H83pha7mwE2rwYCNjY19Dvv+B0lwqga25OKq+2JjY2OfzM4PWt4sLvTn4bMZFLGxsbEPYFcLQ/OCUV7MSmCLMzBsbGzsr2JPGgC9hm41FckHfbCxsbFPY+fbV0tOve/ne5WLTdjY2NjHsCel/Dz89FoI1YIUNjY29gnsZX/0B0fshcP8DNjY2NgnsHvt23lQqaYWk7FObGxs7BPYk5HKahBKGsPVMPlwodjY2NibspOCfjWErCoe5Q2MZnsAGxsbewt2XlSqFo/mYz29BsbiWho2Njb2l7BXFfGrhZ7eoE+1eYyNjY29N3vVWMwkgZkXp6ILwsbGxj6MnReA5s3g/LqTpGU0c4qNjY395ewesoopl/WTcZwkoGJjY2Mfxs4B+WhOwqteWSGZwcbGxt6UXV3zlm0+xDNPk7CxsbFPYF/xSlq/+cBNcmX3Ia3aVMbGxsbem90bi8lDUbUB3GtdPHwTGxsb+wB28re+2tythr1r0cLGxsbGrhbr8/CWj+DkAW/U6MXGxsY+mJ0Xj3rg3nc+nhAbGxv7AHa+ZSFsFAtP1VbEggCGjY2NvQV71ejkQ6s1SGCqIbPwPjY2Nvam7HMWNjY2NjY2NjY29mvWD/TSKlzPM8ybAAAAAElFTkSuQmCC">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&url=http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html&via=linXiao" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2018/09/06/react表单双向绑定的实现/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="react-表单-双向绑定的实现"><a href="#react-表单-双向绑定的实现" class="headerlink" title="react 表单  双向绑定的实现"></a>react 表单  双向绑定的实现</h2><blockquote>
+<p>在 react 开发中，经常遇到 input 输入框改变值的时候，要定义一个函数，该函数内部执行 setState 的操作，才能改变 input 的值。如果表单元素多了以后，就会定义很多的这种函数，使代码变得冗余。下面在 react 中实现一个类似于 vue 的表单双向绑定的逻辑。</p>
+</blockquote>
+<h3 id="修改表单的值，只需如下操作："><a href="#修改表单的值，只需如下操作：" class="headerlink" title="修改表单的值，只需如下操作："></a>修改表单的值，只需如下操作：</h3><pre><code>this.state.inputval = &quot;qqqq&quot;
+</code></pre><h3 id="而且不用关心表单-onchange-的事件逻辑，表单-onchange-时会自动更新-state-中的值。"><a href="#而且不用关心表单-onchange-的事件逻辑，表单-onchange-时会自动更新-state-中的值。" class="headerlink" title="而且不用关心表单 onchange 的事件逻辑，表单 onchange 时会自动更新 state 中的值。"></a>而且不用关心表单 onchange 的事件逻辑，表单 onchange 时会自动更新 state 中的值。</h3><blockquote>
+<p>核心代码实现如下：</p>
+</blockquote>
+<pre><code>import React from &quot;react&quot;;
+const InputCteator = function(options) {
+    const {stateKey} = options;
+    const {inputval = &#39;&#39;, label} = this.state;
+    const context = this;
+    // 监听get，set方法，set时自动更新state
+    Object.defineProperty(this.state, stateKey, {
+        get() {
+            return inputval;
+        },
+        set(val) {
+            context.setState({[stateKey]: val});
+        }
+    });
+    const onInputChange = e =&gt; {
+      const val = e.target.value;
+      this.setState({ [stateKey]: val });
+    };
+    const content = (
+        &lt;input
+            type=&quot;text&quot;
+            value={inputval}
+            onChange={onInputChange}
+            name={label}
+        /&gt;
+    )
+    return content;
+}
+export default InputCteator;
+</code></pre><blockquote>
+<p>使用如下：</p>
+</blockquote>
+<pre><code>import InputCteator from &quot;./lib/index&quot;;
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      inputval: &quot;www&quot;,
+    };
+  }
+  render() {
+    return (
+      &lt;div className=&quot;App&quot;&gt;
+        &lt;div&gt;
+          &lt;label htmlFor=&quot;example&quot;&gt;示例&lt;/label&gt;
+          {InputCteator.call(this, {
+            stateKey: &quot;inputval&quot;,
+            label: &quot;example&quot;
+          })}
+          &lt;p&gt;{this.state.inputval}&lt;/p&gt;
+
+          &lt;button 
+          onClick={() =&gt; (this.state.inputval =&quot;qqqq&quot;)
+            }&gt;
+            qqq
+            &lt;/button&gt;
+          &lt;button
+          onClick={() =&gt; (this.state.inputval =&quot;eee&quot;)}&gt;
+            eee
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre><blockquote>
+<p>这样巧妙运用get，set方法来实现react表单双向绑定，就会在开发者简化很多代码。</p>
+</blockquote>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #757575;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn">阅读评论（请确保 disqus 可以正常加载）</button>
+</div>
+
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://cmszlx.win/2018/09/06/react表单双向绑定的实现/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://cmszlx.win/2018/09/06/react表单双向绑定的实现/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/ls-javascript" id="disqus-lazy-load-script">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//cmszlx-win.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/01/17/手把手教你做小插件/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
