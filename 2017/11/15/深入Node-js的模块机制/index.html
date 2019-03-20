@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html style="display: none;" lang="zh">
-    <head>
+    <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <!--
         © Material Theme
@@ -26,7 +26,7 @@
     
     
     
-        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
     
     
     
@@ -37,8 +37,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="linXiao">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" itemprop="description" content>
+    <meta name="keywords" content>
 
     <!-- Site Verification -->
     
@@ -68,25 +68,25 @@
     <meta property="og:url" content="http://cmszlx.win">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="深入Node.js的模块机制 | Hurry">
-    <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content>
     
 
     
-        <meta property="article:published_time" content="11月 15, 2017" />
-        <meta property="article:modified_time" content="11月 16, 2017" />
+        <meta property="article:published_time" content="11月 15, 2017">
+        <meta property="article:modified_time" content="11月 16, 2017">
     
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="深入Node.js的模块机制 | Hurry">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content>
     <meta name="twitter:image" content="/img/favicon.png">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="http://cmszlx.win" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="http://cmszlx.win">
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html" />
+        <link rel="canonical" href="http://cmszlx.win/2017/11/15/深入Node-js的模块机制/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -277,7 +277,7 @@
 <!-- Import Font -->
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
         <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
@@ -331,8 +331,7 @@
     -->
 
     <!-- Left aligned menu below button -->
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
         <i class="material-icons">format_list_numbered</i>
     </button>
 
@@ -390,7 +389,7 @@
 
     <!-- Author Avatar -->
     <div id="author-avatar">
-        <img src="/img/logo.jpg" width="44px" height="44px" alt="Author Avatar"/>
+        <img src="/img/logo.jpg" width="44px" height="44px" alt="Author Avatar">
     </div>
     <!-- Author Name & Date -->
     <div>
@@ -431,7 +430,7 @@
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
         
-    </ul>
+    </li></ul>
     
 
     <!-- Share -->
@@ -517,7 +516,7 @@
 <li><p><strong>JavaScript没有包管理系统。</strong>不能自动加载和安装依赖。</p>
 </li>
 </ul>
-<p>于是便有了CommonJS(<a href="http://www.commonjs.org" target="_blank" rel="external">http://www.commonjs.org</a>)规范的出现,其目标是为了构建JavaScript在包括Web服务器,桌面,命令行工具,及浏览器方面的生态系统。<strong><code>CommonJS其实不是一门新的语言，甚至都不能说它是一个新的解释器——实际上它只是一个概念或者是一个规范</code></strong>。</p>
+<p>于是便有了CommonJS(<a href="http://www.commonjs.org" target="_blank" rel="noopener">http://www.commonjs.org</a>)规范的出现,其目标是为了构建JavaScript在包括Web服务器,桌面,命令行工具,及浏览器方面的生态系统。<strong><code>CommonJS其实不是一门新的语言，甚至都不能说它是一个新的解释器——实际上它只是一个概念或者是一个规范</code></strong>。</p>
 <p>在这个规范中，<strong><code>它定义了很多 API ，讲通俗点或者直截了当点就是函数啊类啊什么的，而这些 API 是为那些普通应用程序（Native App）而非浏览器应用使用</code></strong>。它的终极目标就是提供一个类似于 Python、Ruby 之类的脚本一样的标准库，开发者可以用这样的东西一样来做到 Python、Ruby 能做到的事，而非仅仅局限于网页中的效果或者功能实现，它也可以跑在本地。所以说下面的事情对于 JavaScript 来说不再是梦：</p>
 <blockquote>
 <p>服务端JavaScript应用</p>
@@ -672,36 +671,36 @@ Module.runMain = function () {
     execPath/../../lib/node
 ]
 </code></pre><p><strong>下图是笔者从源代码中整理出来的整个文件查找流程：</strong></p>
-<p>![image](<a href="http://upload-images.jianshu.io/upload_images/5420078-1f19f476cf5e1d3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="external">http://upload-images.jianshu.io/upload_images/5420078-1f19f476cf5e1d3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
+<p>![image](<a href="http://upload-images.jianshu.io/upload_images/5420078-1f19f476cf5e1d3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener">http://upload-images.jianshu.io/upload_images/5420078-1f19f476cf5e1d3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
 <p>简而言之,<strong><code>如果require绝对路径的文件,查找时不会去遍历每一个node_modules目录,其速度最快</code></strong>。其余流程如下:</p>
 <blockquote>
 <ol>
 <li>从modulepath数组中取出第一个目录作为查找基准。</li>
 </ol>
-<ol>
+<ol start="2">
 <li>直接从目录中查找该文件,如果存在,则结束查找。如果不存在,则进行下一条查找。</li>
 </ol>
-<ol>
+<ol start="3">
 <li>尝试添加.js、.json、.node后缀后查找,如果存在文件,则结束查找。如果不存在,则进行下一条。</li>
 </ol>
-<ol>
+<ol start="4">
 <li>尝试将require的参数作为一个包来进行查找,读取目录下的package.json文件,取得main参数指定的文件。</li>
 </ol>
-<ol>
+<ol start="5">
 <li>尝试查找该文件,如果存在,则结束查找。如果不存在,则进行第3条查找。</li>
 </ol>
-<ol>
+<ol start="6">
 <li>如果继续失败,则取出modulepath数组中的下一个目录作为基准查找,循环第1至5个步骤。</li>
 </ol>
-<ol>
+<ol start="7">
 <li>如果继续失败,循环第1至6个步骤,直到modulepath中的最后一个值。</li>
 </ol>
-<ol>
+<ol start="8">
 <li>如果仍然失败,则抛出异常。</li>
 </ol>
 </blockquote>
 <p>整个查找过程十分类似原型链的查找和作用域的查找。<code>所幸Node.js对路径查找实现了缓存机制</code>,否则由于每次判断路径都是同步阻塞式进行,会导致严重的性能消耗。</p>
-<h2 id="1-6-包结构"><a href="#1-6-包结构" class="headerlink" title="1.6 包结构"></a>1.6 包结构</h2><p>前面提到JavaScript缺少包结构。CommonJS致力于改变这种现状,于是定义了包的结构规范(<a href="http://wiki.commonjs.org/wiki/Packages/1.0" target="_blank" rel="external">http://wiki.commonjs.org/wiki/Packages/1.0</a>)。<strong><code>而NPM的出现则是为了在CommonJS规范的基础上,实现解决包的安装卸载,依赖管理,版本管理等问题</code></strong>。require的查找机制明了之后,我们来看一下包的细节。</p>
+<h2 id="1-6-包结构"><a href="#1-6-包结构" class="headerlink" title="1.6 包结构"></a>1.6 包结构</h2><p>前面提到JavaScript缺少包结构。CommonJS致力于改变这种现状,于是定义了包的结构规范(<a href="http://wiki.commonjs.org/wiki/Packages/1.0" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Packages/1.0</a>)。<strong><code>而NPM的出现则是为了在CommonJS规范的基础上,实现解决包的安装卸载,依赖管理,版本管理等问题</code></strong>。require的查找机制明了之后,我们来看一下包的细节。</p>
 <p><strong>一个符合CommonJS规范的包应该是如下这种结构:</strong></p>
 <blockquote>
 <p>一个package.json文件应该存在于包顶级目录下。</p>
@@ -714,7 +713,7 @@ Module.runMain = function () {
 <blockquote>
 <p>name : 包名,需要在NPM上是唯一的。不能带有空格。 </p>
 <p>description : 包简介。通常会显示在一些列表中。 </p>
-<p>version : 版本号。一个语义化的版本号(<a href="http://semver.org/" target="_blank" rel="external">http://semver.org/</a>),通常为x.y.z。该版本号十分重要,常常用于一些版本控制的场合。</p>
+<p>version : 版本号。一个语义化的版本号(<a href="http://semver.org/" target="_blank" rel="noopener">http://semver.org/</a>),通常为x.y.z。该版本号十分重要,常常用于一些版本控制的场合。</p>
 <p>keywords : 关键字数组。用于NPM中的分类搜索。</p>
 <p>maintainers : 包维护者的数组。数组元素是一个包含name、email、web三个属性的JSON对象。</p>
 <p>contributors : 包贡献者的数组。第一个就是包的作者本人。在开源社区,如果提交的patch被merge进master分支的话,就应当加上这个贡献patch的人。格式包含name和email。</p>
@@ -723,7 +722,7 @@ Module.runMain = function () {
      }, {
          &quot;name&quot;: &quot;fengmk2&quot;, &quot;email&quot;: &quot;mail2@gmail.com&quot;
  }],
-</code></pre><p>bugs : 一个可以提交bug的URL地址。可以是邮件地址 (mailto:mailxx@domain),也可以是网页地址(<a href="http://url" target="_blank" rel="external">http://url)。</a>%E3%80%82)</p>
+</code></pre><p>bugs : 一个可以提交bug的URL地址。可以是邮件地址 (mailto:mailxx@domain),也可以是网页地址(<a href="http://url" target="_blank" rel="noopener">http://url)。</a>%E3%80%82)</p>
 <p>licenses : 包所使用的许可证。例如:</p>
 <pre><code> ￼&quot;licenses&quot;: [{
      &quot;type&quot;: &quot;GPLv2&quot;,
@@ -940,7 +939,7 @@ Module.runMain = function () {
 </code></pre><p>甚至对于NPM无法安装的包(因为某些奇怪的网络原因),可以通过github手动下载其稳定版本,解压之后通过以下命令进行安装:</p>
 <pre><code>￼npm install &lt;package.json folder&gt;
 </code></pre><p><strong><code>只需将路径指向package.json存在的目录即可</code></strong>。然后在代码中require(‘package’)即可使用。</p>
-<p>Node.js中的require内部流程之复杂,而方法调用之简单,实在值得叹为观止。更多NPM使用技巧可以参见<a href="http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence" target="_blank" rel="external">http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence</a>。</p>
+<p>Node.js中的require内部流程之复杂,而方法调用之简单,实在值得叹为观止。更多NPM使用技巧可以参见<a href="http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence</a>。</p>
 <h1 id="2-Node-js模块与前端模块的异同"><a href="#2-Node-js模块与前端模块的异同" class="headerlink" title="2 Node.js模块与前端模块的异同"></a>2 Node.js模块与前端模块的异同</h1><p>通常有一些模块可以同时适用于前后端,<strong><code>但是在浏览器端通过script标签的载入JavaScript文件的方式与Node.js不同</code></strong>。</p>
 <blockquote>
 <p>Node.js在载入到最终的执行中,进行了包装,<strong><code>使得每个文件中的变量天然的形成在一个闭包之中,不会污染全局变量</code></strong>。</p>
@@ -967,7 +966,7 @@ Module.runMain = function () {
         root[&#39;_&#39;] = _;        
     }
 }).call(this);
-</code></pre><p>首先,<strong><code>它通过function定义构建了一个闭包,将this作为上下文对象直接call调用</code></strong>,以避免内部变量污染到全局作用域。<strong><code>进而通过判断exports是否存在来决定将局部变量_绑定给exports,并且根据define变量是否存在</code></strong>,作为处理在实现了AMD规范环境(<a href="http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition" target="_blank" rel="external">http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition</a>)下的使用案例。<strong><code>仅只当处于浏览器的环境中的时候,this指向的是全局对象(window对象),才将_变量赋在全局对象上,作为一个全局对象的方法导出,以供外部调用</code></strong>。</p>
+</code></pre><p>首先,<strong><code>它通过function定义构建了一个闭包,将this作为上下文对象直接call调用</code></strong>,以避免内部变量污染到全局作用域。<strong><code>进而通过判断exports是否存在来决定将局部变量_绑定给exports,并且根据define变量是否存在</code></strong>,作为处理在实现了AMD规范环境(<a href="http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition</a>)下的使用案例。<strong><code>仅只当处于浏览器的环境中的时候,this指向的是全局对象(window对象),才将_变量赋在全局对象上,作为一个全局对象的方法导出,以供外部调用</code></strong>。</p>
 <p><strong>所以在设计前后端通用的JavaScript类库时,都有着以下类似的判断:</strong></p>
 <pre><code>￼if (typeof exports !== &quot;undefined&quot;) {
     exports.EventProxy = EventProxy;
@@ -975,7 +974,7 @@ Module.runMain = function () {
     this.EventProxy = EventProxy;
 }
 </code></pre><p>即,<strong><code>如果exports对象存在,则将局部变量挂载在exports对象上,如果不存在,则挂载在全局对象上</code></strong>。</p>
-<p>转自作者：陶邦仁<br>链接：<a href="http://www.jianshu.com/p/3cfa31ae5631" target="_blank" rel="external">http://www.jianshu.com/p/3cfa31ae5631</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>转自作者：陶邦仁<br>链接：<a href="http://www.jianshu.com/p/3cfa31ae5631" target="_blank" rel="noopener">http://www.jianshu.com/p/3cfa31ae5631</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
     
 
@@ -1168,8 +1167,8 @@ Module.runMain = function () {
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">3</span></a>
-            </ul>
+                <a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">3</span></a>
+            </li></ul>
         </li>
         
     
@@ -1187,7 +1186,7 @@ Module.runMain = function () {
             <ul class="dropdown-menu">
                 <li>
                 <a class="sidebar_archives-link" href="/categories/原创/">原创<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/好玩的开源项目/">好玩的开源项目<span class="sidebar_archives-count">1</span></a>
-            </ul>
+            </li></ul>
         </li>
         
     
@@ -1248,7 +1247,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Theme Material -->
 
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
         <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
             主题 - Material
             <span class="sidebar-badge badge-circle">i</span>
@@ -1351,7 +1350,7 @@ It will not impact the appearance and can give developers a lot of support :)
         <!--Copyright-->
         <div id="copyright">
             Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Hurry
-	<br />
+	<br>
 	<div>
                 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                 <div>
