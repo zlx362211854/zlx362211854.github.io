@@ -12,7 +12,7 @@
     
     <title>
         
-            react组件之间传值的几种方式 | 
+            归档 | 
         
         Hurry
     </title>
@@ -37,12 +37,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="linXiao">
-    <meta name="description" itemprop="description" content="react组件传值，大概有下面几种方法：
-props
-context
-redux
-react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。
-">
+    <meta name="description" itemprop="description" content="">
     <meta name="keywords" content="">
 
     <!-- Site Verification -->
@@ -72,77 +67,29 @@ react-router 路由切换时通过url传值（少量非机密数据，其实也�
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://cmszlx.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="react组件之间传值的几种方式 | Hurry">
+    <meta property="og:title" content="归档 | Hurry">
     <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="react组件传值，大概有下面几种方法：
-props
-context
-redux
-react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。
-">
+    <meta property="og:description" content="">
     
 
-    
-        <meta property="article:published_time" content="8月 30, 2017" />
-        <meta property="article:modified_time" content="8月 30, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="react组件之间传值的几种方式 | Hurry">
-    <meta name="twitter:description" content="react组件传值，大概有下面几种方法：
-props
-context
-redux
-react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。
-">
+    <meta name="twitter:title" content="归档 | Hurry">
+    <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://cmszlx.win" />
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html" />
+        <link rel="canonical" href="http://cmszlx.win/archives/page/2/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "publisher": {
-        "@type": "Organization",
-        "name": "Hurry",
-        "logo": "/img/favicon.png"
-    },
-    "author": {
-        "@type": "Person",
-        "name": "linXiao",
-        "image": {
-            "@type": "ImageObject",
-            "url": "/img/favicon.png"
-        },
-        "description": "Hello World!"
-    },
-    "headline": "react组件之间传值的几种方式",
-    "url": "http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html",
-    "datePublished": "8月 30, 2017",
-    "dateModified": "8月 30, 2017",
-    "description": "react组件传值，大概有下面几种方法：
-props
-context
-redux
-react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。
-",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://cmszlx.win"
-    }
-}
-</script>
 
 
     
@@ -331,351 +278,106 @@ react-router 路由切换时通过url传值（少量非机密数据，其实也�
                         </button>
                     
 
-                    <!-- Post TOC -->
-
+                    <!-- Index Module -->
+<div class="material-index mdl-grid">
     
-    <!-- Back Button -->
-    <!--
-    <div class="material-back" id="backhome-div" tabindex="0">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-           href="#" onclick="window.history.back();return false;"
-           target="_self"
-           role="button"
-           data-upgraded=",MaterialButton,MaterialRipple">
-            <i class="material-icons" role="presentation">arrow_back</i>
-            <span class="mdl-button__ripple-container">
-                <span class="mdl-ripple"></span>
-            </span>
-        </a>
-    </div>
-    -->
+    <div class="locate-thumbnail-symbol"></div>
 
-    <!-- Left aligned menu below button -->
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#react组件传值，大概有下面几种方法："><span class="post-toc-number">1.</span> <span class="post-toc-text">react组件传值，大概有下面几种方法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#今天记录一下通过redux来传值的实现。"><span class="post-toc-number">2.</span> <span class="post-toc-text">今天记录一下通过redux来传值的实现。</span></a></li></ol>
-        <!--
-        <li class="mdl-menu__item">
-            Some Action
-        </li>
-        -->
-    </ul>
+    <!-- Pin on top -->
     
 
-
-
-
-
-<!-- Layouts -->
-
-    <!-- Post Module -->
-    <div class="material-post_container">
-
-        <div class="material-post mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-
-                <!-- Post Header(Thumbnail & Title) -->
-                
-    <!-- Paradox Post Header -->
+    <!-- Normal Post -->
+    
+        
+            
+                <!-- Paradox Thumbnail -->
+                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script type="text/ls-javascript" id="post-thumbnail-script">
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-</script>
-
         
     
-            <p class="article-headline-p">
-                react组件之间传值的几种方式
-            </p>
-        </div>
 
-
-
-
-
-                
-                    <!-- Paradox Post Info -->
-                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-
-    <!-- Author Avatar -->
-    <div id="author-avatar">
-        <img src="/img/logo.jpg" width="44px" height="44px" alt="Author Avatar"/>
-    </div>
-    <!-- Author Name & Date -->
-    <div>
-        <strong>linXiao</strong>
-        <span>8月 30, 2017</span>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/08/30/react组件之间传值的几种方式/">react组件之间传值的几种方式</a></p>
     </div>
 
-    <div class="section-spacer"></div>
-
-    <!-- Favorite -->
-    <!--
-        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
-            <i class="material-icons" role="presentation">favorite</i>
-            <span class="visuallyhidden">favorites</span>
-        </button>
-    -->
-
-    <!-- Qrcode -->
-    
-        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">devices other</i>
-    <span class="visuallyhidden">devices other</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
-    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-    
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC00lEQVR42u3aS1LjQBAFQN//0rBlgexXVW2H3J1aESCLThExb+rz+DnyemBjY2NjY2NjY2Pfkv2Ir38e9Of7V3de3XN1Z+85yZmxsbGx92a/+Kd/0T2f/BQ2Njb2meyrAKiGx/M7rwLveaRNzoyNjY2N3cMkpEnRgo2NjY09YSeRk7+s53GVnAEbGxsbO2/QJHGylpGQ3t5Lw8bGxr49u9oqusPXH51vY2NjY9+YPRmyJk3/yROqofXi5NjY2NibsqtlQJWXt/h7A+BkSRQbGxv7HHa1TdNrPyXNpqQVlX8HGxsb+xz2JMB6yOpIYBSZ2NjY2IexJ6GVPyfB5IXNgk0lbGxs7C9k50XIqkBatcSTv3RsbGzs09jVX5BEXW+4W42o56GIjY2NvSu7FwyT1k8+BpjEVTQewMbGxt6a3Ssw5ss3yWfzc2JjY2Ofw54MDCbrNb3Ya/4UGxsbe1N2r/WTN+57gddrV714udjY2NibsqtjgPdFVLUUqZ4ZGxsbe292lZH8tBd7SRsrL6KwsbGxz2H3WvO9sqF6z3zdBxsbG/scdnX9sXrQXvspiagFKzvY2NjYX87OR7a9Vchq2VAtY6KnYWNjY2/NrgZDUsAk49vqS5wMhrGxsbF3ZfeKhx6sOuLtfTYqRbCxsbE3YvcaN/nrmIdl74+BjY2NfSa7N17Nkb12VURatXyJjY2NvQU7j6XqKmR1bFB9fc1SBBsbG3s7dj64rV6TcXJ19QcbGxv7HHb1ekdjaNXI+UWgYmNjY2/KrsbPfKiQlBD5K8hHBdjY2Nh7s3vN9+bAdfAi8kAtjAewsbGxN2In/63Pm0Srxrq91tWCqQg2Njb21uzk/rzMyKOoejZsbGxs7Hz5pjdm6K0K5U/DxsbGPo2dPLTaWspDrgquLgZhY2Nj783uLTjmA+DqOk4USNXhNDY2Nvam7HMubGxsbGxsbGxs7Ntcv4HN4pUmDux+AAAAAElFTkSuQmCC">
-    
-</ul>
-    
-
-    <!-- Tags (bookmark) -->
-    
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-    </ul>
-    
+            react组件传值，大概有下面几种方法：
+props
+context
+redux
+react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。
 
-    <!-- Share -->
-    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">share</i>
-    <span class="visuallyhidden">share</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
-    
-
-    
         
-    
-
-    <!-- Share Weibo -->
-    
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=react组件之间传值的几种方式&url=http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html&pic=&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                分享到微博
-            </li>
-        </a>
-    
-
-    <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=react组件之间传值的几种方式&url=http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html&via=linXiao" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Twitter
-            </li>
-        </a>
-    
-
-    <!-- Share Facebook -->
-    
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Facebook
-            </li>
-        </a>
-    
-
-    <!-- Share Google+ -->
-    
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Google+
-            </li>
-        </a>
-    
-
-    <!-- Share LinkedIn -->
-    
-
-    <!-- Share QQ -->
-    
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=react组件之间传值的几种方式&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 QQ
-            </li>
-        </a>
-    
-
-    <!-- Share Telegram -->
-    
-</ul>
-
-</div>
-
-                
-
-                <!-- Post Content -->
-                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-    
-        <h2 id="react组件传值，大概有下面几种方法："><a href="#react组件传值，大概有下面几种方法：" class="headerlink" title="react组件传值，大概有下面几种方法："></a>react组件传值，大概有下面几种方法：</h2><ul>
-<li>props</li>
-<li>context</li>
-<li>redux</li>
-<li>react-router 路由切换时通过url传值（少量非机密数据，其实也是props传）。</li>
-</ul>
-<a id="more"></a>
-<h2 id="今天记录一下通过redux来传值的实现。"><a href="#今天记录一下通过redux来传值的实现。" class="headerlink" title="今天记录一下通过redux来传值的实现。"></a>今天记录一下通过redux来传值的实现。</h2><p>我们先写一个createAction的函数：</p>
-<pre><code>export function setAnalysisParams(params) {
-  return {
-    type: SET_ANALYSIS_PARAMS,
-    result: params
-  }
-}
-</code></pre><p>在reducer里面：</p>
-<pre><code>export default function reducer(state = initialState, action = {}) {
-  switch (action.type) {
-    case SET_ANALYSIS_PARAMS:
-      return {
-        ...state,
-        params: action.result
-      };
-    default:
-      return state;
-  }
-</code></pre><p>当action触发reducer时，会把action的result传给reducer的params。写好这里，我们就可以在组件中传给adction params了。</p>
-<pre><code>@connect(
-  () =&gt; ({
-  }),
-  {
-    setAnalysisParams
-  })
-</code></pre><p>先把actionCreator拿出来。<br>在组件的某个需要的地方，可以直接向它传我们要放进redux里的数据：</p>
-<pre><code>this.props.setAnalysisParams({
-        someModels
-      });
-</code></pre><p>这时，我们就可以在另外一个组件中取到刚刚放进去的数据。<br>另外一个组件：</p>
-<pre><code>@connect(
-  state =&gt; ({
-    example: state.clinic.params
-  }),
-  {}
-)
-</code></pre><p>把redux中的params数据映射到example上。<br>下面，就可以用了：</p>
-<pre><code> const {someNames, ...} = this.props.example; //取出数据名
-</code></pre><p>以上，就实现了redux来传值的方法。适合非父子组件且嵌套关系复杂的组件之间数据的传递。</p>
-
-    
-
-    
-</div>
-
-
-                
-
-                <!-- Post Comments -->
-                
-                    
-    <!-- 使用 DISQUS_CLICK -->
-<div id="disqus-comment">
-    <div id="disqus_thread"></div>
-
-<!-- add animation -->
-<style>
-	.disqus_click_btn {
-            line-height: 30px;
-            margin: 0;
-            min-width: 50px;
-            padding: 0 14px;
-            display: inline-block;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0;
-            overflow: hidden;
-            will-change: box-shadow;
-            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
-            outline: 0;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            vertical-align: middle;
-            border: 0;
-            background: rgba(158, 158, 158, .2);
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-            color: #fff;
-            background-color: #757575;
-            text-shadow: 0
-        }
-</style>
-	
-<div class="btn_click_load"> 
-    <button class="disqus_click_btn">阅读评论（请确保 disqus 可以正常加载）</button>
-</div>
-
-<script type="text/javascript">
-    var disqus_config = function () {
-        this.page.url = 'http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://cmszlx.win/2017/08/30/react组件之间传值的几种方式/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-</script>
-
-<script type="text/ls-javascript" id="disqus-lazy-load-script">
-    $('.btn_click_load').click(function() {  //click to load comments
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document;
-            var s = d.createElement('script');
-            s.src = '//cmszlx-win.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', + new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-        $('.btn_click_load').css('display','none');
-    });
-</script>
-  	
-
-</div>
-<style>
-    #disqus-comment{
-        background-color: #eee;
-        padding: 2pc;
-    }
-</style>
-
-                
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/08/30/react组件之间传值的几种方式/" target="_self">阅读全文</a>
+        </span>
+    </div>
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/logo.jpg" width="44px" height="44px" alt="linXiao's avatar">
             </div>
+            <div>
+                <strong>linXiao</strong>
+                <span>8月 30, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                
+            </span>
 
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    <!-- Prev Nav -->
-    
-        <a href="/2017/08/30/测试markdown图片/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
+            
 
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
+            
 
-    <!-- Next Nav -->
-    
-</nav>
-
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
         </div>
     </div>
+</div>
 
+            
+            
+        
+    
+
+    
+    <!-- Index nav -->
+        <nav class="material-nav mdl-cell mdl-cell--12-col">
+            <a class="extend prev" rel="prev" href="/archives/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+        </nav>
+    
+
+    
+        <script type="text/ls-javascript" id="thumbnail-script">
+    var randomNum;
+
+    var locatePost = $('.locate-thumbnail-symbol').next();
+    for(var i = 0; i < 10; i++) {
+        randomNum = Math.floor(Math.random() * 19 + 1);
+
+        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+
+        locatePost = locatePost.next();
+    }
+</script>
+
+    
+</div>
 
 
                     
