@@ -12,6 +12,8 @@
     
     <title>
         
+            js 手动实现自定义事件监听 | 
+        
         Hurry
     </title>
 
@@ -36,7 +38,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="linXiao">
     <meta name="description" itemprop="description" content>
-    <meta name="keywords" content>
+    <meta name="keywords" content=",原创">
 
     <!-- Site Verification -->
     
@@ -65,10 +67,10 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://cmszlx.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hurry">
+    <meta property="og:title" content="js 手动实现自定义事件监听 | Hurry">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content>
-    
+    <meta property="og:article:tag" content="原创"> 
 
     
         <meta property="article:published_time" content="7月 23, 2019">
@@ -76,7 +78,7 @@
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Hurry">
+    <meta name="twitter:title" content="js 手动实现自定义事件监听 | Hurry">
     <meta name="twitter:description" content>
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -110,7 +112,7 @@
         },
         "description": "Hello World!"
     },
-    "headline": "",
+    "headline": "js 手动实现自定义事件监听",
     "url": "http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html",
     "datePublished": "7月 23, 2019",
     "dateModified": "7月 23, 2019",
@@ -335,7 +337,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tags-原创"><span class="post-toc-number">1.</span> <span class="post-toc-text">tags:原创</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义事件监听，其实也是观察者模式的一种"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自定义事件监听，其实也是观察者模式的一种</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如上便用观察者模式实现了一个事件监听机制。"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">如上便用观察者模式实现了一个事件监听机制。</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义事件监听，其实也是观察者模式的一种"><span class="post-toc-number">1.</span> <span class="post-toc-text">自定义事件监听，其实也是观察者模式的一种</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如上便用观察者模式实现了一个事件监听机制。"><span class="post-toc-number">2.</span> <span class="post-toc-text">如上便用观察者模式实现了一个事件监听机制。</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -373,7 +375,7 @@
         
     
             <p class="article-headline-p">
-                
+                js 手动实现自定义事件监听
             </p>
         </div>
 
@@ -427,7 +429,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/原创/">原创</a>
     </li></ul>
     
 
@@ -445,7 +447,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=js 手动实现自定义事件监听&url=http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -454,7 +456,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&url=http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html&via=linXiao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=js 手动实现自定义事件监听&url=http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html&via=linXiao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -484,7 +486,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=js 手动实现自定义事件监听&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -502,9 +504,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <hr>
-<p>title:js 手动实现自定义事件监听<br>date:2019-07-23 11:42:20</p>
-<h2 id="tags-原创"><a href="#tags-原创" class="headerlink" title="tags:原创"></a>tags:原创</h2><blockquote>
+        <blockquote>
 <p>js 手动实现自定义事件监听</p>
 </blockquote>
 <h3 id="自定义事件监听，其实也是观察者模式的一种"><a href="#自定义事件监听，其实也是观察者模式的一种" class="headerlink" title="自定义事件监听，其实也是观察者模式的一种"></a>自定义事件监听，其实也是观察者模式的一种</h3><p>我们在jquery中经常用</p>
