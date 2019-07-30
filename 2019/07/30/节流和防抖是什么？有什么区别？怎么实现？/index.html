@@ -12,7 +12,7 @@
     
     <title>
         
-            19-3-18 python函数传参方式 | 
+            节流和防抖是什么？有什么区别？怎么实现？ | 
         
         Hurry
     </title>
@@ -67,18 +67,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://cmszlx.win">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="19-3-18 python函数传参方式 | Hurry">
+    <meta property="og:title" content="节流和防抖是什么？有什么区别？怎么实现？ | Hurry">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content>
     
 
     
-        <meta property="article:published_time" content="3月 20, 2019">
-        <meta property="article:modified_time" content="3月 20, 2019">
+        <meta property="article:published_time" content="7月 30, 2019">
+        <meta property="article:modified_time" content="7月 30, 2019">
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="19-3-18 python函数传参方式 | Hurry">
+    <meta name="twitter:title" content="节流和防抖是什么？有什么区别？怎么实现？ | Hurry">
     <meta name="twitter:description" content>
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -86,7 +86,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://cmszlx.win/2019/03/20/python函数传参方式/index.html">
+        <link rel="canonical" href="http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -112,10 +112,10 @@
         },
         "description": "Hello World!"
     },
-    "headline": "19-3-18 python函数传参方式",
-    "url": "http://cmszlx.win/2019/03/20/python函数传参方式/index.html",
-    "datePublished": "3月 20, 2019",
-    "dateModified": "3月 20, 2019",
+    "headline": "节流和防抖是什么？有什么区别？怎么实现？",
+    "url": "http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html",
+    "datePublished": "7月 30, 2019",
+    "dateModified": "7月 30, 2019",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -337,7 +337,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防抖：若事件在10s内连续被触发，则只响应最后一次事件。比如人为在页面快速点击，则只触发最后一次点击。"><span class="post-toc-number">1.</span> <span class="post-toc-text">防抖：若事件在10s内连续被触发，则只响应最后一次事件。比如人为在页面快速点击，则只触发最后一次点击。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#节流：若事件在10s内被连续触发，则每2s-人为设置-触发一次事件。比如人为在页面快速点击，则有5次事件被触发。"><span class="post-toc-number">2.</span> <span class="post-toc-text">节流：若事件在10s内被连续触发，则每2s(人为设置)触发一次事件。比如人为在页面快速点击，则有5次事件被触发。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#节流实现："><span class="post-toc-number">3.</span> <span class="post-toc-text">节流实现：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#防抖实现："><span class="post-toc-number">4.</span> <span class="post-toc-text">防抖实现：</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -375,7 +375,7 @@
         
     
             <p class="article-headline-p">
-                19-3-18 python函数传参方式
+                节流和防抖是什么？有什么区别？怎么实现？
             </p>
         </div>
 
@@ -394,7 +394,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>linXiao</strong>
-        <span>3月 20, 2019</span>
+        <span>7月 30, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -416,7 +416,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3UlEQVR42u3aQXLbMBAEQP3/0841VTFZMws6loDmSRVRJBo+bHYHr68jrxc2NjY2NjY2Njb2W7Jf8fX3/d889J87L18fvGXlCVdPw8bGxt6bnbzm6vP9ou837v5pya+SNWNjY2Ofw5698v5XV/evbGi7ZmxsbGzse2q+NUk7kTwBGxsbG3u9gP3Et7Miio2NjY09HNAEJa19fhsw/NdZGjY2Nvbbs2dB7+9+/rV8GxsbG/vN2LOrbVrarVw50HO5ZmxsbOxN2fngfhYb5Ns3a1SKeBgbGxt7U/azUW4+7n8qAM7HUtjY2Ni7smcPXQ8M2ni4LX51vo2NjY39sey8SUgahvt/TzauDYbzb7GxsbF3ZbeBbvKrqDG4LWDPlkBsbGzsk9k/sbh2hPRY2cPGxsbelD0LCdoGYz0GzuOHIhXBxsbG3oidF6r1otXGwLNjOvWRHWxsbOyPZa+Ph5JNWRkPJSFEtInY2NjYx7DzjZjFvW2onPwxHpilYWNjY2/Knm3NLCRYiRCiARk2Njb21uy22ORFqG1LlsZG7VAJGxsbeyP2yiinvWelyclL6fCkEjY2NvYHsmcBbRvTzmBtIcTGxsbGbv+L/8BSyoFUvipsbGzs09jReL0cDK3Hvcl68pYGGxsbe1d2XoTa0VIb3+bxQ7KSYpaGjY2NvRE7GrIvRAV5xLteLLGxsbHPZD+1EbOylLRAbZyAjY2NfQ67fWW76BVY28xc3o+NjY19DHvlcOSstOQb2l7Y2NjYJ7DrIfuoXOWtzsp2F0MlbGxs7I3YbTHID80nz581RbPjntjY2Nh7s2dFq92C2bezAlZ0YNjY2Ngbsdv2IC+BeYS8MkhaCnqxsbGxD2PPhk1JoWrXVsTJ2NjY2Ni3cezKEL9l58MsbGxs7NPYyVCpbRtmEXJ+f1LMsLGxsU9gtyOb2ef6kE1QRIt2CBsbG3tT9jkXNjY2NjY2NjY29ttcfwCXJ3IUDTewFwAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADiUlEQVR42u3aS27jQAwFQN//0jPbAQLJj2RT0QClleHEUrO0IPj5/HH9c30Q4MCBAwcOHDhw4MDxYo5PfF39Kvn+6q8/P9/fMz9V4Vc4cODAgWOB40squjj0fdjJU66AqvfvxYIDBw4cOLY5ro6SB5On214wyauqxoIDBw4cON7MUb1DElKevHHgwIEDx//IkSfX+/9MztBrDuLAgQMHjvdwFBpqQQBJOdd7bp6M13ulOHDgwIHjgiNfAnj/50f3O3DgwIEDxw+O3lVt9lVbftVh0igWHDhw4MBxlOPUyOeeprfMnd+hWnbiwIEDB44nOZJFt0mC7DUB8+HWgYoWBw4cOHCMu2G9cU61gXhqvNQbjBUqWhw4cODAMeDIF6knLcL8r9XVuh4fDhw4cOB4hiM5YrWsmlyTUAtL4Thw4MCBY4Gjt6aQNP7ugaoJOB9i5WMqHDhw4MCxzVFdxc5TXT6CSp6YL8yVm4M4cODAgeMQx6lgqv/Ze2K1FCwnWhw4cODAMeDolVXz4+aIvTZi9OJx4MCBA8dRjuQQSbHXG1Dlv5osYXy5Pw4cOHDgOMrRC6xakuWpNAk7gSv8CgcOHDhwPMKRFFcbaTUfhvXoceDAgQPHNkfvKNUiavKU/FfNxQgcOHDgwLHAMSnSqqmxmp7zz71XhQMHDhw4Njiqg6VThV+Pr7m4gAMHDhw4HuFIUuxkqDMZNfVeRt76xIEDBw4cz3BsrKb1moyTkq/QcMSBAwcOHAscvXIouUM1hU8W7/JBFA4cOHDg2ONIyp6cLE/AeeLcawviwIEDB44Njjxlnlp6yBcj8lP1zoYDBw4cODY4Jkk3Xz6YN/4mSxJfYsSBAwcOHA9yJEyTtDpZfZisQeDAgQMHjj2OJE3mQ537wHrtwjyFV5+OAwcOHDg2OJJSKmm3nRop5a8qH3qVp3A4cODAgWPAUX1M8s0kWVbDq65f4MCBAweObY5eWzAfTU0SebW0q75mHDhw4MCxwdFLWnl4SYKsFmC9dQocOHDgwPEkRy/J3bNORlDVYdjhRIsDBw4cOA5xVBPYZFxUDaDXIoyKPRw4cODA8ascefrcKwWr6xRfzoADBw4cOH6VIw8yGVBtLC6Uv8eBAwcOHGscp5YJTo21eoVZDoEDBw4cOPY48uPmBV5ehvUWHZIX0Ey0OHDgwIFjwOHCgQMHDhw4cODAgQPHy66/3rl3mO/0Q5EAAAAASUVORK5CYII=">
     
 </ul>
     
@@ -447,7 +447,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=19-3-18 python函数传参方式&url=http://cmszlx.win/2019/03/20/python函数传参方式/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=节流和防抖是什么？有什么区别？怎么实现？&url=http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -456,7 +456,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=19-3-18 python函数传参方式&url=http://cmszlx.win/2019/03/20/python函数传参方式/index.html&via=linXiao" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=节流和防抖是什么？有什么区别？怎么实现？&url=http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html&via=linXiao" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -465,7 +465,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://cmszlx.win/2019/03/20/python函数传参方式/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -474,7 +474,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://cmszlx.win/2019/03/20/python函数传参方式/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -486,7 +486,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=19-3-18 python函数传参方式&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2019/03/20/python函数传参方式/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Hurry&title=节流和防抖是什么？有什么区别？怎么实现？&summary=&pics=http://cmszlx.win/img/favicon.png&url=http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -504,37 +504,28 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <blockquote>
-<p>python函数传参跟js很像：</p>
-</blockquote>
-<ul>
-<li>直接传参方式：</li>
-</ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> func <span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"name :"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"age: "</span> <span class="token operator">+</span> age<span class="token punctuation">)</span>
+        <h3 id="防抖：若事件在10s内连续被触发，则只响应最后一次事件。比如人为在页面快速点击，则只触发最后一次点击。"><a href="#防抖：若事件在10s内连续被触发，则只响应最后一次事件。比如人为在页面快速点击，则只触发最后一次点击。" class="headerlink" title="防抖：若事件在10s内连续被触发，则只响应最后一次事件。比如人为在页面快速点击，则只触发最后一次点击。"></a>防抖：若事件在10s内连续被触发，则只响应最后一次事件。比如人为在页面快速点击，则只触发最后一次点击。</h3><h3 id="节流：若事件在10s内被连续触发，则每2s-人为设置-触发一次事件。比如人为在页面快速点击，则有5次事件被触发。"><a href="#节流：若事件在10s内被连续触发，则每2s-人为设置-触发一次事件。比如人为在页面快速点击，则有5次事件被触发。" class="headerlink" title="节流：若事件在10s内被连续触发，则每2s(人为设置)触发一次事件。比如人为在页面快速点击，则有5次事件被触发。"></a>节流：若事件在10s内被连续触发，则每2s(人为设置)触发一次事件。比如人为在页面快速点击，则有5次事件被触发。</h3><p>他们的作用都是降低回调执行频率，节省计算资源的。</p>
+<h3 id="节流实现："><a href="#节流实现：" class="headerlink" title="节流实现："></a>节流实现：</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> previous <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> now <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>now <span class="token operator">-</span> previous <span class="token operator">></span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      func<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arguments<span class="token punctuation">)</span>
+      previous <span class="token operator">=</span> now
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-func<span class="token punctuation">(</span><span class="token string">'zlx'</span><span class="token punctuation">,</span> <span class="token string">'18'</span><span class="token punctuation">)</span>
 </code></pre>
-<p>形参实参按顺序一一对应，跟js一样</p>
-<ul>
-<li><p>指定传参</p>
-<pre><code>def func (name, age) {
-print(&quot;name :&quot; + name + &quot;age: &quot; + age)
-}
-func(name=&#39;zlx&#39;, age=&#39;18&#39;)
-</code></pre><p>参数顺序不用一一对应，js中也有类似的方式，通过obj实现：</p>
-<pre><code>var func ({name, age}) {
-console.log(&quot;name :&quot; + name + &quot;age: &quot; + age)
-}
-func({name: &#39;zlx&#39;, age: &#39;18&#39;})
-</code></pre><p>参数使用了解构赋值</p>
-</li>
-<li><p>参数默认值：<br><code>`</code><br>def func (name, age = 18) {<br>print(“name :” + name + “age: “ + age)<br>}<br>func(name=’zlx’)</p>
-</li>
-</ul>
-<p>// -&gt; name: zlx age: 18</p>
-<pre><code>js中实现也类似：
-</code></pre><p>var func (name, age = 18) {<br>console.log(“name :” + name + “age: “ + age)<br>}<br>func(‘zlx’)<br>// -&gt; name: zlx age: 18<br><code>`</code></p>
+<p><code>分析</code>：传入定义的wait时间小于函数两次调用的时间差时，函数不会被执行，只有两次调用的时间差大于wait值，函数才会被执行，所以函数会每隔一定时间被执行一次，实现了节流。</p>
+<h3 id="防抖实现："><a href="#防抖实现：" class="headerlink" title="防抖实现："></a>防抖实现：</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> timer<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> wait<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p><code>分析</code>：每当函数被调用的时候，就会设置一个延迟，当下一次调用时，延迟会被重置，所以如果一直连续调用的话，延迟一直被重置，这样函数一直都不会被调用，只有等到函数一段时间没有被调用（时间大于最后一次延迟）时，函数才会被调用。这样，函数就只会在持续调用时间段内的最后一次被调用，实现了防抖。</p>
 
     
 
@@ -587,8 +578,8 @@ func({name: &#39;zlx&#39;, age: &#39;18&#39;})
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://cmszlx.win/2019/03/20/python函数传参方式/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://cmszlx.win/2019/03/20/python函数传参方式/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://cmszlx.win/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -621,21 +612,13 @@ func({name: &#39;zlx&#39;, age: &#39;18&#39;})
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2019/03/25/git目录中index-lock的作用以及它引发的报错/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2019/03/20/字段的用法/" id="post_nav-older" class="next-content">
+        <a href="/2019/07/30/setTimeout、Promise、Async-Await-的区别/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
