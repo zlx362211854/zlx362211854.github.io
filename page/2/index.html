@@ -231,6 +231,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/30/js观察者模式如何实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linXiao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hurry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/30/js观察者模式如何实现/" itemprop="url">js观察者模式如何实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-30T17:47:03+08:00">
+                2019年07月30日
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>观察者模式</p>
+</blockquote>
+<p>观察者模式有几个要素:</p>
+<ol>
+<li>需要将需要观察的对象存放起来</li>
+<li>在需要的地方触发该观察者</li>
+<li>第三观察者需要分类，同一类的观察者可监听同一个事件，监听被触发时，所有的观察者都需要被通知到。</li>
+</ol>
+<p>具体实现一个观察者模式如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">var</span> Listen <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 注册观察者</span>
+Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>on <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> cb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token punctuation">[</span>cb<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 触发观察者</span>
+Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>emit <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>listener <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            listener<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 删除观察者</span>
+Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>remove <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+w<span class="token punctuation">.</span>Listen <span class="token operator">=</span> Listen<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span>
+
+
+</code></pre>
+<p>上面代码里使用了es6 的Map对象来存储观察者。注册观察者的时候，每收到一个观察者注册，就按类型将他们分类存放，同一类的观察者存储在一个数组中。触发观察者的代码中，收到触发的命令后，找出触发的类型，调用所有已注册的同类的观察者。删除观察者，就将注册的所有观察者删除，return this方便链式调用</p>
+<p>调用示例如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 1 ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 2 ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hover 1 ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click again ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// clicked 1 ...</span>
+<span class="token comment" spellcheck="true">// clicked 2 ...</span>
+<span class="token comment" spellcheck="true">// hover 1 ...</span>
+<span class="token comment" spellcheck="true">// click again ...</span>
+</code></pre>
+<p>至此，就实现了一个简单的观察者模式</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1802,228 +1992,6 @@ class App extends Component {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2018/01/17/手把手教你做小插件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linXiao">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hurry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/17/手把手教你做小插件/" itemprop="url">手把手教你做小插件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-17T15:35:48+08:00">
-                2018年01月17日
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="javascript面向对象编程一直都是初学者的难点，都看过很多文章，却没有动手写过，还是理解不深刻，今天我看文章的时候手写了一个及小的插件，正好练练手。"><a href="#javascript面向对象编程一直都是初学者的难点，都看过很多文章，却没有动手写过，还是理解不深刻，今天我看文章的时候手写了一个及小的插件，正好练练手。" class="headerlink" title="javascript面向对象编程一直都是初学者的难点，都看过很多文章，却没有动手写过，还是理解不深刻，今天我看文章的时候手写了一个及小的插件，正好练练手。"></a>javascript面向对象编程一直都是初学者的难点，都看过很多文章，却没有动手写过，还是理解不深刻，今天我看文章的时候手写了一个及小的插件，正好练练手。</h4><p>详细的js面向对象编程可以看阮一峰老师的文章 <a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank" rel="noopener">阮一峰-面向对象编程</a></p>
-<p>我正好在看文章时，动手写了一个loading的插件，也可以用在项目中去。分享出来。  <a href="https://github.com/zlx362211854/loading" target="_blank" rel="noopener">github链接</a></p>
-<blockquote>
-<p>loading效果是这样的：</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-a74df0e8c05aad5a.gif?imageMogr2/auto-orient/strip" alt="效果"></p>
-<p>直接看代码吧，执行特别简单：</p>
-<pre><code>var loading = new Loading();
-
-loading.init(&#39;container&#39;).start([&#39;#5fc6b3&#39;, &#39;#d3be87&#39;, &#39;#e86c73&#39;]);
-
-setTimeout(function () {
-    // some ajax
-       loading.end()
-}, 5000)
-</code></pre><p>只需要事先准备好一个容器</p>
-<pre><code>&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-
-</code></pre><p>只有三个api</p>
-<pre><code>
-init() // 参数为容器的id （必须）
-
-start() // 参数为由颜色组成的数组 （非必须）
-
-end() // 无参数
-</code></pre><p>直接看源码吧， 简单得令人发指：</p>
-<pre><code>/**
- * @Author zlx
- * @Date 2018/1/17 上午10:42
- */
-
-var Loading = function () {
-    this.color = [&#39;#5fc6b3&#39;, &#39;#5fc6b3&#39;, &#39;#5fc6b3&#39;]; // default colors
-    this.init = function (id) {
-        var container = document.getElementById(id);
-        this.container = container;
-        return this;
-    };
-
-    this.start = function (color) {
-        if (!color) {
-            color = this.color;
-        }
-        for (var i = 0; i &lt; 3; i++) {
-            var dot = document.createElement(&#39;div&#39;);
-            dot.style.backgroundColor = color[i];
-            dot.setAttribute(&#39;class&#39;, &#39;dot&#39;+(i+1));
-            this.container.appendChild(dot);
-        }
-        return this;
-    };
-
-    this.end = function () {
-        var parent = this.container.parentNode;
-        if(parent){
-            parent.removeChild(this.container);
-        }
-    }
-}
-</code></pre><p>逐一分析：</p>
-<ul>
-<li>创建一个叫Loading的构造函数。</li>
-<li><p><code>this.color = [&#39;#5fc6b3&#39;, &#39;#5fc6b3&#39;, &#39;#5fc6b3&#39;]; // default colors</code> 给三个小圆点定义三个默认颜色。</p>
-</li>
-<li><pre class=" language-init```方法。"><code class="language-init```方法。">
-</code></pre>
-<p>this.init = function (id) {</p>
-<pre><code>  var container = document.getElementById(id);
-  this.container = container;
-  return this;
-</code></pre><p>  };<br><code>根据传进来的id来获取到dom元素。并将该dom元素对象赋值给this.container，方便以后使用。最后return this，这里为了方便api实现链式调用，所以return了this。实现了如</code>loading.init(‘container’).start().end();<code>`</code>这样的链式调用，这种写法在jquery中很常见。</p>
-</li>
-</ul>
-<ul>
-<li><code>start</code>方法。</li>
-</ul>
-<pre><code>this.start = function (color) {
-        if (!color) {
-            color = this.color;
-        }
-        for (var i = 0; i &lt; 3; i++) {
-            var dot = document.createElement(&#39;div&#39;);
-            dot.style.backgroundColor = color[i];
-            dot.setAttribute(&#39;class&#39;, &#39;dot&#39;+(i+1));
-            this.container.appendChild(dot);
-        }
-        return this;
-    };
-</code></pre><p>这里处理shart’方法传进来的color，是一个数组，如果没有传入，则为我们默认的colors。循环创建3个div，并赋上相应的属性，再添加到container中。</p>
-<ul>
-<li><pre class=" language-end```方法"><code class="language-end```方法">
-</code></pre>
-<p>this.end = function () {</p>
-<pre><code>  var parent = this.container.parentNode;
-  if(parent){
-      parent.removeChild(this.container);
-  }
-</code></pre><p>  }<br><code>`</code></p>
-</li>
-</ul>
-<p>最后也很简单，移除这个container。</p>
-<p>  <a href="https://github.com/zlx362211854/loading" target="_blank" rel="noopener">详细代码见github</a></p>
-<p>这个例子很小，希望对你有帮助。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2074,7 +2042,7 @@ var Loading = function () {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2096,7 +2064,7 @@ var Loading = function () {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
