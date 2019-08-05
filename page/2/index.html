@@ -231,6 +231,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/03/25/js闭包和内存释放/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linXiao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hurry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/25/js闭包和内存释放/" itemprop="url">js闭包和内存释放</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-25T17:14:53+08:00">
+                2019年03月25日
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>闭包的那些事儿</p>
+</blockquote>
+<ul>
+<li><p>怎么写一个闭包<br>闭包是什么就不解释了，直接写一个闭包函数：</p>
+<pre><code>var f = function() {
+  var num = 0;
+  return function() {
+    return num += 1;
+  };
+}
+</code></pre><p>js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() {</p>
+<pre><code>return num += 1;
+</code></pre><p>  };`</p>
+<p>js中的作用域，都是一层一层向上找的，在f内部函数里面，他的num向上找到父函数的作用域。<br>现在，我们执行一下：</p>
+<pre><code>f()()
+// 1
+f()()
+// 1
+????? 感觉 不太对？为什么num没有自增呢？？
+</code></pre></li>
+<li>内存回收机制<br>为什么上面执行结果不太对，因为执行<code>f()()</code>后，f函数已经执行完毕了，没有其他资源引用f，ta会被立即释放，也就是说，<code>f()()</code>执行完后，立即就释放了。<br>如何才不释放呢？</li>
+</ul>
+<pre><code>// 创建f的引用
+var fn = f();
+fn()
+// 1
+fn()
+// 2
+fn()
+// 3
+</code></pre><p>这下就对了，num成了私有变量，f拥有了私有作用域。</p>
+<p>完了吗？<br>f有了fn的引用，内存一直得不到释放，咋办呢？这样的函数多了是不是会造成内存溢出？<br>手动释放一下：</p>
+<pre><code>var fn = f();
+fn()
+// 1
+fn()
+// 2
+fn()
+// 3
+// 手动释放f的引用
+fn = null
+// f的引用fn被释放了，现在f的作用域也被释放了。num再次归零了。
+var fn = f()
+fn()
+// 1
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/03/25/git目录中index-lock的作用以及它引发的报错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2255,251 +2420,6 @@ Module.runMain = function () {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2017/09/06/个人博客常用的搭建的方式-一-php-mysql-nginx-wordpress/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linXiao">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hurry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/06/个人博客常用的搭建的方式-一-php-mysql-nginx-wordpress/" itemprop="url">个人博客常用的搭建的方式(一) php+mysql+nginx+wordpress</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T12:47:53+08:00">
-                2017年09月06日
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/原创/" itemprop="url" rel="index">
-                    <span itemprop="name">原创</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>wordpress 系统是一个非常成熟的cms内容管理系统。特点就是大而全，几乎所有能想到的功能都能找到相应的插件，而且wordpress有许多api，来做项目的二次开发非常容易（基于php语言）。缺点就是臃肿。</p>
-<blockquote>
-<p>下面我会从头开始讲如何搭建一个基于wordpress的个人博客。</p>
-</blockquote>
-<p>首先 ，你要有一台服务器，阿里云的免费赠送的服务器之类的，以linux系统为例。</p>
-<h4 id="1-安装wordpress（nginx＋php＋mysql的安装我就不说了，网上教程很多，也不是本文的重点。）"><a href="#1-安装wordpress（nginx＋php＋mysql的安装我就不说了，网上教程很多，也不是本文的重点。）" class="headerlink" title="1. 安装wordpress（nginx＋php＋mysql的安装我就不说了，网上教程很多，也不是本文的重点。）"></a>1. 安装wordpress（nginx＋php＋mysql的安装我就不说了，网上教程很多，也不是本文的重点。）</h4><p>wordpress就是一个压缩文件，去网上下载</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-84ddf014ed5f73de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>下载下来就是一个zip文件</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-090d3fae27405a27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>接下来就把文件上传到云服务器上去：</p>
-<pre><code>saidedePro-2:~ saidesun$ scp wordpress-4.7.3-zh_CN.zip root@119.23.206.96:/data
-root@119.23.206.96&#39;s password: 
-</code></pre><p>输入密码，上传成功。</p>
-<pre><code>wordpress-4.7.3-zh_CN.zip  100% 8995KB   1.1MB/s   00:08                                                                                                                                                                      
-saidedePro-2:~ saidesun$ 
-</code></pre><p>登录看一看：</p>
-<pre><code>Last login: Wed Sep  6 10:42:22 2017 from 101.204.28.156
-
-Welcome to Aliyun Elastic Compute Service
-
-2 packages available for updating. Please run &#39;yum update -y&#39; to update. 
-[root@iZwz9dy4kwhgg3p6ltvd21Z ~]# cd /data
-[root@iZwz9dy4kwhgg3p6ltvd21Z data]# ls
-db  mongodb_data  mongodb_log  wordpress-4.7.3-zh_CN.zip
-[root@iZwz9dy4kwhgg3p6ltvd21Z data]# 
-</code></pre><p>文件上传成功了。<br>下面用unzip解压：</p>
-<pre><code>unzip wordpress-4.7.3-zh_CN.zip 
-</code></pre><pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z data]# ls
-db  mongodb_data  mongodb_log  wordpress  wordpress-4.7.3-zh_CN.zip
-</code></pre><p>解压好了。<br>打开wordpress目录看看</p>
-<pre><code>cd wordpress
-[root@iZwz9dy4kwhgg3p6ltvd21Z wordpress]# ls
-index.php    readme.html      wp-admin            wp-comments-post.php  wp-content   wp-includes        wp-load.php   wp-mail.php      wp-signup.php     xmlrpc.php
-license.txt  wp-activate.php  wp-blog-header.php  wp-config-sample.php  wp-cron.php  wp-links-opml.php  wp-login.php  wp-settings.php  wp-trackback.php
-
-</code></pre><p>主要包含了这些文件，index.php是入口文件，wp－content是存放一些插件，主题的地方。<br>现在我们去写nginx配置</p>
-<pre><code> cd /etc/nginx/
-[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# ls
-conf.d     fastcgi.conf          fastcgi_params          koi-utf  mime.types          nginx.conf   nginx.conf.default  scgi_params.default  uwsgi_params.default
-default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.default  nginx.conf~  scgi_params         uwsgi_params         win-utf
-[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# 
-</code></pre><p>进入conf.d文件夹，新建一个配置文件</p>
-<pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z nginx]# cd conf.d/
-[root@iZwz9dy4kwhgg3p6ltvd21Z conf.d]# vim cms.conf
-</code></pre><p>名字随便取。<br>cms.conf中配置如下：</p>
-<pre><code>server {
-        ## Your website name goes here.
-        listen       8888;
-        #listen       [::]:80 default_server;
-        server_name 119.23.206.96;
-        ## Your only path reference.
-        root /data/wordpress;
-        ## This should be in your http block and if it is, it&#39;s not needed here.
-        index index.html index.htm index.php;
-
-        include conf.d/drop;
-
-        location / {
-                # This is cool because no php is touched for static content
-                try_files $uri $uri/ /index.php?q=$uri&amp;$args;
-        }
-
-        location ~ \.php$ {
-                fastcgi_buffers 8 256k;
-                fastcgi_buffer_size 128k;
-                fastcgi_intercept_errors on;
-                include fastcgi_params;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                fastcgi_pass 127.0.0.1:9000;
-                fastcgi_read_timeout 300;
-
-                proxy_connect_timeout       600;
-                proxy_send_timeout          600;
-                proxy_read_timeout          600;
-                send_timeout                600;
-
-        }
-
-        location ~* \.(css|js|png|jpg|jpeg|gif|ico)$ {
-                expires 1d;
-        }
-}
-</code></pre><p>我们配置为监听8888端口，root路径设置为刚刚wordpress的安装路径/data/wordpress，index中要写上index.php，因为wordpress入口是index.php</p>
-<pre><code>:wq保存退出
-</code></pre><p>重启nginx</p>
-<pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z conf.d]# service nginx restart
-</code></pre><p>重启完毕后，浏览器访问ip地址加端口<br><a href="119.23.206.96:8888" target="_blank" rel="noopener">119.23.206.96:8888</a><br>就会出现如下的页面</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-7f36c646e38732b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="成功"><br>到这里nginx的配置就成功了。</p>
-<h4 id="2-配置数据库"><a href="#2-配置数据库" class="headerlink" title="2.配置数据库"></a>2.配置数据库</h4><p>点击［现在就开始］</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-ba8046d504564cb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置数据库"></p>
-<p>这时候点提交，会提示连接错误</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-cb4e82d2e6d2b465.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>这是因为你还没有名叫wordpress的数据库<br>我们去新建一个：<br>我这里用的是sequel Pro远程连接数据库</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-4913a3f1b79096dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>新建了一个叫wordpress_test的数据库</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-afa164b6c2669b50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>再填一遍<br>出现如下界面</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-32935bd023c5d93c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>它说不能帮我们自动生成，要我们手动生成。那我们就手动吧。<br>进入云服务器，部署wordpres的目录,创建一个叫wp-config.php的配置文件</p>
-<pre><code>[root@iZwz9dy4kwhgg3p6ltvd21Z /]# cd /data/wordpress
-[root@iZwz9dy4kwhgg3p6ltvd21Z wordpress]# vim wp-config.php
-</code></pre><p>将之前的内容复制进去，保存<br>点安装<br>进入该页面：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-1e1bb507ff54c092.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>填写相应信息，点安装<br>进入网站后台，说明安装成功！</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-5fdae3a1af5e141f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>现在我们打开网站主页看一眼</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-857f294b66924857.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>大功告成！<br>wordpress有很多插件以及好看的主题，可以慢慢折腾了。</p>
-<p>下篇写通过github page ＋ hexo安装博客。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2550,7 +2470,7 @@ default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.def
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2572,7 +2492,7 @@ default.d  fastcgi.conf.default  fastcgi_params.default  koi-win  mime.types.def
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
