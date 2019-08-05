@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="原创,">
+  <meta name="keywords" content="javascript,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="闭包的那些事儿   怎么写一个闭包闭包是什么就不解释了，直接写一个闭包函数： var f = function() {   var num = 0;   return function() {     return num += 1;   }; } js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() { return num += 1;   };` js中的作用">
-<meta name="keywords" content="原创">
+<meta name="description" content="js在es6之前是没有模块化这一概念的es6之前，js模块化有几种规范：CommonJS、AMD。  CommonJSCommonJS有一个全局方法require(),nodejs就是采用的CommonJS规范来实现的模块化： 　　var path = require(&apos;path&apos;); 　　path.join(...)  上面的代码可以看出来，其实这两行代码是同步的，第二行代码，必须要等第一行代">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js闭包和内存释放">
-<meta property="og:url" content="http://cmszlx.win/2019/03/25/js闭包和内存释放/index.html">
+<meta property="og:title" content="JavaScript 模块化是什么？">
+<meta property="og:url" content="http://cmszlx.win/2019/08/05/JavaScript-模块化是什么？/index.html">
 <meta property="og:site_name" content="Hurry">
-<meta property="og:description" content="闭包的那些事儿   怎么写一个闭包闭包是什么就不解释了，直接写一个闭包函数： var f = function() {   var num = 0;   return function() {     return num += 1;   }; } js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() { return num += 1;   };` js中的作用">
+<meta property="og:description" content="js在es6之前是没有模块化这一概念的es6之前，js模块化有几种规范：CommonJS、AMD。  CommonJSCommonJS有一个全局方法require(),nodejs就是采用的CommonJS规范来实现的模块化： 　　var path = require(&apos;path&apos;); 　　path.join(...)  上面的代码可以看出来，其实这两行代码是同步的，第二行代码，必须要等第一行代">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-25T09:18:53.106Z">
+<meta property="og:updated_time" content="2019-08-05T09:58:39.168Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js闭包和内存释放">
-<meta name="twitter:description" content="闭包的那些事儿   怎么写一个闭包闭包是什么就不解释了，直接写一个闭包函数： var f = function() {   var num = 0;   return function() {     return num += 1;   }; } js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() { return num += 1;   };` js中的作用">
+<meta name="twitter:title" content="JavaScript 模块化是什么？">
+<meta name="twitter:description" content="js在es6之前是没有模块化这一概念的es6之前，js模块化有几种规范：CommonJS、AMD。  CommonJSCommonJS有一个全局方法require(),nodejs就是采用的CommonJS规范来实现的模块化： 　　var path = require(&apos;path&apos;); 　　path.join(...)  上面的代码可以看出来，其实这两行代码是同步的，第二行代码，必须要等第一行代">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://cmszlx.win/2019/03/25/js闭包和内存释放/">
+  <link rel="canonical" href="http://cmszlx.win/2019/08/05/JavaScript-模块化是什么？/">
 
 
 
 
 
-  <title>js闭包和内存释放 | Hurry</title>
+  <title>JavaScript 模块化是什么？ | Hurry</title>
   
 
 
@@ -235,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/03/25/js闭包和内存释放/">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/05/JavaScript-模块化是什么？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linXiao">
@@ -252,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js闭包和内存释放</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript 模块化是什么？</h1>
         
 
         <div class="post-meta">
@@ -264,8 +264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-25T17:14:53+08:00">
-                2019年03月25日
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-05T17:51:18+08:00">
+                2019年08月05日
               </time>
             
 
@@ -303,52 +303,37 @@
 
       
         <blockquote>
-<p>闭包的那些事儿</p>
+<p>js在es6之前是没有模块化这一概念的<br>es6之前，js模块化有几种规范：CommonJS、AMD。</p>
 </blockquote>
-<ul>
-<li><p>怎么写一个闭包<br>闭包是什么就不解释了，直接写一个闭包函数：</p>
-<pre><code>var f = function() {
-  var num = 0;
-  return function() {
-    return num += 1;
-  };
-}
-</code></pre><p>js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() {</p>
-<pre><code>return num += 1;
-</code></pre><p>  };`</p>
-<p>js中的作用域，都是一层一层向上找的，在f内部函数里面，他的num向上找到父函数的作用域。<br>现在，我们执行一下：</p>
-<pre><code>f()()
-// 1
-f()()
-// 1
-????? 感觉 不太对？为什么num没有自增呢？？
-</code></pre></li>
-<li>内存回收机制<br>为什么上面执行结果不太对，因为执行<code>f()()</code>后，f函数已经执行完毕了，没有其他资源引用f，ta会被立即释放，也就是说，<code>f()()</code>执行完后，立即就释放了。<br>如何才不释放呢？</li>
-</ul>
-<pre><code>// 创建f的引用
-var fn = f();
-fn()
-// 1
-fn()
-// 2
-fn()
-// 3
-</code></pre><p>这下就对了，num成了私有变量，f拥有了私有作用域。</p>
-<p>完了吗？<br>f有了fn的引用，内存一直得不到释放，咋办呢？这样的函数多了是不是会造成内存溢出？<br>手动释放一下：</p>
-<pre><code>var fn = f();
-fn()
-// 1
-fn()
-// 2
-fn()
-// 3
-// 手动释放f的引用
-fn = null
-// f的引用fn被释放了，现在f的作用域也被释放了。num再次归零了。
-var fn = f()
-fn()
-// 1
+<p><strong>CommonJS</strong><br>CommonJS有一个全局方法require(),nodejs就是采用的CommonJS规范来实现的模块化：</p>
+<pre class=" language-javascript"><code class="language-javascript">　　<span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+　　path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>
 </code></pre>
+<p>上面的代码可以看出来，其实这两行代码是同步的，第二行代码，必须要等第一行代码执行完毕才能执行，不然就会报错。<br>这就是CommonJS的特点，同步执行。<br>缺点也是同步导致的，如果在浏览器中使用CommonJS规范，因为浏览器加载资源会通过网络请求，所以如果客户端的网络很卡，那同步的模块加载就卡住了，很影响用户体验。所以浏览器中需要用异步模块规范。<br><strong>AMD</strong><br>AMD采用异步方式加载模块，模块的加载不影响它后面语句的运行，加载模块的时候，会定义一个回调函数，等待模块加载完毕后，会去调用这个函数，实现异步加载。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">　　require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'path'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+　　　　path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+　　<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>es6以后，js语言本身提供了模块化的实现，可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span>path<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span> 
+path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>
+</code></pre>
+<p>上面代码其实是一个import命令，import命令会被 JavaScript 引擎静态分析，先于模块内的其他语句执行，本质是从path模块加载一个path方法，其他方法不加载，这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。<br>但是缺点来了，import命令是在编译阶段执行的，所以他能与js语法嵌套使用，比如：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">import</span> xx form <span class="token string">'xxx'</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这样会报错。于是，就有了import()方法提案：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'xxx'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// xxx</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这样，是不是跟AMD规范很像，其实import()函数就是js语言本身模块化的异步实现,并且返回一个Promise，来实现回调。</p>
+</blockquote>
+
       
     </div>
     
@@ -365,7 +350,7 @@ fn()
       
         <div class="post-tags">
           
-            <a href="/tags/原创/" rel="tag"># 原创</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -378,8 +363,8 @@ fn()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/git目录中index-lock的作用以及它引发的报错/" rel="next" title=".git目录中index.lock的作用以及它引发的报错">
-                <i class="fa fa-chevron-left"></i> .git目录中index.lock的作用以及它引发的报错
+              <a href="/2019/08/05/什么是视差滚动？如何实现视差滚动的效果？/" rel="next" title="什么是视差滚动？如何实现视差滚动的效果？">
+                <i class="fa fa-chevron-left"></i> 什么是视差滚动？如何实现视差滚动的效果？
               </a>
             
           </div>
@@ -387,10 +372,6 @@ fn()
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/23/js手动实现自定义事件监听/" rel="prev" title="js 手动实现自定义事件监听">
-                js 手动实现自定义事件监听 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

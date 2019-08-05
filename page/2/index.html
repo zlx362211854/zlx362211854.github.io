@@ -231,6 +231,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linXiao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hurry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/23/js手动实现自定义事件监听/" itemprop="url">js 手动实现自定义事件监听</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-23T11:42:20+08:00">
+                2019年07月23日
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>js 手动实现自定义事件监听</p>
+</blockquote>
+<h3 id="自定义事件监听，其实也是观察者模式的一种"><a href="#自定义事件监听，其实也是观察者模式的一种" class="headerlink" title="自定义事件监听，其实也是观察者模式的一种"></a>自定义事件监听，其实也是观察者模式的一种</h3><p>我们在jquery中经常用</p>
+<pre class=" language-javascript"><code class="language-javascript">dom<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>来注册事件监听，那么他具体是怎么实现的呢，其实背后就是观察者模式的一种实现。</p>
+<p>观察者模式，有几个要素:</p>
+<ol>
+<li><p>第一需要将需要观察的对象存放起来。</p>
+</li>
+<li><p>第二需要在需要的地方调用该观察者。</p>
+</li>
+<li><p>第三观察者需要分类，同一类的观察者可监听同一个事件，事件触发时，所有的观察者都需要被通知到。</p>
+</li>
+</ol>
+<p>下面来具体实现一个观察者模式。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">var</span> Listen <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 注册观察者</span>
+Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>on <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> cb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token punctuation">[</span>cb<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 触发观察者</span>
+Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>emit <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>listener <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            listener<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">// 删除观察者</span>
+Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>remove <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+w<span class="token punctuation">.</span>Listen <span class="token operator">=</span> Listen<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span>
+
+
+
+</code></pre>
+<p>上面代码里使用了es6 的Map对象来存储观察者。注册观察者的时候，每收到一个观察者注册，就按类型将他们分类存放，同一类的观察者存储在一个数组中。触发观察者的代码中，收到触发的命令后，找出触发的类型，调用所有已注册的同类的观察者。删除观察者，就将注册的所有观察者删除，return this方便链式调用。</p>
+<p>调用示例如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 1 ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 2 ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hover 1 ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click again ...'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
+
+</code></pre>
+<h3 id="如上便用观察者模式实现了一个事件监听机制。"><a href="#如上便用观察者模式实现了一个事件监听机制。" class="headerlink" title="如上便用观察者模式实现了一个事件监听机制。"></a>如上便用观察者模式实现了一个事件监听机制。</h3><p>源代码见github<a href="https://github.com/zlx362211854/listener" target="_blank" rel="noopener">链接</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/03/25/js闭包和内存释放/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1830,596 +2024,6 @@ var Loading = function () {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2017/11/15/深入Node-js的模块机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linXiao">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hurry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/15/深入Node-js的模块机制/" itemprop="url">深入Node.js的模块机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-15T22:13:52+08:00">
-                2017年11月15日
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-Node-js模块的实现"><a href="#1-Node-js模块的实现" class="headerlink" title="1 Node.js模块的实现"></a>1 Node.js模块的实现</h1><p>之前在网上查阅了许多介绍Node.js的文章,可惜对于Node.js的模块机制大都着墨不多。在后续介绍模块的使用之前,我认为有必要深入一下Node.js的模块机制。</p>
-<h2 id="1-1-CommonJS规范"><a href="#1-1-CommonJS规范" class="headerlink" title="1.1 CommonJS规范"></a>1.1 CommonJS规范</h2><p>早在Netscape诞生不久后,JavaScript就一直在探索本地编程的路,Rhino是其代表产物。无奈那时服务端JavaScript走的路均是参考众多服务器端语言来实现的,在这样的背景之下,一没有特色,二没有实用价值。但是随着JavaScript在前端的应用越来越广泛,以及服务端JavaScript的推动,JavaScript现有的规范十分薄弱,不利于JavaScript大规模的应用。那些以JavaScript为宿主语言的环境中,只有本身的基础原生对象和类型,更多的对象和API都取决于宿主的提供,所以,我们可以看到JavaScript缺少这些功能:</p>
-<ul>
-<li><p><strong>JavaScript没有模块系统。</strong>没有原生的支持密闭作用域或依赖管理。</p>
-</li>
-<li><p><strong>JavaScript没有标准库。</strong>除了一些核心库外,没有文件系统的API,没有IO流API等。</p>
-</li>
-<li><p><strong>JavaScript没有标准接口。</strong>没有如Web Server或者数据库的统一接口。</p>
-</li>
-<li><p><strong>JavaScript没有包管理系统。</strong>不能自动加载和安装依赖。</p>
-</li>
-</ul>
-<p>于是便有了CommonJS(<a href="http://www.commonjs.org" target="_blank" rel="noopener">http://www.commonjs.org</a>)规范的出现,其目标是为了构建JavaScript在包括Web服务器,桌面,命令行工具,及浏览器方面的生态系统。<strong><code>CommonJS其实不是一门新的语言，甚至都不能说它是一个新的解释器——实际上它只是一个概念或者是一个规范</code></strong>。</p>
-<p>在这个规范中，<strong><code>它定义了很多 API ，讲通俗点或者直截了当点就是函数啊类啊什么的，而这些 API 是为那些普通应用程序（Native App）而非浏览器应用使用</code></strong>。它的终极目标就是提供一个类似于 Python、Ruby 之类的脚本一样的标准库，开发者可以用这样的东西一样来做到 Python、Ruby 能做到的事，而非仅仅局限于网页中的效果或者功能实现，它也可以跑在本地。所以说下面的事情对于 JavaScript 来说不再是梦：</p>
-<blockquote>
-<p>服务端JavaScript应用</p>
-<p>命令行工具</p>
-<p>图形界面应用</p>
-<p>混合应用（Titanium、Adobe AIR等）</p>
-</blockquote>
-<p>那么，它具体弥补了前端JavaScript 的哪些空白呢？<strong><code>其实这也涉及了很多前端JavaScript 所没有涉及的东西，如二进制、编码、IO、文件、系统、断言测试、套接字、事件队列、Worker、控制台等等</code></strong>。</p>
-<p><strong><code>CommonJS制定了解决这些问题的一些规范,而Node.js就是这些规范的一种实现</code></strong>。<strong><code>Node.js自身实现了require方法作为其引入模块的方法,同时NPM也基于CommonJS定义的包规范,实现了依赖管理和模块自动安装等功能</code></strong>。这里我们将深入一下Node.js的require机制和NPM基于包规范的应用。</p>
-<h2 id="1-2-简单模块定义和使用"><a href="#1-2-简单模块定义和使用" class="headerlink" title="1.2 简单模块定义和使用"></a>1.2 简单模块定义和使用</h2><p>在Node.js中,定义一个模块十分方便。我们以计算圆形的面积和周长两个方法为例,来表现Node.js中模块的定义方式。</p>
-<pre><code>￼var PI = Math.PI; 
-exports.area = function (r) {
-    return PI * r * r;     
-};
-exports.circumference = function (r) { 
-    return 2 * PI * r;
-};
-</code></pre><p>将这个文件存为circle.js,并新建一个app.js文件,并写入以下代码:</p>
-<pre><code>￼var circle = require(&#39;./circle.js&#39;);
-console.log(&#39;The area of a circle of radius 4 is&#39; + circle.area(4));
-</code></pre><p>可以看到模块调用也十分方便,<strong><code>只需要require需要调用的文件即可</code></strong>。</p>
-<p><strong><code>在require了这个文件之后,定义在exports对象上的方法便可以随意调用</code></strong>。Node.js将模块的定义和调用都封装得极其简单方便,从API对用户友好这一个角度来说,Node.js的模块机制是非常优秀的。</p>
-<p>例如把我们的服务器脚本放到一个叫做 start 的函数里，然后我们会导出这个函数。代码放在server.js文件：</p>
-<pre><code>var http = require(&quot;http&quot;);
-
-function start() {
-    function onRequest(request, response) {
-        console.log(&quot;Request received.&quot;);
-        response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/plain&quot;});
-        response.write(&quot;Hello World&quot;);
-        response.end();
-    }
-
-    http.createServer(onRequest).listen(8888);
-    console.log(&quot;Server has started.&quot;);
-}
-
-exports.start = start;
-</code></pre><p>这样，我们现在就可以创建我们的主文件 index.js 并在其中启动我们的HTTP了，虽然服务器的代码还在 server.js 中。创建 index.js 文件并写入以下内容：</p>
-<pre><code>var server = require(&quot;./server&quot;);
-
-server.start();
-</code></pre><h2 id="1-3-exports与module-exports的区别"><a href="#1-3-exports与module-exports的区别" class="headerlink" title="1.3 exports与module.exports的区别"></a>1.3 exports与module.exports的区别</h2><p>上一节已经使用了用来创建函数的exports对象，来导出一个模块（假设一个名为rocker.js的文件）：</p>
-<pre><code>exports.name = function() {
-    console.log(&#39;My name is Lemmy Kilmister&#39;);
-};
-</code></pre><p>然后你在另一个文件中调用：</p>
-<pre><code>var rocker = require(&#39;./rocker.js&#39;);
-rocker.name(); // &#39;My name is Lemmy Kilmister&#39;
-</code></pre><p>但是module.exports到底是个什么玩意儿? 它合法吗？</p>
-<p>令人吃惊的是module.exports是真实存在的东西。<strong><code>exports只是module.exports的辅助方法。你的模块最终返回module.exports给调用者，而不是exports。exports所做的事情是收集属性，如果module.exports当前没有任何属性的话，exports会把这些属性赋予module.exports。如果module.exports已经存在一些属性的话，那么exports中所用的东西都会被忽略</code></strong>。</p>
-<p>把下面的内容放到rocker.js:</p>
-<pre><code>module.exports = &#39;ROCK IT!&#39;;
-exports.name = function() {
-    console.log(&#39;My name is Lemmy Kilmister&#39;);
-};
-</code></pre><p>然后把下面的内容放到另一个文件中，执行它：</p>
-<pre><code>var rocker = require(&#39;./rocker.js&#39;);
-rocker.name(); // TypeError: Object ROCK IT! has no method &#39;name&#39;
-</code></pre><p><strong><code>rocker模块完全忽略了exports.name，然后返回了一个字符串&#39;ROCK IT!&#39;</code></strong>。通过上面的例子，你可能认识到你的模块不一定非得是模块实例（module instances）。<strong><code>你的模块可以是任何合法的JavaScript对象 - boolean，number，date，JSON， string，function，array和其他</code></strong>。你的模块可以是任何你赋予module.exports的值。<strong><code>如果你没有明确的给module.exports设置任何值，那么exports中的属性会被赋给module.exports中，然后并返回它</code></strong>。</p>
-<p><strong>在下面的情况下，你的模块是一个类：</strong></p>
-<pre><code>module.exports = function(name, age) {
-    this.name = name;
-    this.age = age;
-    this.about = function() {
-        console.log(this.name +&#39; is &#39;+ this.age +&#39; years old&#39;);
-    };
-};
-</code></pre><p>然后你应该这样使用它：</p>
-<pre><code>var Rocker = require(&#39;./rocker.js&#39;);
-var r = new Rocker(&#39;Ozzy&#39;, 62);
-r.about(); // Ozzy is 62 years old
-</code></pre><p><strong>在下面的情况下，你的模块是一个数组：</strong></p>
-<pre><code>module.exports = [&#39;Lemmy Kilmister&#39;, &#39;Ozzy Osbourne&#39;, &#39;Ronnie James Dio&#39;, &#39;Steven Tyler&#39;, &#39;Mick Jagger&#39;];
-</code></pre><p>然后你应该这样使用它：</p>
-<pre><code>var rocker = require(&#39;./rocker.js&#39;);
-console.log(&#39;Rockin in heaven: &#39; + rocker[2]); //Rockin in heaven: Ronnie James Dio
-</code></pre><p>现在你应该找到要点了 - <strong><code>如果你想要你的模块成为一个特别的对象类型，那么使用module.exports；如果你希望你的模块成为一个传统的模块实例（module instance），使用exports</code></strong>。</p>
-<p><strong>把属性赋予module.exports的结果与把属性赋予给exports是一样的。看下面这个例子：</strong></p>
-<pre><code>module.exports.name = function() {
-    console.log(&#39;My name is Lemmy Kilmister&#39;);
-};
-</code></pre><p>下面这个做的是一样的事情：</p>
-<pre><code>exports.name = function() {
-    console.log(&#39;My name is Lemmy Kilmister&#39;);
-};
-</code></pre><p>但是请注意，它们并不是一样的东西。<strong><code>就像我之前说的module.exports是真实存在的东西，exports只是它的辅助方法</code></strong>。话虽如此，<strong><code>exports还是推荐的对象，除非你想把你模块的对象类型从传统的模块实例（module instance）修改为其他的</code></strong>。</p>
-<h2 id="1-4-模块载入策略"><a href="#1-4-模块载入策略" class="headerlink" title="1.4 模块载入策略"></a>1.4 模块载入策略</h2><p>Node.js的模块分为两类,<strong><code>一类为原生(核心)模块,一类为文件模块</code></strong>。<strong><code>原生模块在Node.js源代码编译的时候编译进了二进制执行文件,加载的速度最快</code></strong>。另一类<strong><code>文件模块是动态加载的,加载速度比原生模块慢</code></strong>。但是<strong><code>Node.js对原生模块和文件模块都进行了缓存</code></strong>,于是在第二次require时,是不会有重复开销的。<strong><code>其中原生模块都被定义在lib这个目录下面,文件模块则不定性</code></strong>。</p>
-<pre><code>￼node app.js
-</code></pre><p><strong><code>由于通过命令行加载启动的文件几乎都为文件模块。</code></strong>我们从Node.js如何加载文件模块开始谈起。<strong><code>加载文件模块的工作,主要由原生模块module来实现和完成,该原生模块在启动时已经被加载,进程直接调用到runMain静态方法。</code></strong></p>
-<pre><code>￼// bootstrap main module.
-Module.runMain = function () {
-    // Load the main module--the command line arg
-    Module._load(process.argv[1], null, true); 
-};
-</code></pre><p>_load静态方法在分析文件名之后执行：</p>
-<pre><code>￼var module = new Module(id, parent);
-</code></pre><p>并根据文件路径缓存当前模块对象,该模块实例对象则根据文件名加载。</p>
-<pre><code>￼module.load(filename);
-</code></pre><p><strong><code>实际上在文件模块中,又分为3类模块</code></strong>。这三类文件模块以后缀来区分,Node.js会根据后缀名来决定加载方法：</p>
-<blockquote>
-<p><strong>.js。</strong>通过fs模块同步读取js文件并编译执行。</p>
-<p><strong>.node。</strong>通过C/C++进行编写的Addon。通过dlopen方法进行加载。 </p>
-<p><strong>.json。</strong>读取文件,调用JSON.parse解析加载。</p>
-</blockquote>
-<p>这里我们将详细描述js后缀的编译过程。<strong><code>Node.js在编译js文件的过程中实际完成的步骤有对js文件内容进行头尾包装</code></strong>。以app.js为例,包装之后的app.js将会变成以下形式:</p>
-<pre><code>￼(function (exports, require, module, __filename, __dirname) {
-    var circle = require(&#39;./circle.js&#39;);
-    console.log(&#39;The area of a circle of radius 4 is &#39; + circle.area(4));
-});
-</code></pre><p>这段代码会<strong><code>通过vm原生模块的runInThisContext方法执行(类似eval,只是具有明确上下文,不污染全局),返回为一个具体的function对象。最后传入module对象的exports,require方法,module,文件名,目录名作为实参并执行</code></strong>。</p>
-<p><strong><code>这就是为什么require并没有定义在app.js文件中,但是这个方法却存在的原因</code></strong>。从Node.js的API文档中<strong><code>可以看到还有__filename、__dirname、module、 exports几个没有定义但是却存在的变量</code></strong>。其中<strong>filename和</strong>dirname在查找文件路径的过程中分析得到后传入的。<strong><code>module变量是这个模块对象自身,exports是在module的构造函数中初始化的一个空对象({},而不是 null)</code></strong>。</p>
-<p>在这个主文件中,可以通过require方法去引入其余的模块。<strong><code>而其实这个require方法实际调用的就是load方法</code></strong>。</p>
-<p>load方法在载入、编译、缓存了module后,返回module的exports对象。<strong><code>这就是circle.js文件中只有定义在exports对象上的方法才能被外部调用的原因</code></strong>。</p>
-<p><strong>以上所描述的模块载入机制均定义在lib/module.js中。</strong></p>
-<h2 id="1-5-require方法中的文件查找策略"><a href="#1-5-require方法中的文件查找策略" class="headerlink" title="1.5 require方法中的文件查找策略"></a>1.5 require方法中的文件查找策略</h2><p>由于Node.js中存在<strong><code>4类模块(原生模块和3种文件模块)</code></strong>,尽管require方法极其简单,但是内部的加载却是十分复杂的,其加载优先级也各自不同。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/5420078-56ec0eeb8a18f5cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<ol>
-<li><p><strong>从文件模块缓存中加载</strong></p>
-<p>尽管原生模块与文件模块的优先级不同,但是<strong><code>都不会优先于从文件模块的缓存</code></strong>中加载已经存在的模块。</p>
-</li>
-<li><p><strong>从原生模块加载</strong></p>
-<p><strong><code>原生模块的优先级仅次于文件模块缓存的优先级。</code></strong>require方法在解析文件名之后,优先检查模块是否在原生模块列表中。以http模块为例,尽管在目录下存在一个http/http.js/http.node/http.json文件,require(“http”)都不会从这些文件中加载,而是从原生模块中加载。</p>
-<p><strong><code>原生模块也有一个缓存区,同样也是优先从缓存区加载。</code></strong>如果缓存区没有被加载过,则调用原生模块的加载方式进行加载和执行。</p>
-</li>
-<li><p><strong>从文件加载</strong></p>
-<p>当文件模块缓存中不存在,而且不是原生模块的时候,<strong>Node.js会解析require方法传入的参数,并从文件系统中加载实际的文件</strong>,加载过程中的包装和编译细节在前一节中已经介绍过,这里我们将详细描述查找文件模块的过程,其中, 也有一些细节值得知晓。</p>
-</li>
-</ol>
-<p><strong>require方法接受以下几种参数的传递:</strong></p>
-<blockquote>
-<p>http、fs、path等,原生模块。</p>
-<p>/mod或../mod,相对路径的文件模块。 </p>
-<p>/pathtomodule/mod,绝对路径的文件模块。 </p>
-<p>mod,非原生模块的文件模块。</p>
-</blockquote>
-<p>在进入路径查找之前有必要描述一下modulepath这个Node.js中的概念。<strong><code>对于每一个被加载的文件模块,创建这个模块对象的时候,这个模块便会有一个paths属性,其值根据当前文件的路径计算得到</code></strong>。我们创建modulepath.js这样一个文件,其内容为:</p>
-<pre><code>console.log(module.paths);
-</code></pre><p>我们将其放到任意一个目录中执行node modulepath.js命令,将得到以下的输出结果：</p>
-<pre><code>[
-    &#39;/home/jackson/research/node_modules&#39;,
-    &#39;/home/jackson/node_modules&#39;,
-    &#39;/home/node_modules&#39;,
-    &#39;/node_modules&#39;
-]
-</code></pre><p>可以看出module path的生成规则为：<strong><code>从当前文件目录开始查找node_modules目录;然后依次进入父目录,查找父目录下的node_modules目录;依次迭代, 直到根目录下的node_modules目录。</code></strong></p>
-<p>除此之外还有一个全局module path,<strong><code>是当前node执行文件的相对目录 (../../lib/node)</code>。<code>如果在环境变量中设置了HOME目录和NODE_PATH目录的话,整个路径还包含NODE_PATH和HOME目录下的.node_libraries 与.node_modules</code></strong>。其最终值大致如下:</p>
-<pre><code>[
-    NODE_PATH,
-    HOME/.node_modules,
-    HOME/.node_libraries,
-    execPath/../../lib/node
-]
-</code></pre><p><strong>下图是笔者从源代码中整理出来的整个文件查找流程：</strong></p>
-<p>![image](<a href="http://upload-images.jianshu.io/upload_images/5420078-1f19f476cf5e1d3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener">http://upload-images.jianshu.io/upload_images/5420078-1f19f476cf5e1d3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240</a></p>
-<p>简而言之,<strong><code>如果require绝对路径的文件,查找时不会去遍历每一个node_modules目录,其速度最快</code></strong>。其余流程如下:</p>
-<blockquote>
-<ol>
-<li>从modulepath数组中取出第一个目录作为查找基准。</li>
-</ol>
-<ol start="2">
-<li>直接从目录中查找该文件,如果存在,则结束查找。如果不存在,则进行下一条查找。</li>
-</ol>
-<ol start="3">
-<li>尝试添加.js、.json、.node后缀后查找,如果存在文件,则结束查找。如果不存在,则进行下一条。</li>
-</ol>
-<ol start="4">
-<li>尝试将require的参数作为一个包来进行查找,读取目录下的package.json文件,取得main参数指定的文件。</li>
-</ol>
-<ol start="5">
-<li>尝试查找该文件,如果存在,则结束查找。如果不存在,则进行第3条查找。</li>
-</ol>
-<ol start="6">
-<li>如果继续失败,则取出modulepath数组中的下一个目录作为基准查找,循环第1至5个步骤。</li>
-</ol>
-<ol start="7">
-<li>如果继续失败,循环第1至6个步骤,直到modulepath中的最后一个值。</li>
-</ol>
-<ol start="8">
-<li>如果仍然失败,则抛出异常。</li>
-</ol>
-</blockquote>
-<p>整个查找过程十分类似原型链的查找和作用域的查找。<code>所幸Node.js对路径查找实现了缓存机制</code>,否则由于每次判断路径都是同步阻塞式进行,会导致严重的性能消耗。</p>
-<h2 id="1-6-包结构"><a href="#1-6-包结构" class="headerlink" title="1.6 包结构"></a>1.6 包结构</h2><p>前面提到JavaScript缺少包结构。CommonJS致力于改变这种现状,于是定义了包的结构规范(<a href="http://wiki.commonjs.org/wiki/Packages/1.0" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Packages/1.0</a>)。<strong><code>而NPM的出现则是为了在CommonJS规范的基础上,实现解决包的安装卸载,依赖管理,版本管理等问题</code></strong>。require的查找机制明了之后,我们来看一下包的细节。</p>
-<p><strong>一个符合CommonJS规范的包应该是如下这种结构:</strong></p>
-<blockquote>
-<p>一个package.json文件应该存在于包顶级目录下。</p>
-<p>二进制文件应该包含在bin目录下。 </p>
-<p>JavaScript代码应该包含在lib目录下。 </p>
-<p>文档应该在doc目录下。 </p>
-<p>单元测试应该在test目录下。</p>
-</blockquote>
-<p>由上文的require的查找过程可以知道,<strong><code>Node.js在没有找到目标文件时,会将当前目录当作一个包来尝试加载,所以在package.json文件中最重要的一个字段就是main</code></strong>。而实际上,这一处是Node.js的扩展,标准定义中并不包含此字段, <strong><code>对于require,只需要main属性即可</code></strong>。但是在除此之外包需要接受安装、卸载、依赖管理,版本管理等流程,所以CommonJS为package.json文件定义了如下一些必须的字段:</p>
-<blockquote>
-<p>name : 包名,需要在NPM上是唯一的。不能带有空格。 </p>
-<p>description : 包简介。通常会显示在一些列表中。 </p>
-<p>version : 版本号。一个语义化的版本号(<a href="http://semver.org/" target="_blank" rel="noopener">http://semver.org/</a>),通常为x.y.z。该版本号十分重要,常常用于一些版本控制的场合。</p>
-<p>keywords : 关键字数组。用于NPM中的分类搜索。</p>
-<p>maintainers : 包维护者的数组。数组元素是一个包含name、email、web三个属性的JSON对象。</p>
-<p>contributors : 包贡献者的数组。第一个就是包的作者本人。在开源社区,如果提交的patch被merge进master分支的话,就应当加上这个贡献patch的人。格式包含name和email。</p>
-<pre><code> ￼&quot;contributors&quot;: [{
-         &quot;name&quot;: &quot;Jackson Tian&quot;, &quot;email&quot;: &quot;mail @gmail.com&quot;
-     }, {
-         &quot;name&quot;: &quot;fengmk2&quot;, &quot;email&quot;: &quot;mail2@gmail.com&quot;
- }],
-</code></pre><p>bugs : 一个可以提交bug的URL地址。可以是邮件地址 (mailto:mailxx@domain),也可以是网页地址(<a href="http://url" target="_blank" rel="noopener">http://url)。</a>%E3%80%82)</p>
-<p>licenses : 包所使用的许可证。例如:</p>
-<pre><code> ￼&quot;licenses&quot;: [{
-     &quot;type&quot;: &quot;GPLv2&quot;,
-     &quot;url&quot;: &quot;http://www.example.com/licenses/gpl.html&quot;,
- }]
-</code></pre><p>repositories : 托管源代码的地址数组。</p>
-<p>dependencies : 当前包需要的依赖。这个属性十分重要,NPM会通过这个属性,帮你自动加载依赖的包。</p>
-</blockquote>
-<p><strong>以下是Express框架的package.json文件,值得参考：</strong></p>
-<pre><code>{
-  &quot;_args&quot;: [
-    [
-      &quot;express@~4.13.1&quot;,
-      &quot;/Users/TaoBangren/git@osc/king-node&quot;
-    ]
-  ],
-  &quot;_from&quot;: &quot;express@&gt;=4.13.1 &lt;4.14.0&quot;,
-  &quot;_id&quot;: &quot;express@4.13.3&quot;,
-  &quot;_inCache&quot;: true,
-  &quot;_installable&quot;: true,
-  &quot;_location&quot;: &quot;/express&quot;,
-  &quot;_npmUser&quot;: {
-    &quot;email&quot;: &quot;doug@somethingdoug.com&quot;,
-    &quot;name&quot;: &quot;dougwilson&quot;
-  },
-  &quot;_npmVersion&quot;: &quot;1.4.28&quot;,
-  &quot;_phantomChildren&quot;: {},
-  &quot;_requested&quot;: {
-    &quot;name&quot;: &quot;express&quot;,
-    &quot;raw&quot;: &quot;express@~4.13.1&quot;,
-    &quot;rawSpec&quot;: &quot;~4.13.1&quot;,
-    &quot;scope&quot;: null,
-    &quot;spec&quot;: &quot;&gt;=4.13.1 &lt;4.14.0&quot;,
-    &quot;type&quot;: &quot;range&quot;
-  },
-  &quot;_requiredBy&quot;: [
-    &quot;/&quot;
-  ],
-  &quot;_resolved&quot;: &quot;https://registry.npmjs.org/express/-/express-4.13.3.tgz&quot;,
-  &quot;_shasum&quot;: &quot;ddb2f1fb4502bf33598d2b032b037960ca6c80a3&quot;,
-  &quot;_shrinkwrap&quot;: null,
-  &quot;_spec&quot;: &quot;express@~4.13.1&quot;,
-  &quot;_where&quot;: &quot;/Users/TaoBangren/git@osc/king-node&quot;,
-  &quot;author&quot;: {
-    &quot;email&quot;: &quot;tj@vision-media.ca&quot;,
-    &quot;name&quot;: &quot;TJ Holowaychuk&quot;
-  },
-  &quot;bugs&quot;: {
-    &quot;url&quot;: &quot;https://github.com/strongloop/express/issues&quot;
-  },
-  &quot;contributors&quot;: [
-    {
-      &quot;name&quot;: &quot;Aaron Heckmann&quot;,
-      &quot;email&quot;: &quot;aaron.heckmann+github@gmail.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Ciaran Jessup&quot;,
-      &quot;email&quot;: &quot;ciaranj@gmail.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Douglas Christopher Wilson&quot;,
-      &quot;email&quot;: &quot;doug@somethingdoug.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Guillermo Rauch&quot;,
-      &quot;email&quot;: &quot;rauchg@gmail.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Jonathan Ong&quot;,
-      &quot;email&quot;: &quot;me@jongleberry.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Roman Shtylman&quot;,
-      &quot;email&quot;: &quot;shtylman+expressjs@gmail.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Young Jae Sim&quot;,
-      &quot;email&quot;: &quot;hanul@hanul.me&quot;
-    }
-  ],
-  &quot;dependencies&quot;: {
-    &quot;accepts&quot;: &quot;~1.2.12&quot;,
-    &quot;array-flatten&quot;: &quot;1.1.1&quot;,
-    &quot;content-disposition&quot;: &quot;0.5.0&quot;,
-    &quot;content-type&quot;: &quot;~1.0.1&quot;,
-    &quot;cookie&quot;: &quot;0.1.3&quot;,
-    &quot;cookie-signature&quot;: &quot;1.0.6&quot;,
-    &quot;debug&quot;: &quot;~2.2.0&quot;,
-    &quot;depd&quot;: &quot;~1.0.1&quot;,
-    &quot;escape-html&quot;: &quot;1.0.2&quot;,
-    &quot;etag&quot;: &quot;~1.7.0&quot;,
-    &quot;finalhandler&quot;: &quot;0.4.0&quot;,
-    &quot;fresh&quot;: &quot;0.3.0&quot;,
-    &quot;merge-descriptors&quot;: &quot;1.0.0&quot;,
-    &quot;methods&quot;: &quot;~1.1.1&quot;,
-    &quot;on-finished&quot;: &quot;~2.3.0&quot;,
-    &quot;parseurl&quot;: &quot;~1.3.0&quot;,
-    &quot;path-to-regexp&quot;: &quot;0.1.7&quot;,
-    &quot;proxy-addr&quot;: &quot;~1.0.8&quot;,
-    &quot;qs&quot;: &quot;4.0.0&quot;,
-    &quot;range-parser&quot;: &quot;~1.0.2&quot;,
-    &quot;send&quot;: &quot;0.13.0&quot;,
-    &quot;serve-static&quot;: &quot;~1.10.0&quot;,
-    &quot;type-is&quot;: &quot;~1.6.6&quot;,
-    &quot;utils-merge&quot;: &quot;1.0.0&quot;,
-    &quot;vary&quot;: &quot;~1.0.1&quot;
-  },
-  &quot;description&quot;: &quot;Fast, unopinionated, minimalist web framework&quot;,
-  &quot;devDependencies&quot;: {
-    &quot;after&quot;: &quot;0.8.1&quot;,
-    &quot;body-parser&quot;: &quot;~1.13.3&quot;,
-    &quot;connect-redis&quot;: &quot;~2.4.1&quot;,
-    &quot;cookie-parser&quot;: &quot;~1.3.5&quot;,
-    &quot;cookie-session&quot;: &quot;~1.2.0&quot;,
-    &quot;ejs&quot;: &quot;2.3.3&quot;,
-    &quot;express-session&quot;: &quot;~1.11.3&quot;,
-    &quot;istanbul&quot;: &quot;0.3.17&quot;,
-    &quot;jade&quot;: &quot;~1.11.0&quot;,
-    &quot;marked&quot;: &quot;0.3.5&quot;,
-    &quot;method-override&quot;: &quot;~2.3.5&quot;,
-    &quot;mocha&quot;: &quot;2.2.5&quot;,
-    &quot;morgan&quot;: &quot;~1.6.1&quot;,
-    &quot;multiparty&quot;: &quot;~4.1.2&quot;,
-    &quot;should&quot;: &quot;7.0.2&quot;,
-    &quot;supertest&quot;: &quot;1.0.1&quot;,
-    &quot;vhost&quot;: &quot;~3.0.1&quot;
-  },
-  &quot;directories&quot;: {},
-  &quot;dist&quot;: {
-    &quot;shasum&quot;: &quot;ddb2f1fb4502bf33598d2b032b037960ca6c80a3&quot;,
-    &quot;tarball&quot;: &quot;http://registry.npmjs.org/express/-/express-4.13.3.tgz&quot;
-  },
-  &quot;engines&quot;: {
-    &quot;node&quot;: &quot;&gt;= 0.10.0&quot;
-  },
-  &quot;files&quot;: [
-    &quot;History.md&quot;,
-    &quot;LICENSE&quot;,
-    &quot;Readme.md&quot;,
-    &quot;index.js&quot;,
-    &quot;lib/&quot;
-  ],
-  &quot;gitHead&quot;: &quot;ef7ad681b245fba023843ce94f6bcb8e275bbb8e&quot;,
-  &quot;homepage&quot;: &quot;http://expressjs.com/&quot;,
-  &quot;keywords&quot;: [
-    &quot;api&quot;,
-    &quot;app&quot;,
-    &quot;express&quot;,
-    &quot;framework&quot;,
-    &quot;rest&quot;,
-    &quot;restful&quot;,
-    &quot;router&quot;,
-    &quot;sinatra&quot;,
-    &quot;web&quot;
-  ],
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;maintainers&quot;: [
-    {
-      &quot;name&quot;: &quot;tjholowaychuk&quot;,
-      &quot;email&quot;: &quot;tj@vision-media.ca&quot;
-    },
-    {
-      &quot;name&quot;: &quot;jongleberry&quot;,
-      &quot;email&quot;: &quot;jonathanrichardong@gmail.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;dougwilson&quot;,
-      &quot;email&quot;: &quot;doug@somethingdoug.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;rfeng&quot;,
-      &quot;email&quot;: &quot;enjoyjava@gmail.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;aredridel&quot;,
-      &quot;email&quot;: &quot;aredridel@dinhe.net&quot;
-    },
-    {
-      &quot;name&quot;: &quot;strongloop&quot;,
-      &quot;email&quot;: &quot;callback@strongloop.com&quot;
-    },
-    {
-      &quot;name&quot;: &quot;defunctzombie&quot;,
-      &quot;email&quot;: &quot;shtylman@gmail.com&quot;
-    }
-  ],
-  &quot;name&quot;: &quot;express&quot;,
-  &quot;optionalDependencies&quot;: {},
-  &quot;readme&quot;: &quot;ERROR: No README data found!&quot;,
-  &quot;repository&quot;: {
-    &quot;type&quot;: &quot;git&quot;,
-    &quot;url&quot;: &quot;git+https://github.com/strongloop/express.git&quot;
-  },
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/&quot;,
-    &quot;test-ci&quot;: &quot;istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/ test/acceptance/&quot;,
-    &quot;test-cov&quot;: &quot;istanbul cover node_modules/mocha/bin/_mocha -- --require test/support/env --reporter dot --check-leaks test/ test/acceptance/&quot;,
-    &quot;test-tap&quot;: &quot;mocha --require test/support/env --reporter tap --check-leaks test/ test/acceptance/&quot;
-  },
-  &quot;version&quot;: &quot;4.13.3&quot;
-}
-</code></pre><p>除了前面提到的几个必选字段外,我们还发现了一些额外的字段,如bin、 scripts、engines、devDependencies、author。<strong><code>这里可以重点提及一下scripts字段。包管理器(NPM)在对包进行安装或者卸载的时候需要进行一些编译或者清除的工作,scripts字段的对象指明了在进行操作时运行哪个文件,或者执行拿条命令</code></strong>。如下为一个较全面的scripts案例:</p>
-<pre><code>￼&quot;scripts&quot;: {
-    &quot;install&quot;: &quot;install.js&quot;,
-    &quot;uninstall&quot;: &quot;uninstall.js&quot;,
-    &quot;build&quot;: &quot;build.js&quot;,
-    &quot;doc&quot;: &quot;make-doc.js&quot;,
-    &quot;test&quot;: &quot;test.js&quot;
-}
-</code></pre><p>如果你完善了自己的JavaScript库,使之实现了CommonJS的包规范,那么你可以通过NPM来发布自己的包,为NPM上5000+的基础上再加一个模块。</p>
-<pre><code>￼npm publish &lt;folder&gt;
-</code></pre><p>命令十分简单。但是在这之前你需要通过npm adduser命令在NPM上注册一个帐户,以便后续包的维护。NPM会分析该文件夹下的package.json文件,然后上传目录到NPM的站点上。用户在使用你的包时,也十分简明:</p>
-<pre><code>￼npm install &lt;package&gt;
-</code></pre><p>甚至对于NPM无法安装的包(因为某些奇怪的网络原因),可以通过github手动下载其稳定版本,解压之后通过以下命令进行安装:</p>
-<pre><code>￼npm install &lt;package.json folder&gt;
-</code></pre><p><strong><code>只需将路径指向package.json存在的目录即可</code></strong>。然后在代码中require(‘package’)即可使用。</p>
-<p>Node.js中的require内部流程之复杂,而方法调用之简单,实在值得叹为观止。更多NPM使用技巧可以参见<a href="http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/msh-using-npm-manage-node.js-dependence</a>。</p>
-<h1 id="2-Node-js模块与前端模块的异同"><a href="#2-Node-js模块与前端模块的异同" class="headerlink" title="2 Node.js模块与前端模块的异同"></a>2 Node.js模块与前端模块的异同</h1><p>通常有一些模块可以同时适用于前后端,<strong><code>但是在浏览器端通过script标签的载入JavaScript文件的方式与Node.js不同</code></strong>。</p>
-<blockquote>
-<p>Node.js在载入到最终的执行中,进行了包装,<strong><code>使得每个文件中的变量天然的形成在一个闭包之中,不会污染全局变量</code></strong>。</p>
-<p><strong><code>浏览器端则通常是裸露的JavaScript代码片段</code></strong>。</p>
-</blockquote>
-<p>所以为了解决前后端一致性的问题,<strong><code>类库开发者需要将类库代码包装在一个闭包内</code></strong>。以下代码片段<strong><code>抽取自著名类库underscore的定义方式</code></strong>。</p>
-<pre><code>￼(function () {
-    // Establish the root object, `window` in the browser, or `global` on the server.
-    var root = this;
-    var _ = function (obj) {
-        return new wrapper(obj);   
-    };
-    if (typeof exports !== &#39;undefined&#39;) {
-        if (typeof module !== &#39;undefined&#39; &amp;&amp; module.exports) {
-            exports = module.exports = _;
-        }
-        exports._ = _;
-    } else if (typeof define === &#39;function&#39; &amp;&amp; define.amd) {
-        // Register as a named module with AMD.
-        define(&#39;underscore&#39;, function () {
-            return _;
-        });    
-    } else {
-        root[&#39;_&#39;] = _;        
-    }
-}).call(this);
-</code></pre><p>首先,<strong><code>它通过function定义构建了一个闭包,将this作为上下文对象直接call调用</code></strong>,以避免内部变量污染到全局作用域。<strong><code>进而通过判断exports是否存在来决定将局部变量_绑定给exports,并且根据define变量是否存在</code></strong>,作为处理在实现了AMD规范环境(<a href="http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition" target="_blank" rel="noopener">http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition</a>)下的使用案例。<strong><code>仅只当处于浏览器的环境中的时候,this指向的是全局对象(window对象),才将_变量赋在全局对象上,作为一个全局对象的方法导出,以供外部调用</code></strong>。</p>
-<p><strong>所以在设计前后端通用的JavaScript类库时,都有着以下类似的判断:</strong></p>
-<pre><code>￼if (typeof exports !== &quot;undefined&quot;) {
-    exports.EventProxy = EventProxy;
-} else {
-    this.EventProxy = EventProxy;
-}
-</code></pre><p>即,<strong><code>如果exports对象存在,则将局部变量挂载在exports对象上,如果不存在,则挂载在全局对象上</code></strong>。</p>
-<p>转自作者：陶邦仁<br>链接：<a href="http://www.jianshu.com/p/3cfa31ae5631" target="_blank" rel="noopener">http://www.jianshu.com/p/3cfa31ae5631</a><br>來源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2470,7 +2074,7 @@ Module.runMain = function () {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2492,7 +2096,7 @@ Module.runMain = function () {
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
