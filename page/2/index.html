@@ -302,36 +302,18 @@
       
         
           
-            <blockquote>
-<p>二次请求一般是指发送正确请求之前，额外发送了一次OPTIONS请求。</p>
-</blockquote>
-<p>OPTIONS请求，也叫预检请求和嗅探请求，目的是为了检测要发送的真正请求是否是服务器允许的请求，如果服务器不允许，则会停止发送真正的请求。<br>产生OPTIONS请求的原因，首先是这个请求是<code>跨域请求</code>，因为只有在<code>CORS跨域资源共享</code>场景下，服务器http header中会有一个叫“Access-Control-Allow-Origin”的字段，该字段规定了指定的客户端来源才能对服务器资源进行访问，那么在这个来源之内的所有请求，都是CORS跨域资源共享模式，但是在这个模式下，服务器也不是完全相信客户端的，对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），即非简单请求，浏览器必须首先使用 OPTIONS 方法发起一个预检请求，如果预检不通过，服务器还是会拒绝浏览器的请求。</p>
-<blockquote>
-<p>非简单请求定义：</p>
-<ol>
-<li>使用除GET、HEAD、POST方法之外的其他请求类型如PUT DELETE 等。</li>
-<li>人为设置了下列列表之外的其他header字段：</li>
-</ol>
-<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>Content-Type （application/x-www-form-urlencoded、multipart/form-data、text/plain之外）</li>
-<li>DPR</li>
-<li>Downlink</li>
-<li>Save-Data</li>
-<li>Viewport-Width</li>
-<li>Width</li>
-</ul>
-</blockquote>
-<p>若发送了非简单请求，则会产生嗅探请求。<br>解决方式：</p>
-<ol>
-<li>可以将发送的请求改为简单请求</li>
-<li>或者将客户端与服务端部署在同一个ip地址下或者使用请求代理让其不产生跨域</li>
-<li>或者在服务器CORS header中的Access-Control-Allow-Methods字段中，增加对OPTIONS的支持，后者只会让所有OPTIONS请求通过，而不会去除OPTIONS请求。</li>
-</ol>
-
           
+二次请求一般是指发送正确请求之前，额外发送了一次OPTIONS请求。
+
+OPTIONS请求，也叫预检请求和嗅探请求，目的是为了检测要发送的真正请求是否是服务器允许的请求，如果服务器不允许，则会停止发送真正的请求。产生OPTIONS请求的原因，首先是这个请求是跨域请求，因为只有在CORS跨域资源共享场景下，服务器http header中会有一个叫“Access-Control-Allow-Orig
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/30/ajax产生二次请求原因及解决方式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -449,79 +431,30 @@
       
         
           
-            <blockquote>
-<p>观察者模式</p>
-</blockquote>
-<p>观察者模式有几个要素:</p>
-<ol>
-<li>需要将需要观察的对象存放起来</li>
-<li>在需要的地方触发该观察者</li>
-<li>第三观察者需要分类，同一类的观察者可监听同一个事件，监听被触发时，所有的观察者都需要被通知到。</li>
-</ol>
-<p>具体实现一个观察者模式如下：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">var</span> Listen <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 注册观察者</span>
-Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>on <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> cb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token punctuation">[</span>cb<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 触发观察者</span>
-Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>emit <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>listener <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-            listener<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 删除观察者</span>
-Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>remove <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-w<span class="token punctuation">.</span>Listen <span class="token operator">=</span> Listen<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span>
-
-
-</code></pre>
-<p>上面代码里使用了es6 的Map对象来存储观察者。注册观察者的时候，每收到一个观察者注册，就按类型将他们分类存放，同一类的观察者存储在一个数组中。触发观察者的代码中，收到触发的命令后，找出触发的类型，调用所有已注册的同类的观察者。删除观察者，就将注册的所有观察者删除，return this方便链式调用</p>
-<p>调用示例如下：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 1 ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 2 ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hover 1 ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click again ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">// clicked 1 ...</span>
-<span class="token comment" spellcheck="true">// clicked 2 ...</span>
-<span class="token comment" spellcheck="true">// hover 1 ...</span>
-<span class="token comment" spellcheck="true">// click again ...</span>
-</code></pre>
-<p>至此，就实现了一个简单的观察者模式</p>
-
           
+观察者模式
+
+观察者模式有几个要素:
+
+需要将需要观察的对象存放起来
+在需要的地方触发该观察者
+第三观察者需要分类，同一类的观察者可监听同一个事件，监听被触发时，所有的观察者都需要被通知到。
+
+具体实现一个观察者模式如下：
+;(function(w) {
+var Listen = function () {
+    this.pool = new Map();
+}
+// 注册观察者
+Listen
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/30/js观察者模式如何实现/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -639,83 +572,28 @@ w<span class="token punctuation">.</span>Listen <span class="token operator">=</
       
         
           
-            <blockquote>
-<p>js 手动实现自定义事件监听</p>
-</blockquote>
-<h3 id="自定义事件监听，其实也是观察者模式的一种"><a href="#自定义事件监听，其实也是观察者模式的一种" class="headerlink" title="自定义事件监听，其实也是观察者模式的一种"></a>自定义事件监听，其实也是观察者模式的一种</h3><p>我们在jquery中经常用</p>
-<pre class=" language-javascript"><code class="language-javascript">dom<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<p>来注册事件监听，那么他具体是怎么实现的呢，其实背后就是观察者模式的一种实现。</p>
-<p>观察者模式，有几个要素:</p>
-<ol>
-<li><p>第一需要将需要观察的对象存放起来。</p>
-</li>
-<li><p>第二需要在需要的地方调用该观察者。</p>
-</li>
-<li><p>第三观察者需要分类，同一类的观察者可监听同一个事件，事件触发时，所有的观察者都需要被通知到。</p>
-</li>
-</ol>
-<p>下面来具体实现一个观察者模式。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">var</span> Listen <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>pool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 注册观察者</span>
-Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>on <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> cb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token punctuation">[</span>cb<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 触发观察者</span>
-Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>emit <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>listener <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-            listener<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 删除观察者</span>
-Listen<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>remove <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'undefined type:'</span><span class="token punctuation">,</span> type<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-w<span class="token punctuation">.</span>Listen <span class="token operator">=</span> Listen<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span>
-
-
-
-</code></pre>
-<p>上面代码里使用了es6 的Map对象来存储观察者。注册观察者的时候，每收到一个观察者注册，就按类型将他们分类存放，同一类的观察者存储在一个数组中。触发观察者的代码中，收到触发的命令后，找出触发的类型，调用所有已注册的同类的观察者。删除观察者，就将注册的所有观察者删除，return this方便链式调用。</p>
-<p>调用示例如下：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> listener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 1 ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicked 2 ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hover 1 ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'hover'</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'click again ...'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    listener<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span>
-
-</code></pre>
-<h3 id="如上便用观察者模式实现了一个事件监听机制。"><a href="#如上便用观察者模式实现了一个事件监听机制。" class="headerlink" title="如上便用观察者模式实现了一个事件监听机制。"></a>如上便用观察者模式实现了一个事件监听机制。</h3><p>源代码见github<a href="https://github.com/zlx362211854/listener" target="_blank" rel="noopener">链接</a></p>
-
           
+js 手动实现自定义事件监听
+
+自定义事件监听，其实也是观察者模式的一种我们在jquery中经常用
+dom.on('click', () => {})
+
+来注册事件监听，那么他具体是怎么实现的呢，其实背后就是观察者模式的一种实现。
+观察者模式，有几个要素:
+
+第一需要将需要观察的对象存放起来。
+
+第二需要在需要的地方调用该观察者。
+
+第三观察者需要分类，同一类的观察者可监听同一个事件，事件触发时
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/23/js手动实现自定义事件监听/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -833,54 +711,29 @@ w<span class="token punctuation">.</span>Listen <span class="token operator">=</
       
         
           
-            <blockquote>
-<p>闭包的那些事儿</p>
-</blockquote>
-<ul>
-<li><p>怎么写一个闭包<br>闭包是什么就不解释了，直接写一个闭包函数：</p>
-<pre><code>var f = function() {
+          
+闭包的那些事儿
+
+
+怎么写一个闭包闭包是什么就不解释了，直接写一个闭包函数：
+var f = function() {
   var num = 0;
   return function() {
     return num += 1;
   };
 }
-</code></pre><p>js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() {</p>
-<pre><code>return num += 1;
-</code></pre><p>  };`</p>
-<p>js中的作用域，都是一层一层向上找的，在f内部函数里面，他的num向上找到父函数的作用域。<br>现在，我们执行一下：</p>
-<pre><code>f()()
-// 1
-f()()
-// 1
-????? 感觉 不太对？为什么num没有自增呢？？
-</code></pre></li>
-<li>内存回收机制<br>为什么上面执行结果不太对，因为执行<code>f()()</code>后，f函数已经执行完毕了，没有其他资源引用f，ta会被立即释放，也就是说，<code>f()()</code>执行完后，立即就释放了。<br>如何才不释放呢？</li>
-</ul>
-<pre><code>// 创建f的引用
-var fn = f();
-fn()
-// 1
-fn()
-// 2
-fn()
-// 3
-</code></pre><p>这下就对了，num成了私有变量，f拥有了私有作用域。</p>
-<p>完了吗？<br>f有了fn的引用，内存一直得不到释放，咋办呢？这样的函数多了是不是会造成内存溢出？<br>手动释放一下：</p>
-<pre><code>var fn = f();
-fn()
-// 1
-fn()
-// 2
-fn()
-// 3
-// 手动释放f的引用
-fn = null
-// f的引用fn被释放了，现在f的作用域也被释放了。num再次归零了。
-var fn = f()
-fn()
-// 1
-</code></pre>
-          
+js中，函数是一等公民，定义一个函数f，它返回另一个可执行函数`function() {
+return num += 1;
+  };`
+js中的作用
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/25/js闭包和内存释放/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -998,25 +851,21 @@ fn()
       
         
           
-            <blockquote>
-<p>在git项目中我们提交代码的时候经常遇到这样的报错：</p>
-</blockquote>
-<pre><code>$ git commit -am&#39;some messsage&#39;
+          
+在git项目中我们提交代码的时候经常遇到这样的报错：
+
+$ git commit -am&#39;some messsage&#39;
 fatal: Unable to create &#39;/XXXXXX/.git/index.lock&#39;: File exists.
 
-If no other git process is currently running, this probably means a
-git process crashed in this repository earlier. Make sure no other git
-process is running and remove the file manually to continue.
-
-</code></pre><p>这时候提交会失败。<br>解决办法是，到.git目录下，删除index.lock文件，就能正常提交了。<br>那index.lock有什么作用呢？<br>官方是这么说的：</p>
-<blockquote>
-<p>在进行某些比较费时的git操作时自动生成，操作结束后自动删除，相当于一个锁定文件，目的在于防止对一个目录同时进行多个操作。有时强制关闭进行中的git操作，这个文件没有被自动删除，之后你就无法进行其他操作，必须手动删除。</p>
-</blockquote>
-<p>通俗讲，就是我们在commit的时候，会自动生成一个index.lock文件，操作完成后，会自动删除。如果在commit过程中，产生了意外，比如手动退出了，电脑死机了，断网了等等，导致操作失败，没有自动删除index.lock文件，那么下次再commit的时候，系统不知道你的index.lock没删除，它会傻傻的再去创建index.lock文件，这时候，发现已经目录下已经有一个index.lock文件了，懵逼了，不知道咋处理了，所以抛错给你：</p>
-<pre><code>fatal: Unable to create &#39;/XXXXXX/.git/index.lock&#39;: File exists.
-</code></pre><p>字面意思就是，创建index.lock文件失败，因为File exists：文件已存在。<br>这就是这个报错的来源。</p>
-
-          
+If no other git process is currently running, this probabl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/25/git目录中index-lock的作用以及它引发的报错/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1156,39 +1005,30 @@ process is running and remove the file manually to continue.
       
         
           
-            <blockquote>
-<p>python函数传参跟js很像：</p>
-</blockquote>
-<ul>
-<li>直接传参方式：</li>
-</ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> func <span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"name :"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"age: "</span> <span class="token operator">+</span> age<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-func<span class="token punctuation">(</span><span class="token string">'zlx'</span><span class="token punctuation">,</span> <span class="token string">'18'</span><span class="token punctuation">)</span>
-</code></pre>
-<p>形参实参按顺序一一对应，跟js一样</p>
-<ul>
-<li><p>指定传参</p>
-<pre><code>def func (name, age) {
-print(&quot;name :&quot; + name + &quot;age: &quot; + age)
-}
-func(name=&#39;zlx&#39;, age=&#39;18&#39;)
-</code></pre><p>参数顺序不用一一对应，js中也有类似的方式，通过obj实现：</p>
-<pre><code>var func ({name, age}) {
-console.log(&quot;name :&quot; + name + &quot;age: &quot; + age)
-}
-func({name: &#39;zlx&#39;, age: &#39;18&#39;})
-</code></pre><p>参数使用了解构赋值</p>
-</li>
-<li><p>参数默认值：<br><code>`</code><br>def func (name, age = 18) {<br>print(“name :” + name + “age: “ + age)<br>}<br>func(name=’zlx’)</p>
-</li>
-</ul>
-<p>// -&gt; name: zlx age: 18</p>
-<pre><code>js中实现也类似：
-</code></pre><p>var func (name, age = 18) {<br>console.log(“name :” + name + “age: “ + age)<br>}<br>func(‘zlx’)<br>// -&gt; name: zlx age: 18<br><code>`</code></p>
-
           
+python函数传参跟js很像：
+
+
+直接传参方式：
+
+def func (name, age) {
+print("name :" + name + "age: " + age)
+}
+func('zlx', '18')
+
+形参实参按顺序一一对应，跟js一样
+
+指定传参
+def func (name, age) {
+print(&quot;name :&quot; + name + &quot;a
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/20/python函数传参方式/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1306,43 +1146,24 @@ func({name: &#39;zlx&#39;, age: &#39;18&#39;})
       
         
           
-            <blockquote>
-<p>今天在一个npm项目中需要添加一个运行脚本至bin字段</p>
-</blockquote>
-<p>添加后大概张这样：<br><img src="https://upload-images.jianshu.io/upload_images/5420078-afb666c298f7cba3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>这样，在命令行中直接输入<code>socketev</code>就会执行后面的文件。<br>添加后执行却报错：</p>
-<pre><code>zlxdeMacBook-Pro:socketProxy zlx$ socketDev
--bash: socketDev: command not found
-</code></pre><p>应该是环境没有这个脚本，查一下百度：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5420078-11033cf6f4363e44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>难道要重新install一次？<br>重新install一次之后<br>还是报上面的错。<br>查看了很多搜索结果，都是这一句话：</p>
-<p>bin项用来指定各个内部命令对应的可执行文件的位置</p>
-<pre><code>&quot;bin&quot;: {
-   &quot;someTool&quot;: &quot;./bin/someTools.js&quot;
-}
-</code></pre><p>上面代码指定，someTool命令对应的可执行文件为 bin 子目录下的 someTools.js。Npm会寻找这个文件，在 node_modules/.bin/目录下建立符号链接</p>
-<p>都是csdn上面互相抄袭的东西，一点用没有。</p>
-<p>果断google：<br>第一页就有结果：<br><img src="https://upload-images.jianshu.io/upload_images/5420078-4fcf0112239cfc36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>好吧，执行一下<code>npm link</code></p>
-<pre><code>zlxdeMacBook-Pro:socketProxy zlx$ socketDev
-[2019-03-20 15:41:54.273] [INFO] app - ----
-==&gt; 🌎  SERVER is running on port 5000
-</code></pre><p>执行成功了。<br>总结：<strong><em>远离百度</em></strong><br>最后看一下<code>npm link</code>的作用</p>
-<pre><code>zlxdeMacBook-Pro:socketProxy zlx$ npm link
-npm WARN socket-server@1.0.0 No description
-npm WARN socket-server@1.0.0 No repository field.
-
-up to date in 1.925s
-/usr/local/bin/socketDev -&gt; /usr/local/lib/node_modules/socket-server/bin/shell.js
-/usr/local/lib/node_modules/socket-server -&gt; /workspace/socketProxy
-
-</code></pre><ol>
-<li>先在全局npm环境中创建了一个socketDev命令</li>
-<li>再在全局环境创建一个socket-serve包，也就是当前我们npm包的name字段命名的包。<br>3.再将全局socket-server 包的命令执行环境指向当前目录/workspace/socketProxy</li>
-</ol>
-<p>这样，就在全局环境添加了一个可执行命令。</p>
-
           
+今天在一个npm项目中需要添加一个运行脚本至bin字段
+
+添加后大概张这样：
+这样，在命令行中直接输入socketev就会执行后面的文件。添加后执行却报错：
+zlxdeMacBook-Pro:socketProxy zlx$ socketDev
+-bash: socketDev: command not found
+应该是环境没有这个脚本，查一下百度：
+
+难道要重新install一次？重新ins
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/20/字段的用法/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1460,82 +1281,23 @@ up to date in 1.925s
       
         
           
-            <blockquote>
-<p>mongodb中连表查询很方便，mongoose中的populate可以很方便的实现</p>
-</blockquote>
-<p>如下：我们有两个Model，User和File，User的avatar属性是关联着File的id:</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> User <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">Schema</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  role<span class="token punctuation">:</span> String<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 角色</span>
-  name<span class="token punctuation">:</span> String<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// name</span>
-  pass<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
-  avatar<span class="token punctuation">:</span> <span class="token punctuation">{</span>type<span class="token punctuation">:</span> ObjectId<span class="token punctuation">,</span> ref<span class="token punctuation">:</span> <span class="token string">'File'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// avatar关联着File中的id -> file id</span>
-  type<span class="token punctuation">:</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> String <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  deleted<span class="token punctuation">:</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span> <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  create_time<span class="token punctuation">:</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> Number<span class="token punctuation">,</span> <span class="token keyword">default</span><span class="token punctuation">:</span> getTime <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  update_time<span class="token punctuation">:</span> Number<span class="token punctuation">,</span>
-  correlate<span class="token punctuation">:</span> ObjectId
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// File中有name，path等属性</span>
-<span class="token keyword">var</span> FileSchema <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">Schema</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  name         <span class="token punctuation">:</span> String<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//名称</span>
-  original_name <span class="token punctuation">:</span> String<span class="token punctuation">,</span>
-  path         <span class="token punctuation">:</span> String<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//路径</span>
-  size         <span class="token punctuation">:</span> Number<span class="token punctuation">,</span>
-  type         <span class="token punctuation">:</span> String<span class="token punctuation">,</span>
-  creator      <span class="token punctuation">:</span> <span class="token punctuation">{</span>type<span class="token punctuation">:</span> ObjectId<span class="token punctuation">,</span> ref<span class="token punctuation">:</span> <span class="token string">'Admin'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  deleted      <span class="token punctuation">:</span> <span class="token punctuation">{</span>type<span class="token punctuation">:</span> Boolean<span class="token punctuation">,</span> <span class="token keyword">default</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  create_time  <span class="token punctuation">:</span> <span class="token punctuation">{</span>type<span class="token punctuation">:</span> Date<span class="token punctuation">,</span> <span class="token keyword">default</span><span class="token punctuation">:</span> Date<span class="token punctuation">.</span>now<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-</code></pre>
-<p>现在，这两张表是关联表，查询User的时候如何关联查询出File中的所有属性呢？<br>如下是一个查询接口的实现，根据user name查询出user和关联的File所有数据：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> User <span class="token operator">=</span> mongoose<span class="token punctuation">.</span><span class="token function">model</span><span class="token punctuation">(</span><span class="token string">'User'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> User<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>name<span class="token punctuation">:</span> args<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">populate</span><span class="token punctuation">(</span><span class="token string">'avatar'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    code<span class="token punctuation">:</span> code<span class="token punctuation">.</span>success<span class="token punctuation">,</span>
-    data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      user<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        name<span class="token punctuation">:</span> user<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
-        role<span class="token punctuation">:</span> user<span class="token punctuation">.</span>role<span class="token punctuation">,</span>
-        create_time<span class="token punctuation">:</span> user<span class="token punctuation">.</span>create_time<span class="token punctuation">,</span>
-        _id<span class="token punctuation">:</span> user<span class="token punctuation">.</span>_id<span class="token punctuation">,</span>
-        avatar<span class="token punctuation">:</span> user<span class="token punctuation">.</span>avatar
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
-<p>返回数据如下：</p>
-<pre class=" language-javascript"><code class="language-javascript">
-<span class="token punctuation">{</span>
-    <span class="token string">"code"</span><span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
-    <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">"user"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"zlx"</span><span class="token punctuation">,</span>
-            <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">1552707102552</span><span class="token punctuation">,</span>
-            <span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token string">"5c8c6e1e453a08c319b8ef5a"</span><span class="token punctuation">,</span>
-            <span class="token string">"avatar"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                <span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token string">"5c8c6e7adcc817cd1956afd8"</span><span class="token punctuation">,</span>
-                <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"1552707194739-3hgslxkl.jpeg"</span><span class="token punctuation">,</span>
-                <span class="token string">"path"</span><span class="token punctuation">:</span> <span class="token string">"/workspace/DESserver/api/uploads/1552707194739-3hgslxkl.jpeg"</span><span class="token punctuation">,</span>
-                <span class="token string">"size"</span><span class="token punctuation">:</span> <span class="token number">138229</span><span class="token punctuation">,</span>
-                <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"image/jpeg"</span><span class="token punctuation">,</span>
-                <span class="token string">"original_name"</span><span class="token punctuation">:</span> <span class="token string">"451551230300_.pic_hd.jpg"</span><span class="token punctuation">,</span>
-                <span class="token string">"__v"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-                <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token string">"2019-03-16T03:33:14.742Z"</span><span class="token punctuation">,</span>
-                <span class="token string">"deleted"</span><span class="token punctuation">:</span> <span class="token boolean">false</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-</code></pre>
-<p>可见，File通过连表查询populate查询出了File所有的数据。<br>populate函数还有其他参数：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token function">populate</span><span class="token punctuation">(</span><span class="token string">'avatar'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
-<p>表示只返回File的name属性，不返回其他属性。</p>
-
           
+mongodb中连表查询很方便，mongoose中的populate可以很方便的实现
+
+如下：我们有两个Model，User和File，User的avatar属性是关联着File的id:
+const User = mongoose.Schema({
+  role: String, // 角色
+  name: String, // name
+  pass: String,
+  avatar: {t
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/20/连表查询populate用法/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1675,65 +1437,22 @@ up to date in 1.925s
       
         
           
-            <h2 id="Vuejs-使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。"><a href="#Vuejs-使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。" class="headerlink" title="Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。"></a>Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。</h2><blockquote>
-<p>use</p>
-</blockquote>
-<pre><code>var vm = new V({
+          Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。
+use
+
+var vm = new V({
         el: &#39;#container&#39;,
         template: &#39;&lt;div&gt;{{name}}: {{age}}&lt;/div&gt;&#39;,
         data: {
-            name: &#39;zlx&#39;,
-            age: &#39;16&#39;
-        }
-    });
-</code></pre><blockquote>
-<p>change vm </p>
-</blockquote>
-<pre><code> vm.name = &#39;hsq&#39;;
- vm.age = &#39;14&#39;;
-</code></pre><h5 id="then-the-template-will-change-immediately"><a href="#then-the-template-will-change-immediately" class="headerlink" title="then the template will change immediately;"></a>then the template will change immediately;</h5><blockquote>
-<p>V.js is simple</p>
-</blockquote>
-<pre><code>+(function(w) {
-  var V = function(options) {
-    let { data, template, el } = options || {};
-    const context = this;
-    this.node = document.querySelector(el);
-    this.template = template;
-    // 为每个属性添加get set方法
-    Object.keys(data).forEach(function(key) {
-      context.define(context, key, data[key]);
-    });
-    // 初始化时处理模版
-    this.renderTemplate(this.node, template);
-  };
-  var prop = {
-    define: function(obj, key, val) {
-      Object.defineProperty(obj, key, {
-        get() {
-          return val;
-        },
-        set(new_val) {
-          // 通知更新
-          val = new_val;
-          // 更新模版
-          this.renderTemplate(this.node, this.template);
-        }
-      });
-    },
-    renderTemplate: function(node, template) {
-      // 处理模版
-      template = template.replace(/{{name}}/, this.name);
-      template = template.replace(&quot;{{age}}&quot;, this.age);
-      // 渲染模版
-      node.innerHTML = template;
-    }
-  };
-  V.prototype = prop;
-  w.V = V;
-})(window);
-</code></pre>
-          
+            na
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/20/vuejs数据绑定原理/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1873,84 +1592,19 @@ up to date in 1.925s
       
         
           
-            <h2 id="react-表单-双向绑定的实现"><a href="#react-表单-双向绑定的实现" class="headerlink" title="react 表单  双向绑定的实现"></a>react 表单  双向绑定的实现</h2><p><a href="https://github.com/zlx362211854/React-Input" target="_blank" rel="noopener">view on github</a></p>
-<blockquote>
-<p>在 react 开发中，经常遇到 input 输入框改变值的时候，要定义一个函数，该函数内部执行 setState 的操作，才能改变 input 的值。如果表单元素多了以后，就会定义很多的这种函数，使代码变得冗余。下面在 react 中实现一个类似于 vue 的表单双向绑定的逻辑。</p>
-</blockquote>
-<h3 id="修改表单的值，只需如下操作："><a href="#修改表单的值，只需如下操作：" class="headerlink" title="修改表单的值，只需如下操作："></a>修改表单的值，只需如下操作：</h3><pre><code>this.state.inputval = &quot;qqqq&quot;
-</code></pre><h3 id="而且不用关心表单-onchange-的事件逻辑，表单-onchange-时会自动更新-state-中的值。"><a href="#而且不用关心表单-onchange-的事件逻辑，表单-onchange-时会自动更新-state-中的值。" class="headerlink" title="而且不用关心表单 onchange 的事件逻辑，表单 onchange 时会自动更新 state 中的值。"></a>而且不用关心表单 onchange 的事件逻辑，表单 onchange 时会自动更新 state 中的值。</h3><blockquote>
-<p>核心代码实现如下：</p>
-</blockquote>
-<pre><code>import React from &quot;react&quot;;
-const InputCteator = function(options) {
-    const {stateKey} = options;
-    const {inputval = &#39;&#39;, label} = this.state;
-    const context = this;
-    // 监听get，set方法，set时自动更新state
-    Object.defineProperty(this.state, stateKey, {
-        get() {
-            return inputval;
-        },
-        set(val) {
-            context.setState({[stateKey]: val});
-        }
-    });
-    const onInputChange = e =&gt; {
-      const val = e.target.value;
-      this.setState({ [stateKey]: val });
-    };
-    const content = (
-        &lt;input
-            type=&quot;text&quot;
-            value={inputval}
-            onChange={onInputChange}
-            name={label}
-        /&gt;
-    )
-    return content;
-}
-export default InputCteator;
-</code></pre><blockquote>
-<p>使用如下：</p>
-</blockquote>
-<pre><code>import InputCteator from &quot;./lib/index&quot;;
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      inputval: &quot;www&quot;,
-    };
-  }
-  render() {
-    return (
-      &lt;div className=&quot;App&quot;&gt;
-        &lt;div&gt;
-          &lt;label htmlFor=&quot;example&quot;&gt;示例&lt;/label&gt;
-          {InputCteator.call(this, {
-            stateKey: &quot;inputval&quot;,
-            label: &quot;example&quot;
-          })}
-          &lt;p&gt;{this.state.inputval}&lt;/p&gt;
+          react 表单  双向绑定的实现view on github
 
-          &lt;button 
-          onClick={() =&gt; (this.state.inputval =&quot;qqqq&quot;)
-            }&gt;
-            qqq
-            &lt;/button&gt;
-          &lt;button
-          onClick={() =&gt; (this.state.inputval =&quot;eee&quot;)}&gt;
-            eee
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    );
-  }
-}
-</code></pre><blockquote>
-<p>这样巧妙运用get，set方法来实现react表单双向绑定，就会在开发者简化很多代码。</p>
-</blockquote>
+在 react 开发中，经常遇到 input 输入框改变值的时候，要定义一个函数，该函数内部执行 setState 的操作，才能改变 input 的值。如果表单元素多了以后，就会定义很多的这种函数，使代码变得冗余。下面在 react 中实现一个类似于 vue 的表单双向绑定的逻辑。
 
-          
+修改表单的值，只需如下操作：this.stat
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/06/react表单双向绑定的实现/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
