@@ -231,6 +231,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/06/算法题之「移动零」/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linXiao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hurry">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/06/算法题之「移动零」/" itemprop="url">算法题之「移动零」</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-06T16:10:07+08:00">
+                2019年08月06日
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+<p>示例:</p>
+<pre><code>输入: [0,1,0,3,12]
+输出: [1,3,12,0,0]
+</code></pre><p>说明：</p>
+<ul>
+<li><p>必须在原数组上操作，不能拷贝额外的数组。</p>
+</li>
+<li><p>尽量减少操作次数。</p>
+</li>
+</ul>
+<p><strong>实现</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span>  format <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> arr<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> b <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>优化版：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span>  format <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">,</span> target<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> arr<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> b <span class="token operator">===</span> target <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>本例实现使用了sort排序，sort排序如果传入的是自定义排序函数的话，其内部实现其实就是冒泡排序：<br> 每次对比相邻的两个元素a,b，如果a&gt;b则将a和b交换，重复这一步骤直到排序完成。<br><img src="http://img.blog.csdn.net/20160916160748389" alt="冒泡排序示意"><br>例，将[1,4,0,2]这四个数按从小到大排序，内部是这样实现的：<br><img src="https://user-images.githubusercontent.com/22437181/62522309-00bae700-b864-11e9-93c3-2caa88793544.png" alt="image"><br>扩展到上面format函数的实现，要实现将target移动到数组末尾的话，只需要将每个元素与target比较，如果元素与target相等，则把这个元素与target交换，这样，target最终就会被交换到数组末尾，而其他的元素位置也不会改变。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/05/什么是一致性hash算法，有什么用处？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1576,153 +1713,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/30/ajax产生二次请求原因及解决方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linXiao">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hurry">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/30/ajax产生二次请求原因及解决方式/" itemprop="url">ajax产生二次请求原因及解决方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-30T17:49:44+08:00">
-                2019年07月30日
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>二次请求一般是指发送正确请求之前，额外发送了一次OPTIONS请求。</p>
-</blockquote>
-<p>OPTIONS请求，也叫预检请求和嗅探请求，目的是为了检测要发送的真正请求是否是服务器允许的请求，如果服务器不允许，则会停止发送真正的请求。<br>产生OPTIONS请求的原因，首先是这个请求是<code>跨域请求</code>，因为只有在<code>CORS跨域资源共享</code>场景下，服务器http header中会有一个叫“Access-Control-Allow-Origin”的字段，该字段规定了指定的客户端来源才能对服务器资源进行访问，那么在这个来源之内的所有请求，都是CORS跨域资源共享模式，但是在这个模式下，服务器也不是完全相信客户端的，对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），即非简单请求，浏览器必须首先使用 OPTIONS 方法发起一个预检请求，如果预检不通过，服务器还是会拒绝浏览器的请求。</p>
-<blockquote>
-<p>非简单请求定义：</p>
-<ol>
-<li>使用除GET、HEAD、POST方法之外的其他请求类型如PUT DELETE 等。</li>
-<li>人为设置了下列列表之外的其他header字段：</li>
-</ol>
-<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>Content-Type （application/x-www-form-urlencoded、multipart/form-data、text/plain之外）</li>
-<li>DPR</li>
-<li>Downlink</li>
-<li>Save-Data</li>
-<li>Viewport-Width</li>
-<li>Width</li>
-</ul>
-</blockquote>
-<p>若发送了非简单请求，则会产生嗅探请求。<br>解决方式：</p>
-<ol>
-<li>可以将发送的请求改为简单请求</li>
-<li>或者将客户端与服务端部署在同一个ip地址下或者使用请求代理让其不产生跨域</li>
-<li>或者在服务器CORS header中的Access-Control-Allow-Methods字段中，增加对OPTIONS的支持，后者只会让所有OPTIONS请求通过，而不会去除OPTIONS请求。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1773,7 +1763,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

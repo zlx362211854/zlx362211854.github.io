@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="算法,">
 
 
 
@@ -81,13 +81,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hurry">
-<meta property="og:url" content="http://cmszlx.win/archives/page/2/index.html">
+<meta name="description" content="给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明：  必须在原数组上操作，不能拷贝额外的数组。  尽量减少操作次数。   实现 const  format = (arr) =&amp;gt; arr.sort((a, b) =&amp;gt; b === 0 ? -1 : 1)  优化版： cons">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法题之「移动零」">
+<meta property="og:url" content="http://cmszlx.win/2019/08/06/算法题之「移动零」/index.html">
 <meta property="og:site_name" content="Hurry">
+<meta property="og:description" content="给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明：  必须在原数组上操作，不能拷贝额外的数组。  尽量减少操作次数。   实现 const  format = (arr) =&amp;gt; arr.sort((a, b) =&amp;gt; b === 0 ? -1 : 1)  优化版： cons">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20160916160748389">
+<meta property="og:image" content="https://user-images.githubusercontent.com/22437181/62522309-00bae700-b864-11e9-93c3-2caa88793544.png">
+<meta property="og:updated_time" content="2019-08-06T08:11:00.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hurry">
+<meta name="twitter:title" content="算法题之「移动零」">
+<meta name="twitter:description" content="给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 示例: 输入: [0,1,0,3,12] 输出: [1,3,12,0,0] 说明：  必须在原数组上操作，不能拷贝额外的数组。  尽量减少操作次数。   实现 const  format = (arr) =&amp;gt; arr.sort((a, b) =&amp;gt; b === 0 ? -1 : 1)  优化版： cons">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160916160748389">
 
 
 
@@ -117,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://cmszlx.win/archives/page/2/">
+  <link rel="canonical" href="http://cmszlx.win/2019/08/06/算法题之「移动零」/">
 
 
 
 
 
-  <title>Archive | Hurry</title>
+  <title>算法题之「移动零」 | Hurry</title>
   
 
 
@@ -142,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,396 +224,164 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/06/算法题之「移动零」/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linXiao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hurry">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">算法题之「移动零」</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-06T16:10:07+08:00">
+                2019年08月06日
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 28 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/30/ajax产生二次请求原因及解决方式/" itemprop="url">
-              
-                <span itemprop="name">ajax产生二次请求原因及解决方式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-30T17:49:44+08:00" content="2019年07月30日">
-          07-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/30/js观察者模式如何实现/" itemprop="url">
-              
-                <span itemprop="name">js观察者模式如何实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-30T17:47:03+08:00" content="2019年07月30日">
-          07-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/23/js手动实现自定义事件监听/" itemprop="url">
-              
-                <span itemprop="name">js 手动实现自定义事件监听</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-23T11:42:20+08:00" content="2019年07月23日">
-          07-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/25/js闭包和内存释放/" itemprop="url">
-              
-                <span itemprop="name">js闭包和内存释放</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-25T17:14:53+08:00" content="2019年03月25日">
-          03-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/25/git目录中index-lock的作用以及它引发的报错/" itemprop="url">
-              
-                <span itemprop="name">.git目录中index.lock的作用以及它引发的报错</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-25T17:14:20+08:00" content="2019年03月25日">
-          03-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/20/python函数传参方式/" itemprop="url">
-              
-                <span itemprop="name">19-3-18 python函数传参方式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-20T18:06:27+08:00" content="2019年03月20日">
-          03-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/20/字段的用法/" itemprop="url">
-              
-                <span itemprop="name">npm bin 字段的用法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-20T18:04:34+08:00" content="2019年03月20日">
-          03-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/20/连表查询populate用法/" itemprop="url">
-              
-                <span itemprop="name">连表查询populate用法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-20T18:03:15+08:00" content="2019年03月20日">
-          03-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+            
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/20/vuejs数据绑定原理/" itemprop="url">
-              
-                <span itemprop="name">vuejs 数据绑定原理解析</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-09-20T10:06:27+08:00" content="2018年09月20日">
-          09-20
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/06/react表单双向绑定的实现/" itemprop="url">
-              
-                <span itemprop="name">react表单双向绑定的实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-09-06T09:06:27+08:00" content="2018年09月06日">
-          09-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+<p>示例:</p>
+<pre><code>输入: [0,1,0,3,12]
+输出: [1,3,12,0,0]
+</code></pre><p>说明：</p>
+<ul>
+<li><p>必须在原数组上操作，不能拷贝额外的数组。</p>
+</li>
+<li><p>尽量减少操作次数。</p>
+</li>
+</ul>
+<p><strong>实现</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span>  format <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> arr<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> b <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>优化版：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span>  format <span class="token operator">=</span> <span class="token punctuation">(</span>arr<span class="token punctuation">,</span> target<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> arr<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> b <span class="token operator">===</span> target <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>本例实现使用了sort排序，sort排序如果传入的是自定义排序函数的话，其内部实现其实就是冒泡排序：<br> 每次对比相邻的两个元素a,b，如果a&gt;b则将a和b交换，重复这一步骤直到排序完成。<br><img src="http://img.blog.csdn.net/20160916160748389" alt="冒泡排序示意"><br>例，将[1,4,0,2]这四个数按从小到大排序，内部是这样实现的：<br><img src="https://user-images.githubusercontent.com/22437181/62522309-00bae700-b864-11e9-93c3-2caa88793544.png" alt="image"><br>扩展到上面format函数的实现，要实现将target移动到数组末尾的话，只需要将每个元素与target比较，如果元素与target相等，则把这个元素与target交换，这样，target最终就会被交换到数组末尾，而其他的元素位置也不会改变。</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/05/什么是一致性hash算法，有什么用处？/" rel="next" title="什么是一致性hash算法，有什么用处？">
+                <i class="fa fa-chevron-left"></i> 什么是一致性hash算法，有什么用处？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -613,6 +389,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -834,6 +614,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
