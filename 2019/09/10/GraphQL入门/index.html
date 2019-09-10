@@ -81,19 +81,20 @@
 
 
 
-<meta name="description" content="首先解释什么是加密 加密就是把一段明文，通过一个密钥，并通过某一种算法，计算出对应的一段密文，这个过程就叫加密。可以理解为(明文+密钥)*算法 = 密文。反之可以通过密文和密钥来解析出明文。  我们知道http本质上是没有任何安全措施的，https的本质是为了解决，在http传输中，数据未加密产生的安全问题，所以我们想，能不能通过一个密钥来加密我们的数据，就像上面的公式：(明文+密钥)*算法 =">
+<meta name="description" content="REST api REST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000/posts/1,对应查找文章的第一个，localhost:8000/comments/3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。GraphQL api 想象一个场景，前端需要查询一个用户的name,age,和用户发表的文章列表。传统api怎">
 <meta property="og:type" content="article">
-<meta property="og:title" content="谈谈https加密是怎么实现的？">
-<meta property="og:url" content="http://cmszlx.win/2019/07/31/谈谈https加密是怎么实现的？/index.html">
+<meta property="og:title" content="GraphQL入门">
+<meta property="og:url" content="http://cmszlx.win/2019/09/10/GraphQL入门/index.html">
 <meta property="og:site_name" content="Hurry">
-<meta property="og:description" content="首先解释什么是加密 加密就是把一段明文，通过一个密钥，并通过某一种算法，计算出对应的一段密文，这个过程就叫加密。可以理解为(明文+密钥)*算法 = 密文。反之可以通过密文和密钥来解析出明文。  我们知道http本质上是没有任何安全措施的，https的本质是为了解决，在http传输中，数据未加密产生的安全问题，所以我们想，能不能通过一个密钥来加密我们的数据，就像上面的公式：(明文+密钥)*算法 =">
+<meta property="og:description" content="REST api REST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000/posts/1,对应查找文章的第一个，localhost:8000/comments/3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。GraphQL api 想象一个场景，前端需要查询一个用户的name,age,和用户发表的文章列表。传统api怎">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://user-images.githubusercontent.com/22437181/62193260-015a0600-b3aa-11e9-876d-e13e70621a7d.png">
-<meta property="og:updated_time" content="2019-07-31T08:28:51.568Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/22437181/64590034-2eea9400-d3d9-11e9-92c7-420607f29751.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/22437181/64590096-504b8000-d3d9-11e9-8bc7-a181efdcb104.png">
+<meta property="og:updated_time" content="2019-09-10T07:00:57.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="谈谈https加密是怎么实现的？">
-<meta name="twitter:description" content="首先解释什么是加密 加密就是把一段明文，通过一个密钥，并通过某一种算法，计算出对应的一段密文，这个过程就叫加密。可以理解为(明文+密钥)*算法 = 密文。反之可以通过密文和密钥来解析出明文。  我们知道http本质上是没有任何安全措施的，https的本质是为了解决，在http传输中，数据未加密产生的安全问题，所以我们想，能不能通过一个密钥来加密我们的数据，就像上面的公式：(明文+密钥)*算法 =">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/22437181/62193260-015a0600-b3aa-11e9-876d-e13e70621a7d.png">
+<meta name="twitter:title" content="GraphQL入门">
+<meta name="twitter:description" content="REST api REST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000/posts/1,对应查找文章的第一个，localhost:8000/comments/3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。GraphQL api 想象一个场景，前端需要查询一个用户的name,age,和用户发表的文章列表。传统api怎">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/22437181/64590034-2eea9400-d3d9-11e9-92c7-420607f29751.png">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://cmszlx.win/2019/07/31/谈谈https加密是怎么实现的？/">
+  <link rel="canonical" href="http://cmszlx.win/2019/09/10/GraphQL入门/">
 
 
 
 
 
-  <title>谈谈https加密是怎么实现的？ | Hurry</title>
+  <title>GraphQL入门 | Hurry</title>
   
 
 
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/31/谈谈https加密是怎么实现的？/">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/09/10/GraphQL入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linXiao">
@@ -283,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">谈谈https加密是怎么实现的？</h1>
+          <h1 class="post-title" itemprop="name headline">GraphQL入门</h1>
         
 
         <div class="post-meta">
@@ -295,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T16:28:24+08:00">
-                2019年07月31日
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T15:00:38+08:00">
+                2019年09月10日
               </time>
             
 
@@ -333,23 +334,40 @@
       
 
       
-        <h4 id="首先解释什么是加密"><a href="#首先解释什么是加密" class="headerlink" title="首先解释什么是加密"></a>首先解释什么是加密</h4><ul>
-<li>加密就是把一段明文，通过一个密钥，并通过某一种算法，计算出对应的一段密文，这个过程就叫加密。可以理解为(明文+密钥)*算法 = 密文。反之可以通过密文和密钥来解析出明文。</li>
+        <h3 id="REST-api"><a href="#REST-api" class="headerlink" title="REST api"></a>REST api</h3><ul>
+<li>REST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000/posts/1,对应查找文章的第一个，localhost:8000/comments/3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。<h3 id="GraphQL-api"><a href="#GraphQL-api" class="headerlink" title="GraphQL api"></a>GraphQL api</h3></li>
+<li>想象一个场景，前端需要查询一个用户的name,age,和用户发表的文章列表。传统api怎么设计？后端设计两个接口，一个查询用户信息，一个查询用户文章。前端调这两个接口，获得返回的信息，再把两个接口的数据组装起来。</li>
+<li>能不能将上面的场景简化一些呢？前端只需要调一个接口，就可以查出用户的信息和用户的文章。</li>
+<li>GraphQL 出现了。GraphQL api是一种特别灵活的api设计，他将传统的查询逻辑，交给了客户端。用代码举一个例子：<br><code>`</code>javascript<br>var express = require(‘express’);<br>var graphqlHTTP = require(‘express-graphql’);<br>var { buildSchema } = require(‘graphql’);<br>var schema = buildSchema(<code>type Query {
+  name: String
+  url: String,
+  info: String
+}</code>);</li>
 </ul>
-<p>我们知道http本质上是没有任何安全措施的，https的本质是为了解决，在http传输中，数据未加密产生的安全问题，所以我们想，能不能通过一个密钥来加密我们的数据，就像上面的公式：(明文+密钥)*算法 = 密文，然后再通过http传输这个密文，这样就能解决安全问题了。</p>
-<p>但是问题来了，客户端(client)很容易就可以实现(明文+密钥)*算法 = 密文这个步骤，但是将密文发送到服务端(server)后，服务器是没有加密密钥的，那如何根据密文解析出明文呢？</p>
-<p>要解决这个问题其实很简单，把密钥给服务器，服务器不就能通过密钥和密文来计算出明文了吗。看似很简单，但紧接着问题来了，如何将密钥给服务器呢？每个client的密钥肯定是不一样的，如何安全的将密钥给服务端，就成了最大的问题。</p>
-<p>其实https就是为了解决这一痛点而产生的，https做的事情很简单，就是安全的将密钥从client发送到server，让client和server都拥有这个密钥，这样就能通过密钥来加解密数据了。如何实现呢？如图：<br><img src="https://user-images.githubusercontent.com/22437181/62193260-015a0600-b3aa-11e9-876d-e13e70621a7d.png" alt="image"></p>
-<p>首先，server中有一个<code>公私钥对</code>，<code>公钥进行加密的数据，能通过私钥解密出来</code>，也就是非对称加密。这个公私钥对，就是用来安全传递加密密钥的。</p>
-<ol>
-<li>client先向server请求公钥。</li>
-<li>client拿到server的公钥后，将密钥用公钥进行加密，再将加密后的密钥，传递给server。</li>
-<li>server拿到client通过公钥加密后的密钥，通过自己的私钥进行解密，这样就得到了真正的密钥。</li>
-<li>client和server都拿到了密钥，现在就可以使用这个密钥来进行数据传递的加密了。</li>
-</ol>
-<p>这样，https的技术实现就完成了，也就是<code>SSL握手</code>环节的实现。但是问题又来了，服务器上的公私钥对，如何保证是安全的呢？比如某一台服务器的公私钥对，是从别人的服务器上盗取来的呢？</p>
-<p>所以，需要有一个权威机构来颁布https公私钥对，也就是https证书，向权威机构申请，权威机构就会下发一个数字证书，包括了一对公私钥。这个证书是跟域名和ip地址绑定的，盗用别人的也没用。</p>
-<p>这样，通过https，安全的数据传输就实现了</p>
+<p>var root = {<br>  name: () =&gt; ‘zlx’,<br>  url: () =&gt; ‘<a href="https://avatars1.githubusercontent.com/u/22437181?v=4&#39;" target="_blank" rel="noopener">https://avatars1.githubusercontent.com/u/22437181?v=4&#39;</a>,<br>  info: () =&gt; ‘a frontend developer’<br>};</p>
+<p>var app = express();<br>app.use(‘/graphql’, graphqlHTTP({<br>  schema: schema,<br>  rootValue: root,<br>  graphiql: true,<br>}));<br>app.listen(4000, () =&gt; console.log(‘Now browse to localhost:4000/graphql’));</p>
+<pre><code>上面代码定义了一个GraphQL api服务器，且定义一个schema,包含了三条属性的信息：
+</code></pre><p>name: String<br>url: String,<br>info: String</p>
+<pre><code>下面执行查询看看效果：
+```javascript
+var request = require(&#39;graphql-request&#39;).request
+const query = `{
+  name
+}`
+
+request(&#39;http://localhost:4000/graphql&#39;, query).then(data =&gt;
+  console.log(&#39;data:&#39;, data)
+)
+</code></pre><p>上面代码，在前端执行了查询，只查询name属性：<br><img src="https://user-images.githubusercontent.com/22437181/64590034-2eea9400-d3d9-11e9-92c7-420607f29751.png" alt="image"></p>
+<p>如果我要查询name,url和info三条信息呢？<br>只需要在前端查询语句上加上对应的字段：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> query <span class="token operator">=</span> <span class="token template-string"><span class="token string">`{
+  name,
+  url,
+  info
+}`</span></span>
+
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/22437181/64590096-504b8000-d3d9-11e9-8bc7-a181efdcb104.png" alt="image"><br>⚠️注：上面代码实现是javascript语言的GraphQL 实现，其他语言实现参考<a href="https://graphql.cn/code/" target="_blank" rel="noopener">这里</a><br>这就是GraphQL api，它使接口请求更加灵活，更加适用于复杂场景，也使后端查询设计更加简单，后端工程师只需要定义好数据库和相关的表结构的Schema，所有查询逻辑交给前端来处理，使开发变得高效。</p>
 
       
     </div>
@@ -374,8 +392,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/30/节流和防抖是什么？有什么区别？怎么实现？/" rel="next" title="节流和防抖是什么？有什么区别？怎么实现？">
-                <i class="fa fa-chevron-left"></i> 节流和防抖是什么？有什么区别？怎么实现？
+              <a href="/2019/09/06/daily/" rel="next" title="daily">
+                <i class="fa fa-chevron-left"></i> daily
               </a>
             
           </div>
@@ -383,10 +401,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/05/什么是视差滚动？如何实现视差滚动的效果？/" rel="prev" title="什么是视差滚动？如何实现视差滚动的效果？">
-                什么是视差滚动？如何实现视差滚动的效果？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -525,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先解释什么是加密"><span class="nav-number">1.</span> <span class="nav-text">首先解释什么是加密</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-api"><span class="nav-number">1.</span> <span class="nav-text">REST api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GraphQL-api"><span class="nav-number">2.</span> <span class="nav-text">GraphQL api</span></a></li></ol></div>
             
 
           </div>
