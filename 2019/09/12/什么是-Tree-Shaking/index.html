@@ -81,17 +81,19 @@
 
 
 
-<meta name="description" content="Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。 use  var vm = new V({         el: &amp;#39;#container&amp;#39;,         template: &amp;#39;&amp;lt;div&amp;gt;{{name}}: {{age}}&amp;lt;/div&amp;gt;&amp;#39;,         data: {             na">
+<meta name="description" content="Tree Shaking,是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。 Tree Shaking本质是一种静态代码分析，将不用的静态代码模块，剔除出去。这就代表了，只有模块代码才会被剔除，而且只有es的模块类型，是编译后执行（虽然js是解释型语言，但其实es6模块化后，有预编译的阶段）预编译阶段引用模块，才能实现静态分析。如果是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vuejs 数据绑定原理解析">
-<meta property="og:url" content="http://cmszlx.win/2018/09/20/vuejs数据绑定原理/index.html">
+<meta property="og:title" content="什么是 Tree Shaking">
+<meta property="og:url" content="http://cmszlx.win/2019/09/12/什么是-Tree-Shaking/index.html">
 <meta property="og:site_name" content="Hurry">
-<meta property="og:description" content="Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。 use  var vm = new V({         el: &amp;#39;#container&amp;#39;,         template: &amp;#39;&amp;lt;div&amp;gt;{{name}}: {{age}}&amp;lt;/div&amp;gt;&amp;#39;,         data: {             na">
+<meta property="og:description" content="Tree Shaking,是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。 Tree Shaking本质是一种静态代码分析，将不用的静态代码模块，剔除出去。这就代表了，只有模块代码才会被剔除，而且只有es的模块类型，是编译后执行（虽然js是解释型语言，但其实es6模块化后，有预编译的阶段）预编译阶段引用模块，才能实现静态分析。如果是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-20T03:02:14.373Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/4/160bfdcf2a31ce4a?imageslim">
+<meta property="og:updated_time" content="2019-09-12T09:33:32.124Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vuejs 数据绑定原理解析">
-<meta name="twitter:description" content="Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。 use  var vm = new V({         el: &amp;#39;#container&amp;#39;,         template: &amp;#39;&amp;lt;div&amp;gt;{{name}}: {{age}}&amp;lt;/div&amp;gt;&amp;#39;,         data: {             na">
+<meta name="twitter:title" content="什么是 Tree Shaking">
+<meta name="twitter:description" content="Tree Shaking,是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。 Tree Shaking本质是一种静态代码分析，将不用的静态代码模块，剔除出去。这就代表了，只有模块代码才会被剔除，而且只有es的模块类型，是编译后执行（虽然js是解释型语言，但其实es6模块化后，有预编译的阶段）预编译阶段引用模块，才能实现静态分析。如果是">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/4/160bfdcf2a31ce4a?imageslim">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://cmszlx.win/2018/09/20/vuejs数据绑定原理/">
+  <link rel="canonical" href="http://cmszlx.win/2019/09/12/什么是-Tree-Shaking/">
 
 
 
 
 
-  <title>vuejs 数据绑定原理解析 | Hurry</title>
+  <title>什么是 Tree Shaking | Hurry</title>
   
 
 
@@ -264,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2018/09/20/vuejs数据绑定原理/">
+    <link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/09/12/什么是-Tree-Shaking/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linXiao">
@@ -281,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vuejs 数据绑定原理解析</h1>
+          <h1 class="post-title" itemprop="name headline">什么是 Tree Shaking</h1>
         
 
         <div class="post-meta">
@@ -293,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-20T10:06:27+08:00">
-                2018年09月20日
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-12T17:33:11+08:00">
+                2019年09月12日
               </time>
             
 
@@ -303,28 +305,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/原创/" itemprop="url" rel="index">
-                    <span itemprop="name">原创</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -353,64 +333,33 @@
       
 
       
-        <h2 id="Vuejs-使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。"><a href="#Vuejs-使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。" class="headerlink" title="Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。"></a>Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。</h2><blockquote>
-<p>use</p>
-</blockquote>
-<pre><code>var vm = new V({
-        el: &#39;#container&#39;,
-        template: &#39;&lt;div&gt;{{name}}: {{age}}&lt;/div&gt;&#39;,
-        data: {
-            name: &#39;zlx&#39;,
-            age: &#39;16&#39;
-        }
-    });
-</code></pre><blockquote>
-<p>change vm </p>
-</blockquote>
-<pre><code> vm.name = &#39;hsq&#39;;
- vm.age = &#39;14&#39;;
-</code></pre><h5 id="then-the-template-will-change-immediately"><a href="#then-the-template-will-change-immediately" class="headerlink" title="then the template will change immediately;"></a>then the template will change immediately;</h5><blockquote>
-<p>V.js is simple</p>
-</blockquote>
-<pre><code>+(function(w) {
-  var V = function(options) {
-    let { data, template, el } = options || {};
-    const context = this;
-    this.node = document.querySelector(el);
-    this.template = template;
-    // 为每个属性添加get set方法
-    Object.keys(data).forEach(function(key) {
-      context.define(context, key, data[key]);
-    });
-    // 初始化时处理模版
-    this.renderTemplate(this.node, template);
-  };
-  var prop = {
-    define: function(obj, key, val) {
-      Object.defineProperty(obj, key, {
-        get() {
-          return val;
-        },
-        set(new_val) {
-          // 通知更新
-          val = new_val;
-          // 更新模版
-          this.renderTemplate(this.node, this.template);
-        }
-      });
-    },
-    renderTemplate: function(node, template) {
-      // 处理模版
-      template = template.replace(/{{name}}/, this.name);
-      template = template.replace(&quot;{{age}}&quot;, this.age);
-      // 渲染模版
-      node.innerHTML = template;
-    }
-  };
-  V.prototype = prop;
-  w.V = V;
-})(window);
+        <p><img src="https://user-gold-cdn.xitu.io/2018/1/4/160bfdcf2a31ce4a?imageslim" alt="image"></p>
+<h4 id="Tree-Shaking-是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。"><a href="#Tree-Shaking-是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。" class="headerlink" title="Tree Shaking,是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。"></a>Tree Shaking,是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。</h4><ul>
+<li>Tree Shaking本质是一种静态代码分析，将不用的静态代码模块，剔除出去。这就代表了，只有模块代码才会被剔除，而且只有es的模块类型，是编译后执行（虽然js是解释型语言，但其实es6模块化后，有预编译的阶段）预编译阶段引用模块，才能实现静态分析。如果是CommonJS规范模块的代码，模块是执行时才引用的，比如require(‘…’),则是不能Tree Shaking的。举个例子：</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// model.js</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ....</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> <span class="token string">'a'</span>
+<span class="token keyword">return</span> <span class="token string">'some useless code'</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token boolean">false</span>
 </code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// index.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>a<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'model.js'</span>
+<span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>这个时候，如果使用Tree Shaking，则可以剔除不用的模块b。只保留a模块，但是a模块内的无用代码，则不会被剔除。</p>
+<p>再进一步，如果index.js中的代码是这样的：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// index.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>a<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'model.js'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>b<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'model.js'</span>
+<span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>a和b模块都引入了，但是b没有调用，则b也不会被剔除，所以Tree Shaking优化也是有限的，所以我们在代码开发的时候，要结合一些代码检查工具，移除代码中不用的模块，来进一步实现代码优化。</p>
+
       
     </div>
     
@@ -434,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/06/react表单双向绑定的实现/" rel="next" title="react表单双向绑定的实现">
-                <i class="fa fa-chevron-left"></i> react表单双向绑定的实现
+              <a href="/2019/09/10/GraphQL入门/" rel="next" title="GraphQL入门">
+                <i class="fa fa-chevron-left"></i> GraphQL入门
               </a>
             
           </div>
@@ -443,10 +392,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/20/连表查询populate用法/" rel="prev" title="连表查询populate用法">
-                连表查询populate用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuejs-使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。"><span class="nav-number">1.</span> <span class="nav-text">Vuejs 使用get和set来实现数据绑定，心血来潮仿了一下，很粗糙，原理大概相同。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#then-the-template-will-change-immediately"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">then the template will change immediately;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tree-Shaking-是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。"><span class="nav-number">1.</span> <span class="nav-text">Tree Shaking,是代码优化重要的一项，可以理解为通过工具”摇”我们的JS文件，将其中用不到的代码”摇”掉，是一个性能优化的范畴。</span></a></li></ol></div>
             
 
           </div>
