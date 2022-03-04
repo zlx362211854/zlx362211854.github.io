@@ -20,22 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="发表于 2019年09月10日 REST apiREST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000&#x2F;posts&#x2F;1,对应查找文章的第一个，localhost:8000&#x2F;comments&#x2F;3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。GraphQL api想象一个场景，前端需要查询一个用户的name,age,和用户">
+  <meta name="description" content="AMD,CMD,CommonJs,ESModule等规范简介1. AMDAMD 是 RequireJS 在推广过程中对模块定义的规范化产出,它是一个概念，RequireJS是对这个概念的实现 12345678define([&amp;#x27;package&#x2F;a.js&amp;#x27;], function(a) &amp;#123;	function log() &amp;#123;		a.log()	&amp;#125;	retu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GraphQL入门">
-<meta property="og:url" content="http://example.com/2022/03/04/GraphQL%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="zlx">
+<meta property="og:url" content="http://example.com/2022/03/04/AMD,CMD,CommonJs,ESModule%E7%AD%89%E8%A7%84%E8%8C%83%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="zlx">
-<meta property="og:description" content="发表于 2019年09月10日 REST apiREST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000&#x2F;posts&#x2F;1,对应查找文章的第一个，localhost:8000&#x2F;comments&#x2F;3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。GraphQL api想象一个场景，前端需要查询一个用户的name,age,和用户">
+<meta property="og:description" content="AMD,CMD,CommonJs,ESModule等规范简介1. AMDAMD 是 RequireJS 在推广过程中对模块定义的规范化产出,它是一个概念，RequireJS是对这个概念的实现 12345678define([&amp;#x27;package&#x2F;a.js&amp;#x27;], function(a) &amp;#123;	function log() &amp;#123;		a.log()	&amp;#125;	retu">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://user-images.githubusercontent.com/22437181/64590034-2eea9400-d3d9-11e9-92c7-420607f29751.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/22437181/64590096-504b8000-d3d9-11e9-8bc7-a181efdcb104.png">
-<meta property="article:published_time" content="2022-03-04T06:56:53.000Z">
-<meta property="article:modified_time" content="2022-03-04T07:44:21.690Z">
+<meta property="article:published_time" content="2022-03-04T08:40:48.090Z">
+<meta property="article:modified_time" content="2022-03-04T08:40:48.091Z">
 <meta property="article:author" content="zlx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/22437181/64590034-2eea9400-d3d9-11e9-92c7-420607f29751.png">
 
-<link rel="canonical" href="http://example.com/2022/03/04/GraphQL%E5%85%A5%E9%97%A8/">
+<link rel="canonical" href="http://example.com/2022/03/04/AMD,CMD,CommonJs,ESModule%E7%AD%89%E8%A7%84%E8%8C%83%E7%AE%80%E4%BB%8B/">
 
 
 <script id="page-configurations">
@@ -48,7 +45,7 @@
   };
 </script>
 
-  <title>GraphQL入门 | zlx</title>
+  <title> | zlx</title>
   
 
 
@@ -153,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/GraphQL%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/AMD,CMD,CommonJs,ESModule%E7%AD%89%E8%A7%84%E8%8C%83%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -166,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          GraphQL入门
+          
         </h1>
 
         <div class="post-meta">
@@ -175,9 +172,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-03-04 14:56:53 / Modified: 15:44:21" itemprop="dateCreated datePublished" datetime="2022-03-04T14:56:53+08:00">2022-03-04</time>
+              <time title="Created: 2022-03-04 16:40:48" itemprop="dateCreated datePublished" datetime="2022-03-04T16:40:48+08:00">2022-03-04</time>
             </span>
 
           
@@ -191,7 +187,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/09/10/GraphQL入门/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T15:00:38+08:00"> 2019年09月10日 </time></span></div></header><div class="post-body" itemprop="articleBody"><h3 id="REST-api"><a href="#REST-api" class="headerlink" title="REST api"></a>REST api</h3><ul><li>REST api简单来说就是将服务器资源定向到每个api上，比如localhost:8000/posts/1,对应查找文章的第一个，localhost:8000/comments/3,表示查找评论的第三条。REST的表达方式很简单，就是一条资源对应一个api，简洁明了。<h3 id="GraphQL-api"><a href="#GraphQL-api" class="headerlink" title="GraphQL api"></a>GraphQL api</h3></li><li>想象一个场景，前端需要查询一个用户的name,age,和用户发表的文章列表。传统api怎么设计？后端设计两个接口，一个查询用户信息，一个查询用户文章。前端调这两个接口，获得返回的信息，再把两个接口的数据组装起来。</li><li>能不能将上面的场景简化一些呢？前端只需要调一个接口，就可以查出用户的信息和用户的文章。</li><li>GraphQL 出现了。GraphQL api是一种特别灵活的api设计，他将传统的查询逻辑，交给了客户端。用代码举一个例子：<br><code>`</code>javascript<br>var express = require(‘express’);<br>var graphqlHTTP = require(‘express-graphql’);<br>var { buildSchema } = require(‘graphql’);<br>var schema = buildSchema(<code>type Query &#123; name: String url: String, info: String &#125;</code>);</li></ul><p>var root = {<br> name: () => ‘zlx’,<br> url: () => ‘<a href="https://avatars1.githubusercontent.com/u/22437181?v=4'" target="_blank" rel="noopener">https://avatars1.githubusercontent.com/u/22437181?v=4'</a>,<br> info: () => ‘a frontend developer’<br>};</p><p>var app = express();<br>app.use(‘/graphql’, graphqlHTTP({<br> schema: schema,<br> rootValue: root,<br> graphiql: true,<br>}));<br>app.listen(4000, () => console.log(‘Now browse to localhost:4000/graphql’));</p><precode language="" precodenum="0"></precode><p>name: String<br>url: String,<br>info: String</p><precode language="" precodenum="1"></precode><p>上面代码，在前端执行了查询，只查询name属性：<br><img src="https://user-images.githubusercontent.com/22437181/64590034-2eea9400-d3d9-11e9-92c7-420607f29751.png" alt="image"></p><p>如果我要查询name,url和info三条信息呢？<br>只需要在前端查询语句上加上对应的字段：</p><precode language="javascript" precodenum="2"></precode><p><img src="https://user-images.githubusercontent.com/22437181/64590096-504b8000-d3d9-11e9-8bc7-a181efdcb104.png" alt="image"><br>⚠️注：上面代码实现是javascript语言的GraphQL 实现，其他语言实现参考<a href="https://graphql.cn/code/" target="_blank" rel="noopener">这里</a><br>这就是GraphQL api，它使接口请求更加灵活，更加适用于复杂场景，也使后端查询设计更加简单，后端工程师只需要定义好数据库和相关的表结构的Schema，所有查询逻辑交给前端来处理，使开发变得高效。</p></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/09/06/daily/" rel="next" title="daily"><i class="fa fa-chevron-left"></i> daily </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/09/12/什么是-Tree-Shaking/" rel="prev" title="什么是 Tree Shaking"> 什么是 Tree Shaking <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
+        <h1 id="AMD-CMD-CommonJs-ESModule等规范简介"><a href="#AMD-CMD-CommonJs-ESModule等规范简介" class="headerlink" title="AMD,CMD,CommonJs,ESModule等规范简介"></a>AMD,CMD,CommonJs,ESModule等规范简介</h1><h2 id="1-AMD"><a href="#1-AMD" class="headerlink" title="1. AMD"></a>1. AMD</h2><p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出,它是一个概念，RequireJS是对这个概念的实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">&#x27;package/a.js&#x27;</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		a.log()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		log</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>关键词：<strong>依赖前置</strong>，所需依赖在最开头定义好</p>
+<h2 id="2-CMD"><a href="#2-CMD" class="headerlink" title="2. CMD"></a>2. CMD</h2><p><strong>CMD</strong> 是<strong>SeaJS</strong>在推广过程中对模块定义的规范化产出，是一个同步模块定义，是SeaJS的一个标准</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>, <span class="built_in">exports</span>, <span class="built_in">module</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">&#x27;package/a.js&#x27;</span>)</span><br><span class="line">  a.log()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>关键词：依赖就近引入，在哪里用就在哪里引</p>
+<h2 id="3-CommonJs"><a href="#3-CommonJs" class="headerlink" title="3. CommonJs"></a>3. CommonJs</h2><p><strong>CommonJS规范–</strong> -是通过<strong>module.exports定</strong>义的，在前端浏览器里面并不支持<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=module&spm=1001.2101.3001.7020">module</a>.exports,通过node.js后端使用的</p>
+<h2 id="4-ES6-Module"><a href="#4-ES6-Module" class="headerlink" title="4. ES6 Module"></a>4. ES6 Module</h2><p><strong>通过export，import对模块进行导出导入的</strong></p>
+<p>关键词：<strong>编译时</strong>就能确定模块的依赖关系，只会引入模块需要的依赖，多次import统一模块，只加载一次，加载性能更高。</p>
 
     </div>
 
@@ -207,13 +213,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/03/04/%E5%86%8D%E8%AF%B4js%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91/" rel="prev" title="再说js中this的指向">
-      <i class="fa fa-chevron-left"></i> 再说js中this的指向
+    <a href="/2022/03/04/DNS%E9%A2%84%E8%A7%A3%E6%9E%90/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/03/04/%E4%BB%80%E4%B9%88%E6%98%AF-Tree-Shaking/" rel="next" title="什么是-Tree-Shaking">
-      什么是-Tree-Shaking <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -272,7 +275,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-api"><span class="nav-number">1.0.1.</span> <span class="nav-text">REST api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GraphQL-api"><span class="nav-number">1.0.2.</span> <span class="nav-text">GraphQL api</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AMD-CMD-CommonJs-ESModule%E7%AD%89%E8%A7%84%E8%8C%83%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">AMD,CMD,CommonJs,ESModule等规范简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-AMD"><span class="nav-number">1.1.</span> <span class="nav-text">1. AMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-CMD"><span class="nav-number">1.2.</span> <span class="nav-text">2. CMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-CommonJs"><span class="nav-number">1.3.</span> <span class="nav-text">3. CommonJs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ES6-Module"><span class="nav-number">1.4.</span> <span class="nav-text">4. ES6 Module</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

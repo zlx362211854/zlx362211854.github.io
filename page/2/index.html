@@ -145,6 +145,183 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/%E7%AE%97%E6%B3%95%E9%A2%98%E4%B9%8B%E3%80%8C%E7%A7%BB%E5%8A%A8%E9%9B%B6%E3%80%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zlx">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zlx">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/04/%E7%AE%97%E6%B3%95%E9%A2%98%E4%B9%8B%E3%80%8C%E7%A7%BB%E5%8A%A8%E9%9B%B6%E3%80%8D/" class="post-title-link" itemprop="url">算法题之「移动零」</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-03-04 14:56:08 / Modified: 16:04:10" itemprop="dateCreated datePublished" datetime="2022-03-04T14:56:08+08:00">2022-03-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/06/算法题之「移动零」/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T16:10:07+08:00"> 2019年08月06日 </time></span></div></header><div class="post-body" itemprop="articleBody"><p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p><p>示例:</p><precode language="" precodenum="0"></precode><p>说明：</p><ul><li><p>必须在原数组上操作，不能拷贝额外的数组。</p></li><li><p>尽量减少操作次数。</p></li></ul><p><strong>实现</strong></p><precode language="javascript" precodenum="1"></precode><p>优化版：</p><precode language="javascript" precodenum="2"></precode><p>本例实现使用了sort排序，sort排序如果传入的是自定义排序函数的话，其内部实现其实就是冒泡排序：<br> 每次对比相邻的两个元素a,b，如果a>b则将a和b交换，重复这一步骤直到排序完成。<br><img src="http://img.blog.csdn.net/20160916160748389" alt="冒泡排序示意"><br>例，将[1,4,0,2]这四个数按从小到大排序，内部是这样实现的：<br><img src="https://user-images.githubusercontent.com/22437181/62522309-00bae700-b864-11e9-93c3-2caa88793544.png" alt="image"><br>扩展到上面format函数的实现，要实现将target移动到数组末尾的话，只需要将每个元素与target比较，如果元素与target相等，则把这个元素与target交换，这样，target最终就会被交换到数组末尾，而其他的元素位置也不会改变。</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/算法/" rel="tag"># 算法</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/08/05/什么是一致性hash算法，有什么用处？/" rel="next" title="什么是一致性hash算法，有什么用处？"><i class="fa fa-chevron-left"></i> 什么是一致性hash算法，有什么用处？ </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/08/07/介绍下浏览器的重绘和回流（Repaint-Reflow）/" rel="prev" title="介绍下浏览器的重绘和回流（Repaint & Reflow）"> 介绍下浏览器的重绘和回流（Repaint & Reflow） <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/%E4%BB%80%E4%B9%88%E6%98%AF%E8%A7%86%E5%B7%AE%E6%BB%9A%E5%8A%A8%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%A7%86%E5%B7%AE%E6%BB%9A%E5%8A%A8%E7%9A%84%E6%95%88%E6%9E%9C%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zlx">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zlx">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/04/%E4%BB%80%E4%B9%88%E6%98%AF%E8%A7%86%E5%B7%AE%E6%BB%9A%E5%8A%A8%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%A7%86%E5%B7%AE%E6%BB%9A%E5%8A%A8%E7%9A%84%E6%95%88%E6%9E%9C%EF%BC%9F/" class="post-title-link" itemprop="url">什么是视差滚动？如何实现视差滚动的效果？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-03-04 14:56:00 / Modified: 15:49:18" itemprop="dateCreated datePublished" datetime="2022-03-04T14:56:00+08:00">2022-03-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/05/什么是视差滚动？如何实现视差滚动的效果？/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T14:13:26+08:00"> 2019年08月05日 </time></span></div></header><div class="post-body" itemprop="articleBody"><p>视差滚动，其实原理源自生活中，举个例子：<br>我们坐在车上，车以60km的速度往前开，观察路旁的树，感觉景物倒退的速度很快，如果我们看远处的高楼，发现倒退的比较慢，虽然相对于路边的树和远处的高楼，同样我们都是以60km的速度离开，但是眼睛给我们的感觉，像是远处的景物离开的慢一点，其实这就是视差效果。<br>生活中这样的例子，举一反三到网页开发中来，如果我们能给两个物体设置离我们眼睛不同的距离，那么是否也可以出现视差效果呢？<br>先介绍perspective属性，定义3D元素离观察点的位置。使用这个属性，就能模拟出视差效果：<br><img src="https://user-images.githubusercontent.com/22437181/62441561-3342e200-b787-11e9-812d-74efd7ac747a.gif" alt="scroll"></p><p>上半部分滚动的快一点，下半部分慢一点，就产生了视差效果，具体代码：</p><precode language="css" precodenum="0"></precode><precode language="html" precodenum="1"></precode><p>关键在于：<br><code>perspective: 1px;</code>定义了container容器距观察点的距离是1px，再将容器内的子元素inner使用transform属性设置为距离容器-1px：<code>transform: translateZ(-1px)</code>；<br>空间位置示意：<br><img src="https://user-images.githubusercontent.com/22437181/62442511-bade2000-b78a-11e9-99c2-e7a9dcb8639f.png" alt="image"></p><p>这样就实现了视差效果。</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/css/" rel="tag"># css</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/07/31/谈谈https加密是怎么实现的？/" rel="next" title="谈谈https加密是怎么实现的？"><i class="fa fa-chevron-left"></i> 谈谈https加密是怎么实现的？ </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/08/05/JavaScript-模块化是什么？/" rel="prev" title="JavaScript 模块化是什么？"> JavaScript 模块化是什么？ <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%80%E8%87%B4%E6%80%A7hash%E7%AE%97%E6%B3%95%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E5%A4%84%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zlx">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zlx">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/04/%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%80%E8%87%B4%E6%80%A7hash%E7%AE%97%E6%B3%95%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E5%A4%84%EF%BC%9F/" class="post-title-link" itemprop="url">什么是一致性hash算法，有什么用处？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-03-04 14:55:52 / Modified: 15:49:12" itemprop="dateCreated datePublished" datetime="2022-03-04T14:55:52+08:00">2022-03-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/08/05/什么是一致性hash算法，有什么用处？/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T20:45:49+08:00"> 2019年08月05日 </time></span></div></header><div class="post-body" itemprop="articleBody"><blockquote><p>一致性hash算法，是集群存储的一种实现方式。</p></blockquote><p>一个经典问题：3万张图片，需要相对均匀的存储到3台服务器中去，使每台服务器存储大约1万张图片，如何实现？<br><img src="https://user-images.githubusercontent.com/22437181/62462326-b5e49500-b7b9-11e9-9f29-1ae4b5c62934.png" alt="image"></p><ol><li>将30000张图片按文件名按照一定算法将其转换成数字。<br>js实现：<precode language="javascript" precodenum="0"></precode> 每张图片文件名，都能够通过hash方法转换成数字，比如转换之前是a.png,b.png,c.png,转换为：9746112110103,9846112110103,9946112110103。<br>现在怎么把这三张图片，存储到3台服务器中去呢？<br>可以对这3张图片的hash分别对服务器数量取余，比如a.png：9746112110103 % 3 -> 0,b.png: 9846112110103 % 3 -> 1， c.png: 9946112110103 % 3 -> 2<br>再将三张图片，依次存入三台服务器中：<br><img src="https://user-images.githubusercontent.com/22437181/62463318-44f2ac80-b7bc-11e9-8916-ac17d13872bd.png" alt="image"><br>这样，<strong>每次访问图片的时候，就可以根据图片的文件名hash，来计算出这张图片存在哪一台服务器中，io读取的时候，就可以直接读取目标服务器的文件，而不必去遍历所有服务器，节约了开销。这样就简单的实现了分布存储</strong>。<br>但是问题来了，如果3台并不能满足我们的需求时那么应该怎么做?肯定是增加几台服务器就可以了，假设我们增加1台服务器，服务器的数量由3变成了4，此时仍然用上述方法对同一张图片进行缓存，那么这张图片所在的服务器的编号必定是与原来的3台服务器所在的 编号是不同的，因为除数3变成了4，被除数不变的情况下，余数肯定不同，这情况带来的结果就是当服务器数量变动时，所有和缓存的位置都要发生改变，也就是说缓存服务器数量发生改变时，所有缓存数据在一定时间是失效的，当应用无法从缓存中和获取数据时，则会向后端服务器请求数据，同理，如果3台缓存服务器中突然有一台出现了故障，，无法进行缓存数据，那么需要移除故障机器，但是如果移除了一台缓存服务器后，数量从3变成了2，如果想访问有一张图片，这张图片缓存为位置必定发生改变，以前缓存的图片也会失去缓存的作用和意义，由于大量缓存在同一时间失效，造成了缓存的雪崩(血崩)，后端服务器将会承担所有巨大压力，会导致整个系统可能会被压垮，所以为了避免这类情况的发生，一致性hash算法诞生了！</li></ol><blockquote><p>其实一致性hash算法也是取模运算，只是，上面描述的取模算法是对服务器数量进行取模，而一致性hash是对2^32取模.</p></blockquote><p>首先把2^32个数字组成一个圆：<br><img src="https://user-images.githubusercontent.com/22437181/62463847-a9623b80-b7bd-11e9-9d7a-d78ed72cb3ef.png" alt="image"><br>顺时针排列。然后再将3台服务器的ip地址的hash对2^32取余，余数是0-2^32之间的任意数，将其映射到圆上，会在圆上得到三个点与之对应:<br><img src="https://user-images.githubusercontent.com/22437181/62464633-baac4780-b7bf-11e9-94c7-00185b3a2260.png" alt="image"><br>然后，我们将图片也取余2^32，得到0-2^32之间的任意数，也对应着hash环上的一点。<br>人为规定，从图片出发，沿着hash环顺时针寻找，遇到的第一台服务器，就将图片存在这台服务器中：</p><p><img src="https://user-images.githubusercontent.com/22437181/62464880-47570580-b7c0-11e9-975b-7b434512996b.png" alt="image"></p><p>这样做的好处是，由于被缓存对象与服务器hash后的值都是固定的，所以服务器不变的情况下，一张图片必定会被缓存到固定的服务器上，那么，当下次访问这张图片时，只要再次使用相同的算法进行计算，即可算出这张图片被缓存在那个服务器上，直接去对应的服务器上查找即可。</p><p>那么一致性hash环怎么抵抗雪崩呢？</p><p>假如现在有3张图片缓存情况如下：<br><img src="https://user-images.githubusercontent.com/22437181/62465790-52ab3080-b7c2-11e9-89a5-75a24f00ef95.png" alt="image"><br>可见，图片1缓存在server2中，图片2，3缓存在server3中，现在假设，server2崩溃了，显然，server2中的图片1就不存在了，但是图片2，3仍然存在server3中，不会因为某一节点的崩溃而存储位置发生变化，这就是一致性hash的优势，可以最小程度的减少集群节点服务器崩溃带来的灾难。</p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/算法/" rel="tag"># 算法</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/08/05/JavaScript-模块化是什么？/" rel="next" title="JavaScript 模块化是什么？"><i class="fa fa-chevron-left"></i> JavaScript 模块化是什么？ </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/08/06/算法题之「移动零」/" rel="prev" title="算法题之「移动零」"> 算法题之「移动零」 <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/JavaScript-%E6%A8%A1%E5%9D%97%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -554,183 +731,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/css%E7%94%BB%E4%B8%89%E8%A7%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zlx">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zlx">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/04/css%E7%94%BB%E4%B8%89%E8%A7%92/" class="post-title-link" itemprop="url">css画三角</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-03-04 14:54:52 / Modified: 15:43:47" itemprop="dateCreated datePublished" datetime="2022-03-04T14:54:52+08:00">2022-03-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/30/css画三角/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T17:52:09+08:00"> 2019年07月30日 </time></span></div></header><div class="post-body" itemprop="articleBody"><p>css三角关键在border的绘制：<br>先画一个width，height都为0的div,然后给他的四个边都加上一个粗实线。</p><precode language="html" precodenum="0"></precode><precode language="css" precodenum="1"></precode><p>效果是这样的：<br><img src="https://user-images.githubusercontent.com/22437181/61919108-b34a9a00-af86-11e9-92e3-cc5c11d2b690.png" alt="image"><br>就构成了4个不同方向的三角形。<br>需要哪个三角形，就把其他方向的border的颜色透明度设置为0，比如我要左边的这个三角形，就把上，下，右边透明度设置为0:</p><precode language="css" precodenum="2"></precode><p>效果看起来就是：<br><img src="https://user-images.githubusercontent.com/22437181/61919237-44217580-af87-11e9-861f-288aa4fa526b.png" alt="image"></p></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/07/30/用css实现玻璃磨砂效果/" rel="next" title="用css实现玻璃磨砂效果"><i class="fa fa-chevron-left"></i> 用css实现玻璃磨砂效果 </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/07/30/javascript是单线程语言，那他的异步机制是怎么实现的？/" rel="prev" title="javascript是单线程语言，那他的异步机制是怎么实现的？"> javascript是单线程语言，那他的异步机制是怎么实现的？ <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/ajax%E4%BA%A7%E7%94%9F%E4%BA%8C%E6%AC%A1%E8%AF%B7%E6%B1%82%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zlx">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zlx">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/04/ajax%E4%BA%A7%E7%94%9F%E4%BA%8C%E6%AC%A1%E8%AF%B7%E6%B1%82%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">ajax产生二次请求原因及解决方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-03-04 14:54:44 / Modified: 15:43:20" itemprop="dateCreated datePublished" datetime="2022-03-04T14:54:44+08:00">2022-03-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/30/ajax产生二次请求原因及解决方式/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T17:49:44+08:00"> 2019年07月30日 </time></span></div></header><div class="post-body" itemprop="articleBody"><blockquote><p>二次请求一般是指发送正确请求之前，额外发送了一次OPTIONS请求。</p></blockquote><p>OPTIONS请求，也叫预检请求和嗅探请求，目的是为了检测要发送的真正请求是否是服务器允许的请求，如果服务器不允许，则会停止发送真正的请求。<br>产生OPTIONS请求的原因，首先是这个请求是<code>跨域请求</code>，因为只有在<code>CORS跨域资源共享</code>场景下，服务器http header中会有一个叫“Access-Control-Allow-Origin”的字段，该字段规定了指定的客户端来源才能对服务器资源进行访问，那么在这个来源之内的所有请求，都是CORS跨域资源共享模式，但是在这个模式下，服务器也不是完全相信客户端的，对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 GET 以外的 HTTP 请求，或者搭配某些 MIME 类型的 POST 请求），即非简单请求，浏览器必须首先使用 OPTIONS 方法发起一个预检请求，如果预检不通过，服务器还是会拒绝浏览器的请求。</p><blockquote><p>非简单请求定义：</p><ol><li>使用除GET、HEAD、POST方法之外的其他请求类型如PUT DELETE 等。</li><li>人为设置了下列列表之外的其他header字段：</li></ol><ul><li>Accept</li><li>Accept-Language</li><li>Content-Language</li><li>Content-Type （application/x-www-form-urlencoded、multipart/form-data、text/plain之外）</li><li>DPR</li><li>Downlink</li><li>Save-Data</li><li>Viewport-Width</li><li>Width</li></ul></blockquote><p>若发送了非简单请求，则会产生嗅探请求。<br>解决方式：</p><ol><li>可以将发送的请求改为简单请求</li><li>或者将客户端与服务端部署在同一个ip地址下或者使用请求代理让其不产生跨域</li><li>或者在服务器CORS header中的Access-Control-Allow-Methods字段中，增加对OPTIONS的支持，后者只会让所有OPTIONS请求通过，而不会去除OPTIONS请求。</li></ol></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/07/30/js观察者模式如何实现/" rel="next" title="js观察者模式如何实现"><i class="fa fa-chevron-left"></i> js观察者模式如何实现 </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/07/30/用css实现玻璃磨砂效果/" rel="prev" title="用css实现玻璃磨砂效果"> 用css实现玻璃磨砂效果 <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/04/js%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="zlx">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zlx">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/04/js%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC/" class="post-title-link" itemprop="url">js手动实现自定义事件监听</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-03-04 14:54:36 / Modified: 15:45:00" itemprop="dateCreated datePublished" datetime="2022-03-04T14:54:36+08:00">2022-03-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="post-block"><link itemprop="mainEntityOfPage" href="http://cmszlx.win/2019/07/23/js手动实现自定义事件监听/"><span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person"><meta itemprop="name" content="linXiao"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization"><meta itemprop="name" content="Hurry"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span><span class="post-meta-item-text">发表于</span><time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T11:42:20+08:00"> 2019年07月23日 </time></span></div></header><div class="post-body" itemprop="articleBody"><blockquote><p>js 手动实现自定义事件监听</p></blockquote><h3 id="自定义事件监听，其实也是观察者模式的一种"><a href="#自定义事件监听，其实也是观察者模式的一种" class="headerlink" title="自定义事件监听，其实也是观察者模式的一种"></a>自定义事件监听，其实也是观察者模式的一种</h3><p>我们在jquery中经常用</p><precode language="javascript" precodenum="0"></precode><p>来注册事件监听，那么他具体是怎么实现的呢，其实背后就是观察者模式的一种实现。</p><p>观察者模式，有几个要素:</p><ol><li><p>第一需要将需要观察的对象存放起来。</p></li><li><p>第二需要在需要的地方调用该观察者。</p></li><li><p>第三观察者需要分类，同一类的观察者可监听同一个事件，事件触发时，所有的观察者都需要被通知到。</p></li></ol><p>下面来具体实现一个观察者模式。</p><precode language="javascript" precodenum="1"></precode><p>上面代码里使用了es6 的Map对象来存储观察者。注册观察者的时候，每收到一个观察者注册，就按类型将他们分类存放，同一类的观察者存储在一个数组中。触发观察者的代码中，收到触发的命令后，找出触发的类型，调用所有已注册的同类的观察者。删除观察者，就将注册的所有观察者删除，return this方便链式调用。</p><p>调用示例如下：</p><precode language="javascript" precodenum="2"></precode><h3 id="如上便用观察者模式实现了一个事件监听机制。"><a href="#如上便用观察者模式实现了一个事件监听机制。" class="headerlink" title="如上便用观察者模式实现了一个事件监听机制。"></a>如上便用观察者模式实现了一个事件监听机制。</h3><p>源代码见github<a href="https://github.com/zlx362211854/listener" target="_blank" rel="noopener">链接</a></p></div><footer class="post-footer"><div class="post-tags"><a href="/tags/原创/" rel="tag"># 原创</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/03/25/js闭包和内存释放/" rel="next" title="js闭包和内存释放"><i class="fa fa-chevron-left"></i> js闭包和内存释放 </a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/07/30/js观察者模式如何实现/" rel="prev" title="js观察者模式如何实现"> js观察者模式如何实现 <i class="fa fa-chevron-right"></i></a></div></div></footer></div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -800,7 +800,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
