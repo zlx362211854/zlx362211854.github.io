@@ -84,53 +84,71 @@
       <p class="section-lead" data-i18n="projects.lead">Personal projects exploring agents, memory, and AI-native workflows.</p>
     </div>
 
-    <div class="cards">
-      <article class="card" style="--c1:#a78bfa;--c2:#7c3aed">
-        <div class="card-emoji">🧭</div>
-        <h3>AI Project Manager</h3>
-        <p data-i18n="proj.pm">An autonomous PM agent that plans, decomposes, and tracks software projects end-to-end — from spec to task graph to delivery checkpoints.</p>
-        <div class="tags"><span>Agents</span><span>Planning</span><span>LLM</span></div>
-        <a class="card-link" href="http://project.stackfield.org/" target="_blank" rel="noopener">project.stackfield.org →</a>
-      </article>
+    <div class="cards-group">
+      <h3 class="group-label"><span class="group-icon">🧩</span><span data-i18n="group.ext">Chrome Extensions</span></h3>
+      <div class="cards">
+        <article class="card" style="--c1:#34d399;--c2:#059669">
+          <div class="card-emoji">🧠</div>
+          <h3>MemoryVault</h3>
+          <p data-i18n="proj.vault">A Chrome extension that builds a private, browser-side memory index — captures readable page text locally with SQLite WASM + OPFS, and offers a side-panel for local search and per-domain privacy controls.</p>
+          <div class="tags"><span>Chrome MV3</span><span>SQLite WASM</span><span>Local-First</span></div>
+          <a class="card-link" href="https://vault.stackfield.org/" target="_blank" rel="noopener">vault.stackfield.org →</a>
+        </article>
 
-      <article class="card" style="--c1:#22d3ee;--c2:#0891b2">
-        <div class="card-emoji">📖</div>
-        <h3>books_manage</h3>
-        <p data-i18n="proj.books">A web-based novel writing studio (the name is a relic — it's really a long-form fiction editor with outlines, chapters, and AI-assisted drafting in the browser).</p>
-        <div class="tags"><span>Web App</span><span>Full-Stack</span><span>Writing</span></div>
-        <a class="card-link" href="http://novel.stackfield.org/" target="_blank" rel="noopener">novel.stackfield.org →</a>
-      </article>
+        <article class="card" style="--c1:#fbbf24;--c2:#d97706">
+          <div class="card-emoji">🛤️</div>
+          <h3>MemoryLane</h3>
+          <p data-i18n="proj.lane">A Chrome extension that records browser activity locally and turns each day into an AI-assisted work diary. Raw history stays on-device; only summaries are sent to the model.</p>
+          <div class="tags"><span>Chrome MV3</span><span>OPFS</span><span>Privacy</span></div>
+          <a class="card-link" href="https://lane.stackfield.org/" target="_blank" rel="noopener">lane.stackfield.org →</a>
+        </article>
+      </div>
+    </div>
 
-      <article class="card" style="--c1:#f472b6;--c2:#db2777">
-        <div class="card-emoji">✍️</div>
-        <h3>novelforge-agent</h3>
-        <p data-i18n="proj.novelforge">A long-form writing agent that drafts novels chapter-by-chapter with a living story bible, character memory, and cross-chapter consistency reviews.</p>
-        <div class="tags"><span>Multi-Agent</span><span>Long-Context</span><span>MCP</span></div>
-        <a class="card-link" href="https://novelforge.stackfield.org/" target="_blank" rel="noopener">novelforge.stackfield.org →</a>
-      </article>
+    <div class="cards-group">
+      <h3 class="group-label"><span class="group-icon">🤖</span><span data-i18n="group.agent">Agents</span></h3>
+      <div class="cards">
+        <article class="card" style="--c1:#a78bfa;--c2:#7c3aed">
+          <div class="card-emoji">🧭</div>
+          <h3>AI Project Manager</h3>
+          <p data-i18n="proj.pm">A LangGraph-powered agent that turns plain-language requirements into structured task plans — with priority assessment, resource allocation, and timeline scheduling.</p>
+          <div class="tags"><span>LangGraph</span><span>Planning</span><span>LLM</span></div>
+          <a class="card-link" href="http://project.stackfield.org/" target="_blank" rel="noopener">project.stackfield.org →</a>
+        </article>
+      </div>
+    </div>
 
-      <article class="card" style="--c1:#34d399;--c2:#059669">
-        <div class="card-emoji">🧠</div>
-        <h3>memoryVault</h3>
-        <p data-i18n="proj.vault">A personal memory layer for AI assistants — semantic, encrypted, and portable across models. Bring your context everywhere you talk to AI.</p>
-        <div class="tags"><span>Vector DB</span><span>Privacy</span><span>SDK</span></div>
-        <a class="card-link" href="https://vault.stackfield.org/" target="_blank" rel="noopener">vault.stackfield.org →</a>
-      </article>
+    <div class="cards-group">
+      <h3 class="group-label"><span class="group-icon">🔌</span><span data-i18n="group.mcp">MCP Servers</span></h3>
+      <div class="cards">
+        <article class="card" style="--c1:#f472b6;--c2:#db2777">
+          <div class="card-emoji">✍️</div>
+          <h3>NovelForge Agent</h3>
+          <p data-i18n="proj.novelforge">A local-first MCP server that turns Claude Code (or any MCP host) into a disciplined long-form novel co-author — state machine + zod schemas + BM25 retrieval. Bring your own LLM, no API keys required.</p>
+          <div class="tags"><span>MCP</span><span>Local-First</span><span>BM25</span></div>
+          <a class="card-link" href="https://novelforge.stackfield.org/" target="_blank" rel="noopener">novelforge.stackfield.org →</a>
+        </article>
+      </div>
+    </div>
 
-      <article class="card" style="--c1:#fbbf24;--c2:#d97706">
-        <div class="card-emoji">🛤️</div>
-        <h3>memorylane</h3>
-        <p data-i18n="proj.lane">A timeline-first journaling app that turns your scattered notes, chats, and photos into a searchable, AI-summarised story of your life.</p>
-        <div class="tags"><span>Personal AI</span><span>Mobile</span><span>Timeline</span></div>
-        <a class="card-link" href="https://lane.stackfield.org/" target="_blank" rel="noopener">lane.stackfield.org →</a>
-      </article>
+    <div class="cards-group">
+      <h3 class="group-label"><span class="group-icon">🌐</span><span data-i18n="group.web">Web Apps</span></h3>
+      <div class="cards">
+        <article class="card" style="--c1:#22d3ee;--c2:#0891b2">
+          <div class="card-emoji">📖</div>
+          <h3>NovelForge Web <span class="alias">(books_manage)</span></h3>
+          <p data-i18n="proj.books">An AI-powered web workspace for long-form fiction — planning, writing, review, memory management, automation, and publishing, all in one place.</p>
+          <div class="tags"><span>Web App</span><span>Full-Stack</span><span>Writing</span></div>
+          <a class="card-link" href="http://novel.stackfield.org/" target="_blank" rel="noopener">novel.stackfield.org →</a>
+        </article>
 
-      <article class="card card-cta" style="--c1:#94a3b8;--c2:#475569">
-        <div class="card-emoji">✨</div>
-        <h3 data-i18n="proj.moreTitle">More on GitHub</h3>
-        <p data-i18n="proj.moreDesc">Experiments, prototypes, and open-source contributions live on my GitHub.</p>
-        <a class="card-link" href="https://github.com/zlx362211854" target="_blank" rel="noopener">github.com/zlx362211854 →</a>
-      </article>
+        <article class="card card-cta" style="--c1:#94a3b8;--c2:#475569">
+          <div class="card-emoji">✨</div>
+          <h3 data-i18n="proj.moreTitle">More on GitHub</h3>
+          <p data-i18n="proj.moreDesc">Experiments, prototypes, and open-source contributions live on my GitHub.</p>
+          <a class="card-link" href="https://github.com/zlx362211854" target="_blank" rel="noopener">github.com/zlx362211854 →</a>
+        </article>
+      </div>
     </div>
   </section>
 
